@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- Header Section -->
-    <header class="w3-container w3-sand">
+    <header class="w3-container w3-beige">
         <h1>Aida & Kolbjørn's Bryllup</h1>
     </header>
 
@@ -35,11 +35,43 @@
             <h2>RSVP</h2>
             <p>Please let us know if you can make it.</p>
             <!-- You can add a form here to collect RSVPs -->
+            <form id="rsvp-form">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+              <input type="submit" value="Submit">
+            </form>
         </section>
+        <!-- Attendees Section -->
+        <section id="attendees">
+          <h2>Attendees</h2>
+          <ul id="attendees-list">
+      <!-- Attendees will be added here -->
+          </ul>
+        </section>
+        <script>
+          document.getElementById('rsvp-form').addEventListener('submit', function(event) {
+              // Prevent the form from being submitted normally
+              event.preventDefault();
+      
+              // Get the name from the form
+              var name = document.getElementById('name').value;
+      
+              // Create a new list item
+              var li = document.createElement('li');
+              li.textContent = name;
+      
+              // Add the list item to the attendees list
+              document.getElementById('attendees-list').appendChild(li);
+      
+              // Clear the form
+              document.getElementById('name').value = '';
+          });
+      </script>
+
     </main>
 
     <!-- Footer Section -->
-    <footer class="w3-container w3-sand">
+    <footer class="w3-container w3-khaki">
         <p>Looking forward to celebrating with you!</p>
     </footer>
 </body>
