@@ -1,5 +1,5 @@
 // Get the wedding date
-var weddingDate = new Date("2024-06-20T16:00:00");
+var weddingDate = new Date("2025-07-26T15:00:00");
 
 // Update the countdown every second
 var countdownInterval = setInterval(function() {
