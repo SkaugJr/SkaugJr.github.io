@@ -407,8 +407,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
               var additionalGuestsContainer = $('#additionalGuestsContainer');
               additionalGuestsContainer.empty(); // Clear existing textboxes
   
-              // Add textboxes for additional guests, starting from 1
-              for (var i = 0; i <= numGuests; i++) {
+              // Add textboxes for additional guests, starting from 0
+              for (var i = 0; i < numGuests; i++) {
                   var textbox = '<div class="field"><label for="additionalGuest' + i + '">Ekstra gjest ' + i + '</label>' +
                       '<input type="text" id="additionalGuest' + i + '" name="additionalGuest' + i + '" required></div>';
                   additionalGuestsContainer.append(textbox);
