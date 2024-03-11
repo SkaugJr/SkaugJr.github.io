@@ -5,13 +5,34 @@ $(document).ready(function() {
     // Display the wedding date above the countdown
     $('#countdown').before('<p><b>Vielse: ' + weddingDate.toLocaleString('nb-NO', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) + '</b></p>');
 
-    // Initialize the countdown
     $('#countdown').countdown(weddingDate, function(event) {
         $(this).html(event.strftime(
-            '<div>%w <span>uker</span></div> ' +
-            '<div>%d <span>dager</span></div> ' +
-            '<div>%H <span>timer</span></div> ' +
-            '<div>%M <span>minutter</span></div> ' +
-            '<div>%S <span>sekunder</span></div>'));
+            '<div class="countdown-wrapper">' +
+                '<div class="countdown-item">' +
+                    '<div class="countdown-number">%w</div>' +
+                    '<div class="countdown-label">Uker</div>' +
+                '</div>' +
+                '<div class="countdown-item">' +
+                    '<div class="countdown-number">%d</div>' +
+                    '<div class="countdown-label">Dager</div>' +
+                '</div>' +
+                '<div class="countdown-item">' +
+                    '<div class="countdown-number">%H</div>' +
+                    '<div class="countdown-label">Timer</div>' +
+                '</div>' +
+                '<div class="countdown-item">' +
+                    '<div class="countdown-number">%M</div>' +
+                    '<div class="countdown-label">Minutter</div>' +
+                '</div>' +
+                '<div class="countdown-item">' +
+                    '<div class="countdown-number">%S</div>' +
+                    '<div class="countdown-label">Sekunder</div>' +
+                '</div>' +
+            '</div>'
+        ));
+
+        // Adjust the size of countdown numbers and labels
+        $('.countdown-number').css('font-size', '2.5rem'); // Adjust the size as needed
+        $('.countdown-label').css('font-size', '1rem'); // Adjust the size as needed
     });
 });
