@@ -1139,7 +1139,7 @@ input, select, textarea {
 }
 
 #bg:after {
-	background-image: url("../../images/bg.jpg"); /* URL to the stretched and blurry image (bg.jpg) */
+	background-image: url("../../images/bg2.png"); /* URL to the stretched and blurry image (bg.jpg) */
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
