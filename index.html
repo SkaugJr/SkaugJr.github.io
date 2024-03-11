@@ -72,9 +72,21 @@
                               <option value="Kolbjørn">Kolbjørn</option>
                           </select>
                       </div>
+                      <div class="field">
+                          <label for="numAdditionalGuests">Antall ekstra gjester (maks 5)</label>
+                          <select id="numAdditionalGuests" name="numAdditionalGuests">
+                              <option value="1">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                          </select>
+                      </div>
+                      <div id="additionalGuestsContainer"></div> <!-- Container for additional guest textboxes -->
                   </div>
                   <ul class="actions">
-                      <li><input type="submit" value="Send Message" class="primary" /></li>
+                      <li><input type="submit" value="Send inn" class="primary" /></li>
                       <li><input type="reset" value="Reset" /></li>
                   </ul>
               </form>
