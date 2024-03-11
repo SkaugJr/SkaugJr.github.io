@@ -386,13 +386,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
         $(document).ready(function() {
-            var attendeeCounter = 0;
+            var attendees = []; // Array to store attendee information
     
             // Function to add input fields for additional attendees
             function addAdditionalAttendee() {
                 var additionalAttendeeField = '<div class="additionalAttendee"><div class="fields"><div class="field"><label for="additionalName">Name</label><input type="text" class="additionalName" name="additionalName[]"></div></div><button type="button" class="removeAttendee">Remove Attendee</button></div>';
                 $("#additionalAttendees").append(additionalAttendeeField);
-                attendeeCounter++;
+                attendees.push(""); // Add an empty string for the new attendee
             }
     
             // Event listener for the "Add Attendee" button
@@ -403,9 +403,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
     
             // Event listener for the "Remove Attendee" button
             $(document).on("click", ".removeAttendee", function() {
+                var index = $(this).closest(".additionalAttendee").index();
+                attendees.splice(index, 1); // Remove the attendee from the array
                 $(this).closest(".additionalAttendee").remove(); // Remove the clicked attendee section
-                attendeeCounter--;
-                if (attendeeCounter == 0) {
+                if (attendees.length == 0) {
                     $("#additionalAttendeesContainer").hide(); // Hide additional attendee section if no attendees remain
                 }
             });
@@ -415,6 +416,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                 var formData = $(this).serializeArray();
                 console.log(formData); // Send formData to server or process as needed
                 // Add AJAX request to send formData to server
+                console.log("Attendees:", attendees); // Output the list of attendees to the console
+    
+                // Redirect to the start page after form submission
+                window.location.href = "https://skaugjr.github.io/#";
             });
         });
     </script>
