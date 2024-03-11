@@ -386,23 +386,38 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
       <script src="assets/js/countdown.js"></script>
       <script>
         $(document).ready(function() {
-            // Event listener for the change in the number of additional guests
-            $('#numAdditionalGuests').change(function() {
-                var numGuests = parseInt($(this).val());
-                var additionalGuestsContainer = $('#additionalGuestsContainer');
-                additionalGuestsContainer.empty(); // Clear existing textboxes
+            $("#rsvpForm").submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serializeArray();
+                console.log(formData); // Send formData to server or process as needed
     
-                // Add textboxes for additional guests
-                for (var i = 0; i < numGuests; i++) {
-                    var textbox = '<div class="field"><label for="additionalGuest' + (i + 1) + '">Ekstra gjest ' + (i + 1) + '</label>' +
-                        '<input type="text" id="additionalGuest' + (i + 1) + '" name="additionalGuest' + (i + 1) + '" required></div>';
-                    additionalGuestsContainer.append(textbox);
-                }
+                // Show confirmation message
+                alert("Takk for at du fyllte ut svarskjema!");
+    
+                // Redirect to the start page after confirmation
+                window.location.href = "index.html";
             });
-    
-            // Initialize additional guests textboxes based on default value
-            $('#numAdditionalGuests').change();
         });
-    </script>       
+        </script>
+      <script>
+      $(document).ready(function() {
+          // Event listener for the change in the number of additional guests
+          $('#numAdditionalGuests').change(function() {
+              var numGuests = parseInt($(this).val());
+              var additionalGuestsContainer = $('#additionalGuestsContainer');
+              additionalGuestsContainer.empty(); // Clear existing textboxes
+  
+              // Add textboxes for additional guests, starting from 1
+              for (var i = 1; i <= numGuests; i++) {
+                  var textbox = '<div class="field"><label for="additionalGuest' + i + '">Ekstra gjest ' + i + '</label>' +
+                      '<input type="text" id="additionalGuest' + i + '" name="additionalGuest' + i + '" required></div>';
+                  additionalGuestsContainer.append(textbox);
+              }
+          });
+  
+          // Initialize additional guests textboxes based on default value
+          $('#numAdditionalGuests').change();
+      });
+        </script>        
 	</body>
 </html>
