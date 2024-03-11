@@ -3,7 +3,7 @@ $(document).ready(function() {
     var weddingDate = new Date('2025-07-26T15:00:00'); // Set your wedding date and time
 
     // Format the wedding date and time
-    var formattedWeddingDateTime = weddingDate.toLocaleString('en-US', {
+    var formattedWeddingDateTime = weddingDate.toLocaleString('nb-NO', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
