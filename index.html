@@ -384,52 +384,52 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
       <script src="assets/js/countdown.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
-        $(document).ready(function() {
+          $(document).ready(function() {
             var attendees = []; // Array to store attendee information
-    
+        
             // Function to add input fields for additional attendees
             function addAdditionalAttendee() {
-                var additionalAttendeeField = '<div class="additionalAttendee"><div class="fields"><div class="field"><label for="additionalName">Name</label><input type="text" class="additionalName" name="additionalName[]"></div></div><button type="button" class="removeAttendee">Remove Attendee</button></div>';
-                $("#additionalAttendees").append(additionalAttendeeField);
-                attendees.push(""); // Add an empty string for the new attendee
-                updateRemoveButtonVisibility();
+              var additionalAttendeeField = '<div class="additionalAttendee"><div class="fields"><div class="field"><label for="additionalName">Name</label><input type="text" class="additionalName" name="additionalName[]"></div><button type="button" class="removeAttendee">Remove Attendee</button></div></div>';
+              $("#additionalAttendees").append(additionalAttendeeField);
+              attendees.push(""); // Add an empty string for the new attendee
+              updateRemoveButtonVisibility();
             }
-    
+        
             // Function to update the visibility of the "Remove Attendee" button
             function updateRemoveButtonVisibility() {
-                if ($(".additionalAttendee").length > 0) {
-                    $(".removeAttendee").show();
-                } else {
-                    $(".removeAttendee").hide();
-                }
+              if ($(".additionalAttendee").length > 0) {
+                $(".removeAttendee").show();
+              } else {
+                $(".removeAttendee").hide();
+              }
             }
-    
+        
             // Event listener for the "Add Attendee" button
             $("#addAttendee").click(function() {
-                $("#additionalAttendeesContainer").show(); // Show additional attendee section
-                addAdditionalAttendee();
+              $("#additionalAttendeesContainer").show(); // Show additional attendee section
+              addAdditionalAttendee();
             });
-    
+        
             // Event listener for the "Remove Attendee" button
             $(document).on("click", ".removeAttendee", function() {
-                $(this).closest('.additionalAttendee').remove(); // Remove the closest .additionalAttendee div
-                updateRemoveButtonVisibility();
+              $(this).closest('.additionalAttendee').remove(); // Remove the closest .additionalAttendee div
+              updateRemoveButtonVisibility();
             });
-    
+        
             $("#rsvpForm").submit(function(event) {
-                event.preventDefault();
-                var formData = $(this).serializeArray();
-                console.log(formData); // Send formData to server or process as needed
-                // Add AJAX request to send formData to server
-                console.log("Attendees:", attendees); // Output the list of attendees to the console
-    
-                // Show confirmation message
-                alert("Thank you for your RSVP!");
-    
-                // Redirect to the start page after confirmation
-                window.location.href = "index.html";
+              event.preventDefault();
+              var formData = $(this).serializeArray();
+              console.log(formData); // Send formData to server or process as needed
+              // Add AJAX request to send formData to server
+              console.log("Attendees:", attendees); // Output the list of attendees to the console
+        
+              // Show confirmation message
+              alert("Takk for at du fyllte ut svarskjema!");
+        
+              // Redirect to the start page after confirmation
+              window.location.href = "index.html";
             });
-        });
-    </script>    
+          });
+        </script>    
 	</body>
 </html>
