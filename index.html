@@ -27,7 +27,7 @@
 							<ul>
 								<li><a href="#Info">Info</a></li>
 								<li><a href="#work">Work</a></li>
-								<li><a href="#InvitasjonSvar">Svar På Invitasjon</a></li>
+								<li><a href="#InvitasjonSvar">Invitasjonsvar</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -57,24 +57,26 @@
             <article id="InvitasjonSvar">
               <h2 class="major">RSVP</h2>
               <form id="rsvpForm" action="process_rsvp.php" method="post">
-                  <fieldset>
-                      <legend>Primary Attendee</legend>
-                      <div class="fields">
-                          <div class="field">
-                              <label for="primaryName">Name</label>
-                              <input type="text" id="primaryName" name="primaryName" required>
-                          </div>
-                          <div class="field">
-                              <label for="primaryRelation">Family Relation</label>
-                              <input type="text" id="primaryRelation" name="primaryRelation" required>
-                          </div>
-                          <div class="field">
-                              <label for="primaryContact">Contact Info</label>
-                              <input type="text" id="primaryContact" name="primaryContact" required>
-                          </div>
+                <fieldset>
+                  <legend>Primary Attendee</legend>
+                  <div class="fields">
+                      <div class="field">
+                          <label for="primaryName">Name</label>
+                          <input type="text" id="primaryName" name="primaryName" required>
                       </div>
-                  </fieldset>
-          
+                      <div class="field">
+                          <label for="familyRelation">Family Relation</label>
+                          <select id="familyRelation" name="familyRelation" required>
+                              <option value="Bride">Bride</option>
+                              <option value="Groom">Groom</option>
+                          </select>
+                      </div>
+                      <div class="field">
+                          <label for="primaryContact">Contact Info</label>
+                          <input type="text" id="primaryContact" name="primaryContact" required>
+                      </div>
+                  </div>
+              </fieldset>
                   <fieldset>
                       <legend>Additional Attendees</legend>
                       <div id="additionalAttendees">
