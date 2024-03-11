@@ -1,45 +1,29 @@
-// Get the wedding date
-var weddingDate = new Date("2025-07-26T15:00:00");
 
-// Function to update the countdown
-function updateCountdown() {
-    const currentDate = new Date();
-    const timeDifference = weddingDate - currentDate;
+$(document).ready(function() {
+    var weddingDate = new Date('2025-07-26T15:00:00'); // Set your wedding date
+    $('#countdown').countdown(weddingDate, function(event) {
+        $(this).html(event.strftime(
+            '<div>%w <span>weeks</span></div> ' +
+            '<div>%d <span>days</span></div> ' +
+            '<div>%H <span>hours</span></div> ' +
+            '<div>%M <span>minutes</span></div> ' +
+            '<div>%S <span>seconds</span></div>'));
+    });
 
-    // Calculate remaining days, hours, minutes, and seconds
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    // Display the wedding date
+    $('#countdown').after('<p>Wedding Date: ' + weddingDate.toDateString() + '</p>');
 
-    // Display the countdown in a visually appealing format
-    const countdownDisplay = `
-        <div class="countdown">
-            <div class="countdown-item">
-                <span class="countdown-value">${days}</span>
-                <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-value">${hours}</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-value">${minutes}</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-value">${seconds}</span>
-                <span class="countdown-label">Seconds</span>
-            </div>
-        </div>
-    `;
+    // Listen for changes in the number of additional guests
+    $('#numAdditionalGuests').change(function() {
+        var numGuests = parseInt($(this).val());
+        var additionalGuestsContainer = $('#additionalGuestsContainer');
+        additionalGuestsContainer.empty(); // Clear previous guest textboxes
 
-    // Update the HTML content with the countdown display
-    document.getElementById('countdown').innerHTML = countdownDisplay;
-}
-
-// Update the countdown every second
-setInterval(updateCountdown, 1000);
-
-// Initial call to update the countdown immediately
-updateCountdown();
+        // Add textboxes for additional guests
+        for (var i = 1; i <= numGuests; i++) {
+            var textbox = '<div class="field"><label for="additionalGuest' + i + '">Ekstra gjest ' + i + '</label>' +
+                '<input type="text" id="additionalGuest' + i + '" name="additionalGuest' + i + '" required></div>';
+            additionalGuestsContainer.append(textbox);
+        }
+    });
+});
