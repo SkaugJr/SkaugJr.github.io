@@ -1136,6 +1136,10 @@ input, select, textarea {
 	background-position: center;
 	background-repeat: no-repeat;
 	z-index: 2;
+	-moz-filter: blur(0.2rem);
+	-webkit-filter: blur(0.2rem);
+	-ms-filter: blur(0.2rem);
+	filter: blur(0.2rem);
 }
 
 #bg:after {
