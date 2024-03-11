@@ -27,7 +27,7 @@
 							<ul>
 								<li><a href="#Info">Info</a></li>
 								<li><a href="#work">Work</a></li>
-								<li><a href="#InvitasjonSvar">Invitasjonsvar</a></li>
+								<li><a href="#Svarskjema">Svarskjema</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -53,45 +53,45 @@
 								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
 							</article>
 
-						<!-- InvitasjonSvar -->
-            <article id="InvitasjonSvar">
-              <h2 class="major">RSVP</h2>
+						<!-- Svarskjema -->
+            <article id="Svarskjema">
+              <h2 class="major">Svarskjema</h2>
               <form id="rsvpForm" action="process_rsvp.php" method="post">
                 <fieldset>
                   <legend>Primary Attendee</legend>
                   <div class="fields">
                       <div class="field">
-                          <label for="primaryName">Name</label>
+                          <label for="primaryName">Navn</label>
                           <input type="text" id="primaryName" name="primaryName" required>
                       </div>
                       <div class="field">
-                          <label for="familyRelation">Family Relation</label>
+                          <label for="familyRelation">Familie relasjon</label>
                           <select id="familyRelation" name="familyRelation" required>
-                              <option value="Bride">Bride</option>
-                              <option value="Groom">Groom</option>
+                              <option value="Bride">Aida</option>
+                              <option value="Groom">Kolbjørn</option>
                           </select>
                       </div>
                       <div class="field">
-                          <label for="primaryContact">Contact Info</label>
+                          <label for="primaryContact">Telefonnummer</label>
                           <input type="text" id="primaryContact" name="primaryContact" required>
                       </div>
                   </div>
               </fieldset>
                   <fieldset>
-                      <legend>Additional Attendees</legend>
+                      <legend>Ekstra personer</legend>
                       <div id="additionalAttendees">
                           <div class="fields">
                               <div class="field">
-                                  <label for="additionalName">Name</label>
+                                  <label for="additionalName">Navn</label>
                                   <input type="text" class="additionalName" name="additionalName[]" required>
                               </div>
                           </div>
-                          <button type="button" id="addAttendee">Add Another</button>
+                          <button type="button" id="addAttendee">Legg til ekstra person</button>
                       </div>
                   </fieldset>
           
                   <div class="actions">
-                      <button type="submit">Submit RSVP</button>
+                      <button type="submit">Send inn</button>
                   </div>
               </form>
           </article>
@@ -388,5 +388,34 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
       <script src="assets/js/countdown.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+    $(document).ready(function() {
+        // Counter to keep track of the number of additional attendees
+        var attendeeCounter = 1;
+
+        // Function to add input fields for additional attendees
+        function addAdditionalAttendee() {
+            var additionalAttendeeField = '<div class="fields"><div class="field"><label for="additionalName">Name</label><input type="text" class="additionalName" name="additionalName[]"></div></div>';
+            $("#additionalAttendees").append(additionalAttendeeField);
+            attendeeCounter++;
+        }
+
+        // Event listener for the "Add Another" button
+        $("#addAttendee").click(function() {
+            addAdditionalAttendee();
+        });
+
+        // Initialize the form with one additional attendee field
+        addAdditionalAttendee();
+
+        $("#rsvpForm").submit(function(event) {
+            event.preventDefault();
+            var formData = $(this).serializeArray();
+            console.log(formData); // Send formData to server or process as needed
+            // Add AJAX request to send formData to server
+        });
+    });
+    </script>
 	</body>
 </html>
