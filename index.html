@@ -6,6 +6,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+      /* Adjust text alignment and size for labels */
+      #Svarskjema label {
+          display: block;
+          margin-bottom: 5px;
+          font-size: 16px; /* Increase font size */
+      }
+  
+      /* Adjust spacing between fields */
+      #Svarskjema .fields .field {
+          margin-bottom: 15px;
+      }
+  </style>
 	</head>
 	<body class="is-preload">
 
@@ -402,12 +415,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
     
             // Event listener for the "Remove Attendee" button
             $(document).on("click", ".removeAttendee", function() {
-                var index = $(this).closest(".additionalAttendee").index();
-                attendees.splice(index, 1); // Remove the attendee from the array
-                $(this).closest(".additionalAttendee").remove(); // Remove the clicked attendee section
-                if (attendees.length == 0) {
-                    $("#additionalAttendeesContainer").hide(); // Hide additional attendee section if no attendees remain
-                }
+                $(this).closest('.additionalAttendee').remove(); // Remove the closest .additionalAttendee div
             });
     
             $("#rsvpForm").submit(function(event) {
@@ -417,6 +425,11 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                 // Add AJAX request to send formData to server
                 console.log("Attendees:", attendees); // Output the list of attendees to the console
     
+                // Show confirmation message
+                alert("Thank you for your RSVP!");
+    
+                // Redirect to the start page after confirmation
+                window.location.href = "startpage.html";
             });
         });
     </script>
