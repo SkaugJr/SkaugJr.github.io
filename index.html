@@ -65,7 +65,7 @@
                               <input type="text" id="primaryName" name="primaryName" required>
                           </div>
                           <div class="field">
-                              <label for="familyRelation">Familie relasjon</label>
+                              <label for="familyRelation">Relasjon</label>
                               <select id="familyRelation" name="familyRelation" required>
                                   <option value="Bride">Aida</option>
                                   <option value="Groom">Kolbjørn</option>
@@ -78,7 +78,7 @@
                       </div>
                   </fieldset>
                   <fieldset id="additionalAttendeesContainer" style="display:none;">
-                      <legend>Ekstra personer</legend>
+                      <legend>Ekstra person(er)</legend>
                       <div id="additionalAttendees">
                           <!-- Additional attendee fields will be added dynamically here -->
                       </div>
@@ -411,9 +411,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
             });
         
             // Event listener for the "Remove Attendee" button
-            $(document).on("click", ".removeAttendee", function() {
-              $(this).closest('.additionalAttendee').remove(); // Remove the closest .additionalAttendee div
-              updateRemoveButtonVisibility();
+            $(document).ready(function() {
+              // Add event listener for click events on the "Remove Attendee" buttons
+              $(document).on('click', '.removeAttendee', function() {
+              // Remove the parent .additionalAttendee div of the clicked button
+              $(this).closest('.additionalAttendee').remove();
+              });
             });
         
             $("#rsvpForm").submit(function(event) {
