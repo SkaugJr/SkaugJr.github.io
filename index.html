@@ -410,14 +410,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
               addAdditionalAttendee();
             });
         
-            // Event listener for the "Remove Attendee" button
-            $(document).ready(function() {
+            
               // Add event listener for click events on the "Remove Attendee" buttons
               $(document).on('click', '.removeAttendee', function() {
               // Remove the parent .additionalAttendee div of the clicked button
               $(this).closest('.additionalAttendee').remove();
               });
-            });
+            
         
             $("#rsvpForm").submit(function(event) {
               event.preventDefault();
