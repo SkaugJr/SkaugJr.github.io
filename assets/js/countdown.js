@@ -15,12 +15,14 @@ $(document).ready(function() {
         ));
 
         // Adjust the size of countdown numbers and labels
-        $('.countdown-number').css('font-size', '2.5rem'); // Adjust the size as needed
-        $('.countdown-label').css('font-size', '1rem'); // Adjust the size as needed
+        $('.countdown-number').css('font-size', '2rem'); // Adjust the size as needed
+        $('.countdown-label').css('font-size', '0.75rem'); // Adjust the size as needed
 
         // Update CSS to align items horizontally
         $('.countdown-wrapper').css('display', 'flex');
         $('.countdown-item').css('text-align', 'center');
         $('.countdown-item').css('flex', '1');
     });
+
+    $('.wedding-date').css('font-size', '2.5rem');
 });
