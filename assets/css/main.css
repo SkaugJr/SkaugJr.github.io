@@ -1672,4 +1672,23 @@ input, select, textarea {
 
 	  .additional-guest {
 		text-align: center; 
-	} 
+	}
+	.countdown-wrapper {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		margin-top: 1rem;
+	}
+	
+	.countdown-item {
+		text-align: center;
+	}
+	.countdown-number {
+		font-size: 2rem; /* Adjust the size as needed */
+		font-weight: bold;
+		margin-bottom: 0.5rem; /* Add some space between number and label */
+	}
+	
+	.countdown-label {
+		font-size: 1rem; /* Adjust the size as needed */
+	}
