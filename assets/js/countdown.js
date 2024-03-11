@@ -10,7 +10,7 @@ $(document).ready(function() {
             '<div class="countdown-wrapper">' +
                 '<div class="countdown-item">' +
                     '<div class="countdown-number">%w class="countdown-number">%d< class="countdown-number">%H class="countdown-number">%M class="countdown-number">%S </div>' +
-                    '<div class="countdown-label">Uker class="countdown-label">Dager class="countdown-label">Timer class="countdown-label">Minutter class="countdown-label">Sekunder </div>' +
+                    '<div class="countdown-label">Uker class="countdown-label">Dager class="countdown-label">Timer class="countdown-label">Minutter class="countdown-label">Sekunder </div>'+
                 '</div>'
         ));
 
@@ -23,4 +23,5 @@ $(document).ready(function() {
         $('.countdown-item').css('text-align', 'center');
         $('.countdown-item').css('flex', '1');
     });
+    $('.wedding-date').css('font-size', '1.5rem');
 });
