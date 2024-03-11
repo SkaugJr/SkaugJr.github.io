@@ -1131,24 +1131,12 @@ input, select, textarea {
 }
 
 #bg:before {
-	background-image: url("../../images/bg.jpg"); /* URL to the front image (bg.jpg) */
-	background-size: auto 100%; /* Adjusted to fill the height */
-	background-position: center;
-	background-repeat: no-repeat;
-	z-index: 2;
-	opacity: 0.85;
-}
-
-#bg:after {
-	background-image: url("../../images/bg2.png"); /* URL to the stretched and blurry image (bg.jpg) */
+	background-image: url("../../images/bg2.png"); /* URL to the stretched image (bg2.png) */
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	z-index: 1;
-	-moz-filter: blur(0.2rem);
-	-webkit-filter: blur(0.2rem);
-	-ms-filter: blur(0.2rem);
-	filter: blur(0.2rem);
+	z-index: 2;
+	opacity: 0.9;
 }
 
 body.is-article-visible #bg:after {
