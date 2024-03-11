@@ -3,7 +3,7 @@ $(document).ready(function() {
     var weddingDate = new Date('2025-07-26T15:00:00'); // Set your wedding date
 
     // Display the wedding date above the countdown
-    $('#countdown').before('<p class="wedding-date"><b>Vielse: ' + weddingDate.toLocaleString('nb-NO', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) + '</b></p>');
+    $('#countdown').before('<p class="wedding-date"><b>' + weddingDate.toLocaleString('nb-NO', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) + '</b></p>');
 
     $('#countdown').countdown(weddingDate, function(event) {
         $(this).html(event.strftime(
