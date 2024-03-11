@@ -9,26 +9,9 @@ $(document).ready(function() {
         $(this).html(event.strftime(
             '<div class="countdown-wrapper">' +
                 '<div class="countdown-item">' +
-                    '<div class="countdown-number">%w</div>' +
-                    '<div class="countdown-label">Uker</div>' +
-                '</div>' +
-                '<div class="countdown-item">' +
-                    '<div class="countdown-number">%d</div>' +
-                    '<div class="countdown-label">Dager</div>' +
-                '</div>' +
-                '<div class="countdown-item">' +
-                    '<div class="countdown-number">%H</div>' +
-                    '<div class="countdown-label">Timer</div>' +
-                '</div>' +
-                '<div class="countdown-item">' +
-                    '<div class="countdown-number">%M</div>' +
-                    '<div class="countdown-label">Minutter</div>' +
-                '</div>' +
-                '<div class="countdown-item">' +
-                    '<div class="countdown-number">%S</div>' +
-                    '<div class="countdown-label">Sekunder</div>' +
-                '</div>' +
-            '</div>'
+                    '<div class="countdown-number">%w class="countdown-number">%d< class="countdown-number">%H class="countdown-number">%M class="countdown-number">%S </div>' +
+                    '<div class="countdown-label">Uker class="countdown-label">Dager class="countdown-label">Timer class="countdown-label">Minutter class="countdown-label">Sekunder </div>' +
+                '</div>'
         ));
 
         // Adjust the size of countdown numbers and labels
