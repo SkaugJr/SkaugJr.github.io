@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Store data (e.g., in a text file)
-    file_put_contents("rsvp_responses.txt", $data, FILE_APPEND);
+    file_put_contents("Deltakerliste.txt", $data, FILE_APPEND);
 
     // Redirect to thank you page
     header("Location: rsvp_thankyou.html");
