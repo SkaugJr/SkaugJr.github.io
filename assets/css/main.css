@@ -1136,22 +1136,8 @@ input, select, textarea {
 	background-position: center;
 	background-repeat: no-repeat;
 	z-index: 2;
-	-moz-filter: blur(0.2rem);
-	-webkit-filter: blur(0.2rem);
-	-ms-filter: blur(0.2rem);
-	filter: blur(0.2rem);
-}
-
-#bg:after {
-	background-image: url("../../images/bg2.png"); /* URL to the stretched and blurry image (bg.jpg) */
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	z-index: 1;
-	-moz-filter: blur(0.2rem);
-	-webkit-filter: blur(0.2rem);
-	-ms-filter: blur(0.2rem);
-	filter: blur(0.2rem);
+	opacity: 0.8; /* Make it slightly darker */
+	filter: blur(0.1rem); /* Apply a slight blur effect */
 }
 
 body.is-article-visible #bg:after {
