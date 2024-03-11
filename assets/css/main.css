@@ -1669,4 +1669,8 @@ input, select, textarea {
       #Svarskjema .fields .field {
           margin-bottom: 15px;
       }
+
+	  .additional-guest {
+		margin-left: 0.5em; /* Adjust the margin as needed */
+	}
  
