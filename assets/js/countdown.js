@@ -23,6 +23,4 @@ $(document).ready(function() {
         $('.countdown-item').css('text-align', 'center');
         $('.countdown-item').css('flex', '1');
     });
-
-    $('.wedding-date').css('font-size', '2.5rem');
 });
