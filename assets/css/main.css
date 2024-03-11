@@ -1132,14 +1132,10 @@ input, select, textarea {
 
 #bg:before {
 	background-image: url("../../images/bg.jpg"); /* URL to the front image (bg.jpg) */
-	background-size: contain;
+	background-size: auto 100%; /* Adjusted to fill the height */
 	background-position: center;
 	background-repeat: no-repeat;
 	z-index: 2;
-	-moz-filter: blur(0.025rem);
-	-webkit-filter: blur(0.025rem);
-	-ms-filter: blur(0.025rem);
-	filter: blur(0.025rem);
 	opacity: 0.85;
 }
 
