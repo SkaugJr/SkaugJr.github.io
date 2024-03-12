@@ -1808,18 +1808,18 @@ repeat;
 #Galleri .carousel-button {
 	position: absolute;
 	z-index: 2;
-	font-size: 2rem; /* Smaller font size */
-	bottom: 0px; /* Position the buttons below the pictures */
+	font-size: 2.5rem; /* Smaller font size */
+	bottom: 50px; /* Position the buttons below the pictures */
 	left: 50%; /* Center the buttons horizontally */
 	transform: translateX(-50%); /* Center the buttons horizontally */
 	color: #fff; /* White color */
 	background-color: #333; /* Dark background */
-	padding: 10px 20px; /* Some padding */
-	border-radius: 5px; /* Rounded corners */
+	padding: 0px 10px; /* Some padding */
+	border-radius: 50px; /* Rounded corners */
 	cursor: pointer;
 	opacity: 0.7; /* Semi-transparent */
 	transition: opacity 0.3s ease; /* Smooth transition */
-	width: 50px; /* Set a specific width */
+	width: 60px; /* Set a specific width */
   	text-align: center; /* Center the text */
   }
   
