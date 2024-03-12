@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -122,6 +126,13 @@
 						<!-- Galleri -->
 						<article id="Galleri">
 							<h2 class="major">Galleri</h2>
+							<div class="gallery">
+								{% for image in site.static_files %}
+									{% if image.path contains '/galleri' %}
+										<img src="{{ site.baseurl }}{{ image.path }}" alt="Gallery image">
+									{% endif %}
+								{% endfor %}
+							</div>
 						</article>	
 						
 						<!-- Svarskjema -->
