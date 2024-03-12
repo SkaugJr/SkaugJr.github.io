@@ -1748,7 +1748,7 @@ repeat;
 #Galleri .carousel {
 	position: relative; /* Add this line */
 	width: 100%;
-	height: 500px;
+	height: 600px;
   }
 
 #Galleri .carousel > ul {
