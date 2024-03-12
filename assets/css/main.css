@@ -1766,7 +1766,12 @@ repeat;
     transition: opacity 0.5s ease;
 }
 
-#Galleri .slide > img {
+#Galleri .slide > .image-container {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#Galleri .slide > .image-container img {
     width: 100%;
     height: auto;
     display: block;
@@ -1776,6 +1781,7 @@ repeat;
 #Galleri .slide[data-active] {
     opacity: 1;
 }
+
 
 #Galleri .carousel-button {
     position: absolute;
