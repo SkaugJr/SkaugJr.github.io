@@ -1762,7 +1762,6 @@ repeat;
 
 #Galleri .slide {
 	position: absolute;
-	inset: 0;
     flex: 0 0 100%; /* Each slide takes the full width of the carousel */
     opacity: 0;
     transition: 200ms opacity ease-in-out;
