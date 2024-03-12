@@ -49,8 +49,10 @@
 							<ul>
 								<li><a href="#Info">Info</a></li>
 								<li><a href="#Bekledning">Bekledning</a></li>
+								<li><a href="#Galleri">Galleri</a></li>
 								<li><a href="#Svarskjema">Svarskjema</a></li>
 								<li><a href="#contact">Kontakt</a></li>
+								
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
 						</nav>
@@ -106,51 +108,53 @@
 								<h3>Inspirasjon til bekledning</h3>
 								<div class="image-container">
 									<img src="images/pic01.jpg" alt="" />
-									<img src="images/pic01.jpg" alt="" />
-									<img src="images/pic01.jpg" alt="" />
-									<img src="images/pic01.jpg" alt="" />
 								</div>
 							</article>
-
+						
+						<!-- Galleri -->
+						<article id="Galleri">
+							<h2 class="major">Galleri</h2>
+							<div id="gallery"></div>	
+						
 						<!-- Svarskjema -->
-            <article id="Svarskjema">
-              <h2 class="major">Svarskjema</h2>
-              <form id="rsvpForm" method="post" action="#">
-                  <div class="fields">
-                      <div class="field">
-                          <label for="primaryName">Navn</label>
-                          <input type="text" id="primaryName" name="primaryName" required>
-                      </div>
-                      <div class="field">
-                          <label for="primaryContact">Telefonnummer</label>
-                          <input type="text" id="primaryContact" name="primaryContact" required>
-                      </div>
-                      <div class="field">
-                          <label for="familyRelation">Relasjon til</label>
-                          <select id="familyRelation" name="familyRelation" required>
-                              <option value="">-</option>
-                              <option value="Aida">Aida</option>
-                              <option value="Kolbjørn">Kolbjørn</option>
-                          </select>
-                      </div>
-                      <div class="field">
-                          <label for="numAdditionalGuests">Ekstra gjester</label>
-                          <select id="numAdditionalGuests" name="numAdditionalGuests">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                          </select>
-                      </div>
-                      <div id="additionalGuestsContainer"></div> <!-- Container for additional guest textboxes -->
-                  </div>
-                  <ul class="actions">
-                      <li><input type="submit" value="Send inn" class="primary" /></li>
-                  </ul>
-              </form>
-          </article>
+							<article id="Svarskjema">
+								<h2 class="major">Svarskjema</h2>
+								<form id="rsvpForm" method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="primaryName">Navn</label>
+										<input type="text" id="primaryName" name="primaryName" required>
+									</div>
+									<div class="field">
+										<label for="primaryContact">Telefonnummer</label>
+										<input type="text" id="primaryContact" name="primaryContact" required>
+									</div>
+									<div class="field">
+										<label for="familyRelation">Relasjon til</label>
+										<select id="familyRelation" name="familyRelation" required>
+											<option value="">-</option>
+											<option value="Aida">Aida</option>
+											<option value="Kolbjørn">Kolbjørn</option>
+										</select>
+									</div>
+									<div class="field">
+										<label for="numAdditionalGuests">Ekstra gjester</label>
+										<select id="numAdditionalGuests" name="numAdditionalGuests">
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+									<div id="additionalGuestsContainer"></div> <!-- Container for additional guest textboxes -->
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send inn" class="primary" /></li>
+								</ul>
+							</form>
+						</article>
 
 						<!-- Contact -->
 							<article id="contact">
@@ -182,7 +186,7 @@
 									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
 							</article>
-
+					
 						<!-- Elements -->
 							<article id="elements">
 								<h2 class="major">Elements</h2>
@@ -481,6 +485,33 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			$('#numAdditionalGuests').change(); // Trigger the change event initially
 		});
 		</script>
-			<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>	
+			<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+			<script>
+				// Finn elementet som skal inneholde bildene
+				var galleryContainer = document.getElementById('gallery');
+				
+				// Utfør en AJAX-forespørsel for å hente listen over filer i mappen
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === XMLHttpRequest.DONE) {
+						if (xhr.status === 200) {
+							// Konverter JSON-responsen til et JavaScript-objekt
+							var fileList = JSON.parse(xhr.responseText);
+				
+							// Loop gjennom listen over filer og legg til hvert bilde i galleriet
+							fileList.forEach(function(file) {
+								var imageUrl = 'images/gallery/' + file;
+								var imageElement = document.createElement('img');
+								imageElement.src = imageUrl;
+								galleryContainer.appendChild(imageElement);
+							});
+						} else {
+							console.error('Feil ved lasting av filer:', xhr.status);
+						}
+					}
+				};
+				xhr.open('GET', 'list_images.php'); // Bytt ut 'list_images.php' med navnet på server-siden som vil returnere listen over filer
+				xhr.send();
+				</script>	
 	</body>
 </html>
