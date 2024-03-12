@@ -1748,7 +1748,6 @@ repeat;
 #Galleri .carousel {
     width: 100%;
     position: relative;
-    overflow: hidden; /* Ensure that images outside the carousel are hidden */
 }
 
 #Galleri .carousel > ul {
@@ -1756,15 +1755,23 @@ repeat;
     padding: 0;
     list-style: none;
     width: 100%; /* Ensure the ul takes the full width of the carousel */
-    display: flex; /* Use flexbox for easier alignment */
+    position: relative;
+    z-index: 1; /* Ensure the slides overlap the carousel buttons */
 }
 
 #Galleri .slide {
-    flex: 0 0 100%; /* Each slide takes the full width of the carousel */
+    position: absolute; /* Position each slide absolutely */
+    left: 0; /* Position the slides at the left edge of the carousel */
+    top: 0; /* Position the slides at the top edge of the carousel */
     opacity: 0;
     transition: 200ms opacity ease-in-out;
-  	transition-delay: 200ms;
-	z-index: 0;
+    z-index: 0;
+}
+
+#Galleri .slide[data-active] {
+    opacity: 1;
+    z-index: 1; /* Ensure the active slide appears above other slides */
+    transition-delay: 0ms; /* Remove transition delay for active slide */
 }
 
 #Galleri .slide > .image-container {
@@ -1779,24 +1786,9 @@ repeat;
     margin: 0 auto;
 }
 
-#Galleri .slide[data-active] {
-    opacity: 1;
-	z-index: 1;
-  	transition-delay: 0ms;
-}
-
-[data-slides] li {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-  }
-
-
 #Galleri .carousel-button {
     position: absolute;
-    z-index: 2;
+    z-index: 2; /* Ensure buttons appear above the slides */
     font-size: 4rem;
     top: 50%;
     transform: translateY(-50%);
