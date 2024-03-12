@@ -1739,81 +1739,86 @@ repeat;
 		margin: 0 auto; /* Optional: Center the image horizontally */
 	}
 
-	.carousel {
-		width: 100%;
-		position: relative;
-		overflow: hidden; /* Ensure that images outside the carousel are hidden */
-	}
-	
-	.carousel > ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		width: 100%; /* Ensure the ul takes the full width of the carousel */
-		display: flex; /* Use flexbox for easier alignment */
-		transition: transform 0.5s ease; /* Smooth transition when sliding */
-	}
-	
-	.slide {
-		flex: 0 0 100%; /* Each slide takes the full width of the carousel */
-		opacity: 0;
-		transition: opacity 0.5s ease;
-	}
-	
-	.slide > img {
-		width: 100%;
-		height: auto;
-		display: block;
-		margin: 0 auto;
-	}
-	
-	.slide[data-active] {
-		opacity: 1;
-	}
-	
-	.carousel-button {
-		position: absolute;
-		z-index: 2;
-		font-size: 4rem;
-		top: 50%;
-		transform: translateY(-50%);
-		color: rgba(255, 255, 255, 0.5);
-		cursor: pointer;
-		border-radius: 0.25rem;
-		padding: 0.5rem;
-		background-color: rgba(0, 0, 0, 0.1);
-		border: none;
-	}
-	
-	@media only screen and (min-width: 600px) {
-		.carousel {
-			width: 80%;
-			margin: 0 auto;
-		}
-	}
-	
-	@media only screen and (min-width: 768px) {
-		.carousel {
-			width: 60%;
-			margin: 0 auto;
-		}
-	}
-	
-	.carousel-button:hover,
-	.carousel-button:focus {
-		color: white;
-		background-color: rgba(0, 0, 0, 0.2);
-	}
-	
-	.carousel-button:focus {
-		outline: 1px solid black;
-	}
-	
-	.carousel-button.prev {
-		left: 1rem;
-	}
-	
-	.carousel-button.next {
-		right: 1rem;
-	}
-	
+/* Adjusted CSS for the carousel within the article */
+#Galleri {
+    max-width: 100%;
+    z-index: 3;
+}
+
+#Galleri .carousel {
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Ensure that images outside the carousel are hidden */
+}
+
+#Galleri .carousel > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%; /* Ensure the ul takes the full width of the carousel */
+    display: flex; /* Use flexbox for easier alignment */
+    transition: transform 0.5s ease; /* Smooth transition when sliding */
+}
+
+#Galleri .slide {
+    flex: 0 0 100%; /* Each slide takes the full width of the carousel */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#Galleri .slide > img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#Galleri .slide[data-active] {
+    opacity: 1;
+}
+
+#Galleri .carousel-button {
+    position: absolute;
+    z-index: 2;
+    font-size: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+@media only screen and (min-width: 600px) {
+    #Galleri .carousel {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #Galleri .carousel {
+        width: 60%;
+        margin: 0 auto;
+    }
+}
+
+#Galleri .carousel-button:hover,
+#Galleri .carousel-button:focus {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#Galleri .carousel-button:focus {
+    outline: 1px solid black;
+}
+
+#Galleri .carousel-button.prev {
+    left: 1rem;
+}
+
+#Galleri .carousel-button.next {
+    right: 1rem;
+}
