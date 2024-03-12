@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap">
+		<link rel="stylesheet" href="/magnific-gallery/magnific-popup.css">
     <style>
         h1 {
             font-family: 'Alex Brush', cursive; /* Font family */
@@ -123,18 +124,18 @@
 						<article id="Galleri">
 							<h2 class="major">Galleri</h2>
 							<div class="image-container">
-								<div class="image">
+								<a href="galleri/1_large.jpg">
 									<img src="galleri/1.jpg" alt="Image 1">
-								</div>
-								<div class="image">
+								</a>
+								<a href="galleri/2_large.jpg">
 									<img src="galleri/2.jpg" alt="Image 2">
-								</div>
-								<div class="image">
+								</a>
+								<a href="galleri/3_large.jpg">
 									<img src="galleri/3.jpg" alt="Image 3">
-								</div>
-								<div class="image">
-									<img src="galleri/4.jpg" alt="Image 4">
-								</div>
+								</a>
+								<a href="galleri/3_large.jpg">
+									<img src="galleri/3.jpg" alt="Image 4">
+								</a>
 								<!-- Add more images as needed -->
 							</div>
 						</article>	
@@ -509,6 +510,18 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		});
 		</script>
 			<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
-			<script src="assets/js/galleri.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<script src="/magnific-gallery/jquery.magnific-popup.min.js"></script>
+			<script>
+				$(document).ready(function() {
+					$('.image-container').magnificPopup({
+						delegate: 'a',
+						type: 'image',
+						gallery: {
+							enabled: true
+						}
+					});
+				});
+				</script>
 	</body>
 </html>
