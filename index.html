@@ -490,29 +490,28 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script>
 				// Finn elementet som skal inneholde bildene
 				var galleryContainer = document.getElementById('gallery');
-				
+
 				// Utfør en AJAX-forespørsel for å hente innholdet i mappen
-				var xhr = new XMLHttpRequest();
-				xhr.onreadystatechange = function() {
-					if (xhr.readyState === XMLHttpRequest.DONE) {
-						if (xhr.status === 200) {
-							// Konverter JSON-responsen til et JavaScript-objekt
-							var fileList = JSON.parse(xhr.responseText);
-				
-							// Loop gjennom listen over filer og legg til hvert bilde i galleriet
-							fileList.forEach(function(file) {
-								var imageUrl = 'images/gallery/' + file;
-								var imageElement = document.createElement('img');
-								imageElement.src = imageUrl;
-								galleryContainer.appendChild(imageElement);
-							});
+				fetch('images/gallery/')
+					.then(function(response) {
+						if (response.ok) {
+							return response.json();
 						} else {
-							console.error('Feil ved lasting av filer:', xhr.status);
+							throw new Error('Feil ved lasting av filer: ' + response.status);
 						}
-					}
-				};
-				xhr.open('GET', 'images/gallery'); // Endre URL-en til mappen som inneholder bildene
-				xhr.send();
-			</script>				
+					})
+					.then(function(fileList) {
+						// Loop gjennom listen over filer og legg til hvert bilde i galleriet
+						fileList.forEach(function(file) {
+							var imageUrl = 'images/gallery/' + file;
+							var imageElement = document.createElement('img');
+							imageElement.src = imageUrl;
+							galleryContainer.appendChild(imageElement);
+						});
+					})
+					.catch(function(error) {
+						console.error(error);
+					});
+			</script>
 	</body>
 </html>
