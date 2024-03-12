@@ -27,6 +27,16 @@
 		.info-photo {
 			flex: 0 0 50%;
 		}
+		.gallery {
+        	width: 100%;
+        	overflow-x: scroll;
+        	white-space: nowrap;
+    	}
+    	.gallery img {
+     		display: inline-block;
+        	max-width: 100%;
+        	height: auto;
+    	}
     </style>
 	</head>
 	<body class="is-preload">
@@ -488,29 +498,23 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		</script>
 			<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
 			<script>
-				// Finn elementet som skal inneholde bildene
-				var galleryContainer = document.getElementById('gallery');
-
-				fetch('galleri/')
-					.then(function(response) {
-						if (response.ok) {
-							return response.json();
-						} else {
-							throw new Error('Feil ved lasting av filer: ' + response.status);
-						}
-					})
-					.then(function(fileList) {
-						// Loop gjennom listen over filer og legg til hvert bilde i galleriet
-						fileList.forEach(function(file) {
+				document.addEventListener('DOMContentLoaded', function () {
+					var galleryContainer = document.getElementById('gallery');
+				
+					// Hent alle filnavnene i gallerimappen
+					fetch('./galleri')
+					.then(response => response.json())
+					.then(data => {
+						// Loop gjennom filnavnene og legg til bilder i galleriet
+						data.forEach(file => {
 							var imageUrl = 'galleri/' + file;
 							var imageElement = document.createElement('img');
 							imageElement.src = imageUrl;
 							galleryContainer.appendChild(imageElement);
 						});
 					})
-					.catch(function(error) {
-						console.error(error);
-					});
-			</script>
+					.catch(error => console.error('Feil ved lasting av filer:', error));
+				});
+				</script>
 	</body>
 </html>
