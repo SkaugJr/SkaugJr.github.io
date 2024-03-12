@@ -1819,6 +1819,8 @@ repeat;
 	cursor: pointer;
 	opacity: 0.7; /* Semi-transparent */
 	transition: opacity 0.3s ease; /* Smooth transition */
+	width: 50px; /* Set a specific width */
+  	text-align: center; /* Center the text */
   }
   
   #Galleri .carousel-button:hover,
@@ -1827,9 +1829,9 @@ repeat;
   }
   
   #Galleri .carousel-button.prev {
-	margin-right: 50px; /* Space between the buttons */
+	margin-left: -100px;
   }
   
   #Galleri .carousel-button.next {
-	margin-left: 50px; /* Space between the buttons */
+	margin-left: 100px; /* Space between the buttons */
   }
