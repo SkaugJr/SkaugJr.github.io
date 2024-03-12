@@ -491,7 +491,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				// Finn elementet som skal inneholde bildene
 				var galleryContainer = document.getElementById('gallery');
 				
-				// Utfør en AJAX-forespørsel for å hente listen over filer i mappen
+				// Utfør en AJAX-forespørsel for å hente innholdet i mappen
 				var xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function() {
 					if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -511,8 +511,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						}
 					}
 				};
-				xhr.open('GET', 'list_images.php'); // Bytt ut 'list_images.php' med navnet på server-siden som vil returnere listen over filer
+				xhr.open('GET', 'images/gallery'); // Endre URL-en til mappen som inneholder bildene
 				xhr.send();
-				</script>	
+			</script>				
 	</body>
 </html>
