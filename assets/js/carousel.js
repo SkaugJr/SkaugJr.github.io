@@ -12,7 +12,7 @@ buttons.forEach(button => {
     if (newIndex < 0) newIndex = slides.children.length - 1
     if (newIndex >= slides.children.length) newIndex = 0
 
-    slides.children[newIndex].setAttribute('data-active', '') // Add the data-active attribute
-    activeSlide.removeAttribute('data-active') // Remove the data-active attribute
+    slides.children[newIndex].dataset.active = true
+    delete activeSlide.dataset.active
   })
 })
