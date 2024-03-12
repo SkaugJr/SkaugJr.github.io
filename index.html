@@ -122,12 +122,12 @@
 						<!-- Galleri -->
 						<article id="Galleri">
 							<h2 class="major">Galleri</h2>
-							<div class="gallery">
-								{% for image in site.static_files %}
-									{% if image.path contains '/galleri' %}
-										<img src="{{ site.baseurl }}{{ image.path }}" alt="Gallery image">
-									{% endif %}
-								{% endfor %}
+							<div id="image-gallery">
+								<img src="galleri/1.jpg" alt="Image 1">
+								<img src="galleri/2.jpg" alt="Image 2">
+								<img src="galleri/3.jpg" alt="Image 3">
+								<img src="galleri/4.jpg" alt="Image 4">
+								<!-- Add more images as needed -->
 							</div>
 						</article>	
 						
@@ -501,5 +501,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		});
 		</script>
 			<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+			<script src="assets/js/galleri.js"></script>
 	</body>
 </html>

@@ -1738,3 +1738,12 @@ repeat;
 		display: block;
 		margin: 0 auto; /* Optional: Center the image horizontally */
 	}
+	#image-gallery {
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+	
+	#image-gallery img {
+		height: 200px; /* Adjust as needed */
+		margin-right: 10px;
+	}
