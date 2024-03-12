@@ -1740,38 +1740,38 @@ repeat;
 	}
 
 	.carousel {
-		max-width: 100%;
-		overflow: hidden;
+		width: 100%;
+		position: relative;
 	}
-
-	.carousel > ul {
+	  
+	  .carousel > ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
-	}
-
-	.slide {
+	  }
+	  
+	  .slide {
 		position: absolute;
 		inset: 0;
 		opacity: 0;
 		transition: 200ms opacity ease-in-out;
 		transition-delay: 200ms;
-	}
-
-	.slide > img {
+	  }
+	  
+	  .slide > img {
 		width: 100%;
 		height: auto;
 		display: block;
 		margin: 0 auto;
-	}
-
-	.slide[data-active] {
+	  }
+	  
+	  .slide[data-active] {
 		opacity: 1;
 		z-index: 1;
 		transition-delay: 0ms;
-	}
-
-	.carousel-button {
+	  }
+	  
+	  .carousel-button {
 		position: absolute;
 		z-index: 2;
 		background: none;
@@ -1784,22 +1784,37 @@ repeat;
 		border-radius: .25rem;
 		padding: 0 .5rem;
 		background-color: rgba(0, 0, 0, .1);
-	}
+	  }
 
-	.carousel-button:hover,
-	.carousel-button:focus {
+	  @media only screen and (min-width: 600px) {
+		.carousel {
+			width: 80%;
+			margin: 0 auto;
+		}
+	}
+	
+	/* For desktop: */
+	@media only screen and (min-width: 768px) {
+		.carousel {
+			width: 60%;
+			margin: 0 auto;
+		}
+	}
+	  
+	  .carousel-button:hover,
+	  .carousel-button:focus {
 		color: white;
 		background-color: rgba(0, 0, 0, .2);
-	}
-
-	.carousel-button:focus {
+	  }
+	  
+	  .carousel-button:focus {
 		outline: 1px solid black;
-	}
-
-	.carousel-button.prev {
+	  }
+	  
+	  .carousel-button.prev {
 		left: 1rem;
-	}
-
-	.carousel-button.next {
+	  }
+	  
+	  .carousel-button.next {
 		right: 1rem;
-	}
+	  }
