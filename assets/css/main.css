@@ -1809,7 +1809,7 @@ repeat;
 	position: absolute;
 	z-index: 2;
 	font-size: 2rem; /* Smaller font size */
-	bottom: -50px; /* Position the buttons below the pictures */
+	bottom: 0px; /* Position the buttons below the pictures */
 	left: 50%; /* Center the buttons horizontally */
 	transform: translateX(-50%); /* Center the buttons horizontally */
 	color: #fff; /* White color */
