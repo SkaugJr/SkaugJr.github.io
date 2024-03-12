@@ -487,12 +487,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		});
 		</script>
 			<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 			<script>
 				// Finn elementet som skal inneholde bildene
 				var galleryContainer = document.getElementById('gallery');
 
-				// Utfør en AJAX-forespørsel for å hente innholdet i mappen
-				fetch('images/gallery/')
+				fetch('galleri/')
 					.then(function(response) {
 						if (response.ok) {
 							return response.json();
@@ -503,7 +503,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					.then(function(fileList) {
 						// Loop gjennom listen over filer og legg til hvert bilde i galleriet
 						fileList.forEach(function(file) {
-							var imageUrl = 'images/gallery/' + file;
+							var imageUrl = 'galleri/' + file;
 							var imageElement = document.createElement('img');
 							imageElement.src = imageUrl;
 							galleryContainer.appendChild(imageElement);
