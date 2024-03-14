@@ -1741,13 +1741,13 @@ repeat;
 
 /* Adjusted CSS for the carousel within the article */
 #Galleri {
-    width: 100%;
-    overflow: auto;
-    display: flex; /* This will make the images display side by side */
-    flex-wrap: wrap; /* This will move images to the next line if they don't fit on one line */
+	display: grid; /* Use CSS Grid */
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Define the grid columns */
+	grid-gap: 10px; /* Optional: Add some space between the images */
   }
-
+  
   #Galleri img {
-    max-width: 100%;
-    height: auto;
+	width: 100%; /* Make the images fill their cells */
+	height: 100%;
+	object-fit: cover; /* This will make the images cover their cells without distorting their aspect ratios */
   }
