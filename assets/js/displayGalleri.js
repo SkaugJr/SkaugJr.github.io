@@ -87,12 +87,19 @@ listAll(galleriRef)
         const link = document.createElement('a');
         link.href = url; // Set the href attribute to the image URL
         link.setAttribute('data-lightbox', 'G1'); // Set the data-lightbox attribute to 'G1'
+        
+        const downloadButton = document.createElement('button');
+        downloadButton.textContent = 'Download';
+        downloadButton.onclick = function() {
+          window.open(url, '_blank');
+        };
 
         // Add the img element to the link
         link.appendChild(img);
 
         // Add the link element to the slide
-        slide.appendChild(link);
+        // slide.appendChild(link);
+        slide.appendChild(downloadButton);
 
         // Add the slide to the Slick slider
         $('.your-slider').append(slide);
