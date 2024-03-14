@@ -51,7 +51,7 @@ listAll(galleriRef)
         // Create a counter element
         const counter = document.createElement('div');
         counter.id = 'counter';
-        document.body.appendChild(counter);
+        document.getElementById('Galleri').appendChild(counter);
       
         // Update the counter when the slide changes
         slider.on('afterChange', function(event, slick, currentSlide, nextSlide){
