@@ -62,8 +62,8 @@ listAll(galleriRef)
         // Trigger the afterChange event manually to update the counter initially
         slider.slick('slickGoTo', slider.slick('slickCurrentSlide'));
       
-        $('.slick-next').html('&#10236');
-        $('.slick-prev').html('&#10235');
+        $('.slick-next').html('&#10230');
+        $('.slick-prev').html('&#10229');
       });
   })
   .catch((error) => {
@@ -87,19 +87,13 @@ listAll(galleriRef)
         const link = document.createElement('a');
         link.href = url; // Set the href attribute to the image URL
         link.setAttribute('data-lightbox', 'G1'); // Set the data-lightbox attribute to 'G1'
-        
-        const downloadButton = document.createElement('button');
-        downloadButton.textContent = 'Download';
-        downloadButton.onclick = function() {
-          window.open(url, '_blank');
-        };
+        link.setAttribute('data-title', '');  
 
         // Add the img element to the link
         link.appendChild(img);
 
         // Add the link element to the slide
-        // slide.appendChild(link);
-        slide.appendChild(downloadButton);
+        slide.appendChild(link);
 
         // Add the slide to the Slick slider
         $('.your-slider').append(slide);
