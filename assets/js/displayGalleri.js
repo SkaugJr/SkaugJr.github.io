@@ -83,7 +83,8 @@ listAll(galleriRef)
   
         // Create a link element for Lightbox
         const link = document.createElement('a');
-        link.setAttribute('data-lightbox', 'image-' + index);
+        link.href = url; // Set the href attribute to the image URL
+        link.setAttribute('data-lightbox', 'G1'); // Set the data-lightbox attribute to 'roadtrip'
   
         // Add the img element to the link
         link.appendChild(img);
