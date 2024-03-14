@@ -76,24 +76,27 @@ listAll(galleriRef)
         // Create a div element
         const slide = document.createElement('div');
         slide.className = 'slick-slide';
-  
+
         // Create an img element
         const img = document.createElement('img');
         img.src = url;
-  
+
         // Create a link element for Lightbox
         const link = document.createElement('a');
         link.href = url; // Set the href attribute to the image URL
-        link.setAttribute('data-lightbox', 'G1'); // Set the data-lightbox attribute to 'roadtrip'
-  
+        link.setAttribute('data-lightbox', 'G1'); // Set the data-lightbox attribute to 'G1'
+
         // Add the img element to the link
         link.appendChild(img);
-  
+
         // Add the link element to the slide
         slide.appendChild(link);
-  
+
         // Add the slide to the Slick slider
         $('.your-slider').append(slide);
+
+        // Return the slide element
+        return slide;
       })
       .catch((error) => {
         // Handle any errors
