@@ -57,3 +57,25 @@ function displayImage(itemRef) {
       console.error('Error displaying image:', error);
     });
 }
+
+// Fetch images from Firebase
+var storage = firebase.storage();
+var storageRef = storage.ref();
+
+// Get the URLs of the next and previous button images
+var nextButtonImageRef = storageRef.child('path_to_next_arrow_image_in_firebase');
+var prevButtonImageRef = storageRef.child('path_to_prev_arrow_image_in_firebase');
+
+nextButtonImageRef.getDownloadURL().then(function(url) {
+  // Set the URL of the next button image
+  document.querySelector('#Galleri .swiper-button-next').style.backgroundImage = 'url(' + url + ')';
+}).catch(function(error) {
+  // Handle any errors
+});
+
+prevButtonImageRef.getDownloadURL().then(function(url) {
+  // Set the URL of the previous button image
+  document.querySelector('#Galleri .swiper-button-prev').style.backgroundImage = 'url(' + url + ')';
+}).catch(function(error) {
+  // Handle any errors
+});
