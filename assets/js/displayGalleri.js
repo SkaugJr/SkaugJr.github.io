@@ -14,11 +14,37 @@ listAll(galleriRef)
 
     // Initialize Slick after all images have been loaded
     Promise.all(imagePromises).then(() => {
-      $('.your-slider').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        arrows: true, // Enable navigation arrows
-      });
+        $('.your-slider').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            responsive: [
+              {
+                breakpoint: 1024, // Screen size in pixels
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 1,
+                  arrows: true
+                }
+              },
+              {
+                breakpoint: 600, // Screen size in pixels
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                  arrows: true
+                }
+              },
+              {
+                breakpoint: 480, // Screen size in pixels
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  arrows: true
+                }
+              }
+            ]
+          });
         $('.slick-next').html('>');
         $('.slick-prev').html('<');
     });
