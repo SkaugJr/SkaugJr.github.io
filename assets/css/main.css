@@ -1782,3 +1782,13 @@ repeat;
   #Galleri .slick-prev {
 	left: 12px;
   }
+
+  #counter {
+	position: absolute;
+	bottom: 10px; /* Adjust as needed */
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 3; /* Make sure the counter is above the other elements */
+	color: #fff; /* Change color as needed */
+	font-size: 18px; /* Adjust as needed */
+  }
