@@ -14,40 +14,56 @@ listAll(galleriRef)
 
     // Initialize Slick after all images have been loaded
     Promise.all(imagePromises).then(() => {
-        $('.your-slider').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            arrows: true,
-            responsive: [
-              {
-                breakpoint: 1024, // Screen size in pixels
-                settings: {
-                  slidesToShow: 3,
-                  slidesToScroll: 1,
-                  arrows: true
-                }
-              },
-              {
-                breakpoint: 600, // Screen size in pixels
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                  arrows: true
-                }
-              },
-              {
-                breakpoint: 480, // Screen size in pixels
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  arrows: true
-                }
+        const slider = $('.your-slider');
+      
+        slider.slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          arrows: true,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                arrows: true
               }
-            ]
-          });
-        $('.slick-next').html('>');
-        $('.slick-prev').html('<');
-    });
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                arrows: true
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true
+              }
+            }
+          ]
+        }).slick('setPosition');
+      
+        // Create a counter element
+        const counter = document.createElement('div');
+        counter.id = 'counter';
+        document.body.appendChild(counter);
+      
+        // Update the counter when the slide changes
+        slider.on('afterChange', function(event, slick, currentSlide, nextSlide){
+          document.getElementById('counter').textContent = (currentSlide + 1) + ' / ' + slick.slideCount;
+        });
+      
+        // Trigger the afterChange event manually to update the counter initially
+        slider.slick('slickGoTo', slider.slick('slickCurrentSlide'));
+      
+        $('.slick-next').html('->');
+        $('.slick-prev').html('<-');
+      });
   })
   .catch((error) => {
     // Handle any errors
