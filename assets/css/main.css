@@ -1767,8 +1767,8 @@ repeat;
 	font-weight: bold;
 	content: '';
 	position: absolute;
-	top: 85%;
-	height: 50px;
+	top: 90%;
+	height: 0px;
 	margin-top: 0px;
 	z-index: 2;
 	cursor: pointer;
@@ -1787,7 +1787,7 @@ repeat;
 
   #counter {
 	position: absolute;
-	bottom: 15px; /* Adjust as needed */
+	top: 89%; /* Adjust as needed */
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: 3; /* Make sure the counter is above the other elements */
