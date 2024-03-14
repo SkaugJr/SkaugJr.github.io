@@ -32,31 +32,37 @@ listAll(galleriRef)
     console.error('Error getting files:', error);
   });
 
-function displayImage(itemRef) {
-  getDownloadURL(itemRef)
-    .then((url) => {
-      // Get a reference to the Swiper wrapper
-      const swiperWrapper = document.querySelector('.swiper-wrapper');
-
-      // Create a slide element
-      const slide = document.createElement('div');
-      slide.className = 'swiper-slide';
-
-      // Create an img element
-      const img = document.createElement('img');
-      img.src = url;
-
-      // Add the img element to the slide
-      slide.appendChild(img);
-
-      // Add the slide to the Swiper wrapper
-      swiperWrapper.appendChild(slide);
-    })
-    .catch((error) => {
-      // Handle any errors
-      console.error('Error displaying image:', error);
-    });
-}
+  function displayImage(itemRef) {
+    getDownloadURL(itemRef)
+      .then((url) => {
+        // Get a reference to the Swiper wrapper
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
+  
+        // Create a slide element
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+  
+        // Create an img element
+        const img = document.createElement('img');
+        img.src = url;
+  
+        // Create a link element
+        const a = document.createElement('a');
+        a.href = url;
+        a.setAttribute('data-lightbox', 'gallery');
+        a.appendChild(img);
+  
+        // Add the link element to the slide instead of the img element
+        slide.appendChild(a);
+  
+        // Add the slide to the Swiper wrapper
+        swiperWrapper.appendChild(slide);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error('Error displaying image:', error);
+      });
+  }
 
 // Fetch images from Firebase
 var storage = firebase.storage();
