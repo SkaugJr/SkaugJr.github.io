@@ -5,6 +5,7 @@ import { storage } from './firebaseInit.js';
 const galleriRef = ref(storage, 'Galleri');
 let imagePromises = [];
 
+window.onload = function() {
 listAll(galleriRef)
   .then((res) => {
     res.items.forEach((itemRef, index, array) => {
@@ -69,6 +70,7 @@ listAll(galleriRef)
     // Handle any errors
     console.error('Error getting files:', error);
   });
+}
 
   function displayImage(itemRef, index, array) {
     return getDownloadURL(itemRef)
