@@ -65,7 +65,6 @@ listAll(galleriRef)
   }
 
 // Fetch images from Firebase
-var storage = firebase.storage();
 var storageRef = storage.ref();
 
 // Get the URLs of the next and previous button images
