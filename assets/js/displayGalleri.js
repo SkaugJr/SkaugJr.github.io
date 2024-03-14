@@ -21,12 +21,20 @@ listAll(galleriRef)
         // Get a reference to the image container
         const imageContainer = document.getElementById('displayGalleri');
   
+        // Create an anchor element
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.target = '_blank'; // This will make the image open in a new tab
+  
         // Create an img element
         const img = document.createElement('img');
         img.src = url;
   
-        // Add the img element to the image container
-        imageContainer.appendChild(img);
+        // Add the img element to the anchor
+        anchor.appendChild(img);
+  
+        // Add the anchor to the image container
+        imageContainer.appendChild(anchor);
       })
       .catch((error) => {
         // Handle any errors
