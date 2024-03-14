@@ -1756,13 +1756,9 @@ repeat;
   }
   
   #Galleri .slick-slide img {
-	width: 50%; /* Make the images fill half the width of their cells */
-	height: auto; /* Let the height adjust automatically */
+	width: 100%; /* Make the images fill the width of their cells */
+	height: 250px; /* Let the height adjust automatically */
 	object-fit: contain; /* Make the images scale correctly to fit their cells */
-  }
-  
-  #Galleri .slick-center img {
-	width: 100%; /* Make the center image fill the width of its cell */
   }
   
   #Galleri .slick-next,
