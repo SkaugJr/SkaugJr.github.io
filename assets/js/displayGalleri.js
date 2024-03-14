@@ -1,8 +1,9 @@
 import { ref, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 import { storage } from './firebaseInit.js';
 
-// Import Swiper
-import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js'
+// Import jQuery and Slick
+import $ from 'https://code.jquery.com/jquery-3.6.0.min.js';
+import 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js';
 
 const galleriRef = ref(storage, 'Galleri');
 
@@ -13,19 +14,12 @@ listAll(galleriRef)
       displayImage(itemRef, index, array);
     });
 
-    // Initialize Swiper after all images have been loaded
-    const swiper = new Swiper('.swiper-container', {
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      slidesPerView: 3,
-      spaceBetween: 10,
-      loop: true, // Enable looping
+    // Initialize Slick after all images have been loaded
+    $('.your-slider').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
     });
   })
   .catch((error) => {
@@ -36,38 +30,19 @@ listAll(galleriRef)
 function displayImage(itemRef, index, array) {
   getDownloadURL(itemRef)
     .then((url) => {
-      // Get a reference to the Swiper wrapper
-      const swiperWrapper = document.querySelector('.swiper-wrapper');
-
-      // Create a slide element
+      // Create a div element
       const slide = document.createElement('div');
-      slide.className = 'swiper-slide';
+      slide.className = 'slick-slide';
 
       // Create an img element
       const img = document.createElement('img');
       img.src = url;
 
-      // Create a link element
-      const a = document.createElement('a');
-      a.href = url;
-      a.setAttribute('data-lightbox', 'gallery');
-      a.appendChild(img);
+      // Add the img element to the slide
+      slide.appendChild(img);
 
-      // Add the link element to the slide instead of the img element
-      slide.appendChild(a);
-
-      // Add the slide to the Swiper wrapper
-      swiperWrapper.appendChild(slide);
-
-      // If this is the first image, set it as the next button image
-      if (index === 0) {
-        document.querySelector('.swiper-button-next').style.backgroundImage = 'url(' + url + ')';
-      }
-
-      // If this is the last image, set it as the previous button image
-      if (index === array.length - 1) {
-        document.querySelector('.swiper-button-prev').style.backgroundImage = 'url(' + url + ')';
-      }
+      // Add the slide to the Slick slider
+      $('.your-slider').append(slide);
     })
     .catch((error) => {
       // Handle any errors

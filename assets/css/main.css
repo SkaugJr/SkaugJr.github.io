@@ -1745,30 +1745,25 @@ repeat;
 	position: relative;
   }
   
-  #Galleri .swiper-container {
+  #Galleri .slick-slider {
 	width: 100%;
 	height: 100%;
   }
   
-  #Galleri .swiper-slide {
-	text-align: center;
-	font-size: 18px;
-	background: #fff;
-  
-	/* Center slide text vertically */
+  #Galleri .slick-slide {
 	display: flex;
 	justify-content: center;
 	align-items: center;
   }
   
-  #Galleri .swiper-slide img {
+  #Galleri .slick-slide img {
 	width: 100%; /* Make the images fill the width of their cells */
 	height: auto; /* Let the height adjust automatically */
 	object-fit: contain; /* Make the images scale correctly to fit their cells */
   }
   
-  #Galleri .swiper-button-next,
-  #Galleri .swiper-button-prev {
+  #Galleri .slick-next,
+  #Galleri .slick-prev {
 	position: absolute;
 	top: 50%;
 	width: 27px;
@@ -1781,10 +1776,10 @@ repeat;
 	background-repeat: no-repeat;
   }
   
-  #Galleri .swiper-button-next {
+  #Galleri .slick-next {
 	right: 10px;
   }
   
-  #Galleri .swiper-button-prev {
+  #Galleri .slick-prev {
 	left: 10px;
   }
