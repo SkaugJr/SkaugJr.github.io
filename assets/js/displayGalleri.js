@@ -8,9 +8,9 @@ const galleriRef = ref(storage, 'Galleri');
 
 listAll(galleriRef)
   .then((res) => {
-    res.items.forEach((itemRef) => {
+    res.items.forEach((itemRef, index, array) => {
       // Called once for each item in the folder
-      displayImage(itemRef);
+      displayImage(itemRef, index, array);
     });
 
     // Initialize Swiper after all images have been loaded
@@ -25,6 +25,7 @@ listAll(galleriRef)
       },
       slidesPerView: 3,
       spaceBetween: 10,
+      loop: true, // Enable looping
     });
   })
   .catch((error) => {
@@ -32,55 +33,44 @@ listAll(galleriRef)
     console.error('Error getting files:', error);
   });
 
-  function displayImage(itemRef) {
-    getDownloadURL(itemRef)
-      .then((url) => {
-        // Get a reference to the Swiper wrapper
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
-  
-        // Create a slide element
-        const slide = document.createElement('div');
-        slide.className = 'swiper-slide';
-  
-        // Create an img element
-        const img = document.createElement('img');
-        img.src = url;
-  
-        // Create a link element
-        const a = document.createElement('a');
-        a.href = url;
-        a.setAttribute('data-lightbox', 'gallery');
-        a.appendChild(img);
-  
-        // Add the link element to the slide instead of the img element
-        slide.appendChild(a);
-  
-        // Add the slide to the Swiper wrapper
-        swiperWrapper.appendChild(slide);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error displaying image:', error);
-      });
-  }
+function displayImage(itemRef, index, array) {
+  getDownloadURL(itemRef)
+    .then((url) => {
+      // Get a reference to the Swiper wrapper
+      const swiperWrapper = document.querySelector('.swiper-wrapper');
 
-// Fetch images from Firebase
-var storageRef = storage.ref();
+      // Create a slide element
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide';
 
-// Get the URLs of the next and previous button images
-var nextButtonImageRef = storageRef.child('path_to_next_arrow_image_in_firebase');
-var prevButtonImageRef = storageRef.child('path_to_prev_arrow_image_in_firebase');
+      // Create an img element
+      const img = document.createElement('img');
+      img.src = url;
 
-nextButtonImageRef.getDownloadURL().then(function(url) {
-  // Set the URL of the next button image
-  document.querySelector('#Galleri .swiper-button-next').style.backgroundImage = 'url(' + url + ')';
-}).catch(function(error) {
-  // Handle any errors
-});
+      // Create a link element
+      const a = document.createElement('a');
+      a.href = url;
+      a.setAttribute('data-lightbox', 'gallery');
+      a.appendChild(img);
 
-prevButtonImageRef.getDownloadURL().then(function(url) {
-  // Set the URL of the previous button image
-  document.querySelector('#Galleri .swiper-button-prev').style.backgroundImage = 'url(' + url + ')';
-}).catch(function(error) {
-  // Handle any errors
-});
+      // Add the link element to the slide instead of the img element
+      slide.appendChild(a);
+
+      // Add the slide to the Swiper wrapper
+      swiperWrapper.appendChild(slide);
+
+      // If this is the first image, set it as the next button image
+      if (index === 0) {
+        document.querySelector('.swiper-button-next').style.backgroundImage = 'url(' + url + ')';
+      }
+
+      // If this is the last image, set it as the previous button image
+      if (index === array.length - 1) {
+        document.querySelector('.swiper-button-prev').style.backgroundImage = 'url(' + url + ')';
+      }
+    })
+    .catch((error) => {
+      // Handle any errors
+      console.error('Error displaying image:', error);
+    });
+}
