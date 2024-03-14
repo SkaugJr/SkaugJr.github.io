@@ -3,20 +3,23 @@ import { storage } from './firebaseInit.js';
 
 
 const galleriRef = ref(storage, 'Galleri');
+let imagePromises = [];
 
 listAll(galleriRef)
   .then((res) => {
     res.items.forEach((itemRef, index, array) => {
       // Called once for each item in the folder
-      displayImage(itemRef, index, array);
+      imagePromises.push(displayImage(itemRef, index, array));
     });
 
     // Initialize Slick after all images have been loaded
-    $('.your-slider').slick({
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
+    Promise.all(imagePromises).then(() => {
+      $('.your-slider').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+      });
     });
   })
   .catch((error) => {
@@ -25,7 +28,7 @@ listAll(galleriRef)
   });
 
 function displayImage(itemRef, index, array) {
-  getDownloadURL(itemRef)
+  return getDownloadURL(itemRef)
     .then((url) => {
       // Create a div element
       const slide = document.createElement('div');
