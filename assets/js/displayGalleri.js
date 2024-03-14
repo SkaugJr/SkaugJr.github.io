@@ -81,11 +81,9 @@ listAll(galleriRef)
         const img = document.createElement('img');
         img.src = url;
   
-        // Create a link element for Fancybox and Lightbox
+        // Create a link element for Lightbox
         const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('data-fancybox', 'gallery');
-        link.setAttribute('data-lightbox', 'image-' + index); // Add this line
+        link.setAttribute('data-lightbox', 'image-' + index);
   
         // Add the img element to the link
         link.appendChild(img);
