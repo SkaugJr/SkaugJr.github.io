@@ -1739,7 +1739,7 @@ repeat;
 		margin: 0 auto; /* Optional: Center the image horizontally */
 	}
 
-	
+
 #Galleri {
 	position: relative;
   }
@@ -1766,9 +1766,8 @@ repeat;
 	content: '';
 	position: absolute;
 	top: 85%;
-	width: 140px;
 	height: 50px;
-	margin-top: px;
+	margin-top: 0px;
 	z-index: 10;
 	cursor: pointer;
 	background-size: 27px 44px;
@@ -1777,9 +1776,9 @@ repeat;
   }
   
   #Galleri .slick-next {
-	right: 10px;
+	right: 12px;
   }
   
   #Galleri .slick-prev {
-	left: 10px;
+	left: 12px;
   }
