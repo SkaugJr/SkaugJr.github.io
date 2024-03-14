@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 				<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap">
 		        <style>
@@ -120,12 +121,22 @@
 							</article>
 						
 						<!-- Galleri -->
-						<article id="Galleri">
-							<h2 class="major">Galleri</h2>
-							<div id="displayGalleri"></div>
-						</article>
-						
-						
+
+							<article id="Galleri">
+								<h2 class="major">Galleri</h2>
+								<div class="swiper-container">
+								<div class="swiper-wrapper" id="displayGalleri">
+									<!-- Slides will be added here by the JavaScript code -->
+								</div>
+							
+								<!-- Add Pagination -->
+								<div class="swiper-pagination"></div>
+								<!-- Add Navigation -->
+								<div class="swiper-button-next"></div>
+								<div class="swiper-button-prev"></div>
+								</div>
+							</article>
+
 						<!-- Svarskjema -->
 							<article id="Svarskjema">
 								<h2 class="major">Svarskjema</h2>

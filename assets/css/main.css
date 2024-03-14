@@ -1740,14 +1740,53 @@ repeat;
 	}
 
 /* Adjusted CSS for the carousel within the article */
+/* Adjusted CSS for the carousel within the article */
 #Galleri {
-	display: grid; /* Use CSS Grid */
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Define the grid columns */
-	grid-gap: 10px; /* Optional: Add some space between the images */
+	position: relative;
   }
   
-  #Galleri img {
-	width: 100%; /* Make the images fill their cells */
+  #Galleri .swiper-container {
+	width: 100%;
 	height: 100%;
-	object-fit: cover; /* This will make the images cover their cells without distorting their aspect ratios */
+  }
+  
+  #Galleri .swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+  
+	/* Center slide text vertically */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  #Galleri .swiper-slide img {
+	width: 100%; /* Make the images fill the width of their cells */
+	height: auto; /* Let the height adjust automatically */
+	object-fit: contain; /* Make the images scale correctly to fit their cells */
+  }
+  
+  #Galleri .swiper-button-next,
+  #Galleri .swiper-button-prev {
+	position: absolute;
+	top: 50%;
+	width: 27px;
+	height: 44px;
+	margin-top: -22px;
+	z-index: 10;
+	cursor: pointer;
+	background-size: 27px 44px;
+	background-position: center;
+	background-repeat: no-repeat;
+  }
+  
+  #Galleri .swiper-button-next {
+	right: 10px;
+	background-image: url('path_to_next_arrow_image');
+  }
+  
+  #Galleri .swiper-button-prev {
+	left: 10px;
+	background-image: url('path_to_prev_arrow_image');
   }
