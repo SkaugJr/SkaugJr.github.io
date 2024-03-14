@@ -1,9 +1,6 @@
 import { ref, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 import { storage } from './firebaseInit.js';
 
-// Import jQuery and Slick
-import $ from 'https://code.jquery.com/jquery-3.6.0.min.js';
-import 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js';
 
 const galleriRef = ref(storage, 'Galleri');
 
