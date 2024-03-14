@@ -1739,15 +1739,14 @@ repeat;
 		margin: 0 auto; /* Optional: Center the image horizontally */
 	}
 
-/* Adjusted CSS for the carousel within the article */
-/* Adjusted CSS for the carousel within the article */
+	
 #Galleri {
 	position: relative;
   }
   
   #Galleri .slick-slider {
 	width: 100%;
-	height: 100%;
+	height: 300px;
   }
   
   #Galleri .slick-slide {
@@ -1758,17 +1757,18 @@ repeat;
   
   #Galleri .slick-slide img {
 	width: 100%; /* Make the images fill the width of their cells */
-	height: auto; /* Let the height adjust automatically */
+	height: 250px; /* Let the height adjust automatically */
 	object-fit: contain; /* Make the images scale correctly to fit their cells */
   }
   
   #Galleri .slick-next,
   #Galleri .slick-prev {
+	content: '';
 	position: absolute;
-	top: 50%;
-	width: 27px;
-	height: 44px;
-	margin-top: -22px;
+	top: 85%;
+	width: 140px;
+	height: 50px;
+	margin-top: px;
 	z-index: 10;
 	cursor: pointer;
 	background-size: 27px 44px;

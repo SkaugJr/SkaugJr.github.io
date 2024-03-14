@@ -17,9 +17,10 @@ listAll(galleriRef)
       $('.your-slider').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
-        autoplay: false, // Disable autoplay
         arrows: true, // Enable navigation arrows
       });
+        $('.slick-next').html('>');
+        $('.slick-prev').html('<');
     });
   })
   .catch((error) => {
