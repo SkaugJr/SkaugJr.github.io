@@ -28,25 +28,33 @@ listAll(galleriRef)
     console.error('Error getting files:', error);
   });
 
-function displayImage(itemRef, index, array) {
-  return getDownloadURL(itemRef)
-    .then((url) => {
-      // Create a div element
-      const slide = document.createElement('div');
-      slide.className = 'slick-slide';
-
-      // Create an img element
-      const img = document.createElement('img');
-      img.src = url;
-
-      // Add the img element to the slide
-      slide.appendChild(img);
-
-      // Add the slide to the Slick slider
-      $('.your-slider').append(slide);
-    })
-    .catch((error) => {
-      // Handle any errors
-      console.error('Error displaying image:', error);
-    });
-}
+  function displayImage(itemRef, index, array) {
+    return getDownloadURL(itemRef)
+      .then((url) => {
+        // Create a div element
+        const slide = document.createElement('div');
+        slide.className = 'slick-slide';
+  
+        // Create an img element
+        const img = document.createElement('img');
+        img.src = url;
+  
+        // Create a link element for Fancybox
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('data-fancybox', 'gallery');
+  
+        // Add the img element to the link
+        link.appendChild(img);
+  
+        // Add the link element to the slide
+        slide.appendChild(link);
+  
+        // Add the slide to the Slick slider
+        $('.your-slider').append(slide);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error('Error displaying image:', error);
+      });
+  }
