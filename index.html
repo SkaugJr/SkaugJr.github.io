@@ -510,6 +510,29 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/carousel.js"></script>
 			<script type="module" src="assets/js/firebaseInit.js"></script>
 			<script type="module" src="assets/js/displayGalleri.js"></script>
+			<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+			<script>
+				// Fetch images from Firebase
+				var storage = firebase.storage();
+				var storageRef = storage.ref();
 			
+				// Get the URLs of the next and previous button images
+				var nextButtonImageRef = storageRef.child('path_to_next_arrow_image_in_firebase');
+				var prevButtonImageRef = storageRef.child('path_to_prev_arrow_image_in_firebase');
+			
+				nextButtonImageRef.getDownloadURL().then(function(url) {
+				  // Set the URL of the next button image
+				  document.querySelector('#Galleri .swiper-button-next').style.backgroundImage = 'url(' + url + ')';
+				}).catch(function(error) {
+				  // Handle any errors
+				});
+			
+				prevButtonImageRef.getDownloadURL().then(function(url) {
+				  // Set the URL of the previous button image
+				  document.querySelector('#Galleri .swiper-button-prev').style.backgroundImage = 'url(' + url + ')';
+				}).catch(function(error) {
+				  // Handle any errors
+				});
+			  </script>
 	</body>
 </html>

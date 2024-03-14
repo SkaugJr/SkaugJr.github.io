@@ -1783,10 +1783,8 @@ repeat;
   
   #Galleri .swiper-button-next {
 	right: 10px;
-	background-image: url('path_to_next_arrow_image');
   }
   
   #Galleri .swiper-button-prev {
 	left: 10px;
-	background-image: url('path_to_prev_arrow_image');
   }
