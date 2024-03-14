@@ -61,8 +61,8 @@ listAll(galleriRef)
         // Trigger the afterChange event manually to update the counter initially
         slider.slick('slickGoTo', slider.slick('slickCurrentSlide'));
       
-        $('.slick-next').html('&#10235');
-        $('.slick-prev').html('&#10236');
+        $('.slick-next').html('&#10236');
+        $('.slick-prev').html('&#10235');
       });
   })
   .catch((error) => {
