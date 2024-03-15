@@ -25,33 +25,42 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
     }
 
     // Create a string for the HTML output
-    var html = '<table style="width: 100%;"><thead><tr><th colspan="2" style="text-align: center;">Aida</th><th colspan="2" style="text-align: center;">Kolbjørn</th></tr></thead><tbody>';
+    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;">Aida</th><th style="text-align: center;">Kolbjørn</th></tr></thead><tbody>';
 
-    // Function to add a row to the table
-    function addRow(primaryNameAida, additionalNameAida, primaryNameKolbjorn, additionalNameKolbjorn) {
+    // Find the maximum length between the two arrays
+    var maxLength = Math.max(aida.length, kolbjorn.length);
+
+    // Loop through the maxLength
+    for (var i = 0; i < maxLength; i++) {
       html += '<tr>';
-      html += '<td colspan="2" style="text-align: left;">' + (primaryNameAida || '') + '</td>';
-      html += '<td style="text-align: left;">' + (additionalNameAida || '') + '</td>';
-      html += '<td colspan="2" style="text-align: left;">' + (primaryNameKolbjorn || '') + '</td>';
-      html += '<td style="text-align: left;">' + (additionalNameKolbjorn || '') + '</td>';
+
+      // If there is an entry in the aida array at this index, add it to the table
+      if (i < aida.length) {
+        html += '<td style="text-align: center;">' + aida[i].primaryName + '</td>';
+      } else {
+        html += '<td></td>'; // Add an empty cell if there is no entry
+      }
+
+      // If there is an entry in the kolbjorn array at this index, add it to the table
+      if (i < kolbjorn.length) {
+        html += '<td style="text-align: center;">' + kolbjorn[i].primaryName + '</td>';
+      } else {
+        html += '<td></td>'; // Add an empty cell if there is no entry
+      }
+
       html += '</tr>';
     }
 
-    // Iterate over the aida array
-    for (var i = 0; i < aida.length; i++) {
-      addRow(aida[i].primaryName, aida[i].additionalGuests && aida[i].additionalGuests[0], '', '');
-      for (var j = 1; j < (aida[i].additionalGuests || []).length; j++) {
-        addRow('', aida[i].additionalGuests[j], '', '');
-      }
-    }
+    // Calculate the number of guests for Aida and Kolbjørn
+    var aidaGuestCount = aida.reduce((count, person) => count + 1 + (person.additionalGuests ? person.additionalGuests.length : 0), 0);
+    var kolbjornGuestCount = kolbjorn.reduce((count, person) => count + 1 + (person.additionalGuests ? person.additionalGuests.length : 0), 0);
 
-    // Iterate over the kolbjorn array
-    for (var i = 0; i < kolbjorn.length; i++) {
-      addRow('', '', kolbjorn[i].primaryName, kolbjorn[i].additionalGuests && kolbjorn[i].additionalGuests[0]);
-      for (var j = 1; j < (kolbjorn[i].additionalGuests || []).length; j++) {
-        addRow('', '', '', kolbjorn[i].additionalGuests[j]);
-      }
-    }
+    // Calculate the total number of guests
+    var totalGuestCount = aidaGuestCount + kolbjornGuestCount;
+
+    // Add the counts to the HTML output
+    html += '<tfoot><tr><td style="text-align: center;">Antall gjester Aida: ' + aidaGuestCount + '</td><td style="text-align: center;">Antall gjester Kolbjørn: ' + kolbjornGuestCount + '</td></tr>';
+    html += '<tr><td colspan="2" style="text-align: center;">Totalt antall gjester: ' + totalGuestCount + '</td></tr></tfoot>';
 
     html += '</tbody></table>';
 
