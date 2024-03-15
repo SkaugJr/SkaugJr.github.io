@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         newInput.type = 'text';
         newInput.id = 'additionalGuest' + i;
         newInput.name = 'additionalGuest' + i;
-        newInput.className = 'input';
+        newInput.className = 'field';
         newInput.required = true;
 
         newField.appendChild(newLabel);
