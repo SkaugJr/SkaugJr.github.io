@@ -2,7 +2,6 @@
 import { get, ref, set, child } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
 import { db } from './firebaseInit.js'; // replace with the actual path to your firebaseInit.js file
 
-
 // Function to submit the form data
 function submitForm(e) {
     e.preventDefault();
@@ -35,7 +34,7 @@ function submitForm(e) {
       console.error("Error adding document: ", error);
       alert("Feilmelding, vennligst prøv på nytt.");
     });
-  }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   // Event listener for form submission
@@ -50,9 +49,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add textboxes for additional guests, starting from 1
     if (numGuests > 0) {
       for (let i = 1; i <= numGuests; i++) {
-        const textbox = `<div class="field"><label for="additionalGuest${i}">Ekstra gjest ${i}</label>` +
-          `<input type="text" id="additionalGuest${i}" name="additionalGuest${i}" required></div>`;
-        additionalGuestsContainer.insertAdjacentHTML('beforeend', textbox);
+        const newField = document.createElement('div');
+        newField.className = 'field';
+
+        const newLabel = document.createElement('label');
+        newLabel.htmlFor = 'additionalGuest' + i;
+        newLabel.textContent = 'Ekstra gjest ' + i;
+
+        const newInput = document.createElement('input');
+        newInput.type = 'text';
+        newInput.id = 'additionalGuest' + i;
+        newInput.name = 'additionalGuest' + i;
+        newInput.required = true;
+
+        newField.appendChild(newLabel);
+        newField.appendChild(newInput);
+
+        additionalGuestsContainer.appendChild(newField);
       }
     }
   });
