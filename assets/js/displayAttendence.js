@@ -1,8 +1,7 @@
-// Get a reference to the database service
-var database = firebase.database();
+import { db } from './firebaseInit.js'; // Adjust the path based on the actual location of firebaseInit.js
 
 // Retrieve the data from Firebase
-database.ref('/').once('value').then(function(snapshot) {
+db.ref('/').once('value').then(function(snapshot) {
   var data = snapshot.val();
 
   // Create an empty object for each relation
