@@ -36,25 +36,26 @@ function submitForm(e) {
   });
 }
 
-// Event listener for form submission
-document.getElementById('myForm').addEventListener('submit', submitForm);
+document.addEventListener('DOMContentLoaded', function() {
+  // Event listener for form submission
+  document.getElementById('rsvpForm').addEventListener('submit', submitForm);
 
-// Event listener for the change in the number of additional guests
-document.getElementById('numAdditionalGuests').addEventListener('change', function() {
-  const numGuests = parseInt(this.value);
-  const additionalGuestsContainer = document.getElementById('additionalGuestsContainer');
-  additionalGuestsContainer.innerHTML = ''; // Clear existing textboxes
+  // Event listener for the change in the number of additional guests
+  document.getElementById('numAdditionalGuests').addEventListener('change', function() {
+    const numGuests = parseInt(this.value);
+    const additionalGuestsContainer = document.getElementById('additionalGuestsContainer');
+    additionalGuestsContainer.innerHTML = ''; // Clear existing textboxes
 
-  // Add textboxes for additional guests, starting from 1
-  if (numGuests > 0) {
-    for (let i = 1; i <= numGuests; i++) {
-      const textbox = `<div class="field"><label for="additionalGuest${i}">Ekstra gjest ${i}</label>` +
-        `<input type="text" id="additionalGuest${i}" name="additionalGuest${i}" required></div>`;
-      additionalGuestsContainer.insertAdjacentHTML('beforeend', textbox);
+    // Add textboxes for additional guests, starting from 1
+    if (numGuests > 0) {
+      for (let i = 1; i <= numGuests; i++) {
+        const textbox = `<div class="field"><label for="additionalGuest${i}">Ekstra gjest ${i}</label>` +
+          `<input type="text" id="additionalGuest${i}" name="additionalGuest${i}" required></div>`;
+        additionalGuestsContainer.insertAdjacentHTML('beforeend', textbox);
+      }
     }
-  }
-});
+  });
 
-// Initialize additional guests textboxes based on default value
-document.getElementById('numAdditionalGuests').dispatchEvent(new Event('change')); // Trigger the change event initially
-document.getElementById('rsvpForm').addEventListener('submit', submitForm);
+  // Initialize additional guests textboxes based on default value
+  document.getElementById('numAdditionalGuests').dispatchEvent(new Event('change')); // Trigger the change event initially
+});
