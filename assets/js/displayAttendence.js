@@ -51,13 +51,16 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
       html += '</tr>';
 
       // If there are additional guests, add them in the next row in the second column of the pair
-      if (aida[i] && aida[i].additionalGuests) {
-        html += '<tr><td></td><td style="text-align: left;">' + aida[i].additionalGuests.join(', ') + '</td><td colspan="2"></td></tr>';
-      }
-      if (kolbjorn[i] && kolbjorn[i].additionalGuests) {
-        html += '<tr><td colspan="2"></td><td></td><td style="text-align: left;">' + kolbjorn[i].additionalGuests.join(', ') + '</td></tr>';
-      }
-    }
+        if (aida[i] && aida[i].additionalGuests) {
+            aida[i].additionalGuests.forEach(guest => {
+            html += '<tr><td></td><td style="text-align: left;">' + guest + '</td><td colspan="2"></td></tr>';
+            });
+        }
+        if (kolbjorn[i] && kolbjorn[i].additionalGuests) {
+            kolbjorn[i].additionalGuests.forEach(guest => {
+            html += '<tr><td colspan="2"></td><td></td><td style="text-align: left;">' + guest + '</td></tr>';
+            });
+        }
 
     // Calculate the number of guests for Aida and Kolbjørn
     var aidaGuestCount = aida.reduce((count, person) => count + 1 + (person.additionalGuests ? person.additionalGuests.length : 0), 0);
