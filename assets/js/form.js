@@ -8,17 +8,19 @@ function submitForm(e) {
   var familyRelation = document.getElementById('familyRelation').value;
   var numAdditionalGuests = document.getElementById('numAdditionalGuests').value;
 
-  db.collection("responses").add({
+  var newResponseKey = db.ref().child('responses').push().key;
+
+  db.ref('responses/' + newResponseKey).set({
     primaryName: primaryName,
     primaryContact: primaryContact,
     familyRelation: familyRelation,
     numAdditionalGuests: numAdditionalGuests
   })
-  .then((docRef) => {
-    console.log("Document written with ID: ", docRef.id);
+  .then(() => {
+    console.log("Document written with ID: ", newResponseKey);
     alert("Takk for svar!");
     setTimeout(() => {
-    document.getElementById("header").scrollIntoView();
+      document.getElementById("header").scrollIntoView();
     }, 3000);
   })
   .catch((error) => {

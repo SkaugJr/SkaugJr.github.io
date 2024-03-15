@@ -2,16 +2,13 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyArOXQKdmFjragCtWHgrQglooNDlgUfXpk",
   authDomain: "ak-bryllup.firebaseapp.com",
+  databaseURL: "https://ak-bryllup-default-rtdb.firebaseio.com/",
   projectId: "ak-bryllup",
   storageBucket: "ak-bryllup.appspot.com",
   messagingSenderId: "219159117972",
@@ -23,4 +20,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 export const storage = getStorage(app);
-export const db = getFirestore(app);
+export const db = getDatabase(app);
