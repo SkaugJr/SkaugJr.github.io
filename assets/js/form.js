@@ -49,13 +49,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add textboxes for additional guests, starting from 1
     if (numGuests > 0) {
+      let fieldsContainer = '<div class="fields">';
       for (let i = 1; i <= numGuests; i++) {
-        const textbox = `<div class="field"><label for="additionalGuest${i}">Ekstra gjest ${i}</label>` +
+        fieldsContainer += `<div class="field"><label for="additionalGuest${i}">Ekstra gjest ${i}</label>` +
           `<input type="text" id="additionalGuest${i}" name="additionalGuest${i}" required></div>`;
-        additionalGuestsContainer.insertAdjacentHTML('beforeend', textbox);
       }
+      fieldsContainer += '</div>';
+      additionalGuestsContainer.insertAdjacentHTML('beforeend', fieldsContainer);
     }
-  });
 
   // Initialize additional guests textboxes based on default value
   document.getElementById('numAdditionalGuests').dispatchEvent(new Event('change')); // Trigger the change event initially
