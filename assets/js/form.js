@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add textboxes for additional guests, starting from 1
     if (numGuests > 0) {
+      const fieldsContainer = document.createElement('div');
+      fieldsContainer.className = 'fields';
       for (let i = 1; i <= numGuests; i++) {
         const newField = document.createElement('div');
         newField.className = 'field';
