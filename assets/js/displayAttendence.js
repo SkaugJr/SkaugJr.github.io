@@ -1,12 +1,12 @@
 import { db } from './firebaseInit.js'; // Adjust the path based on the actual location of firebaseInit.js
-import { get, ref } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js';
+import { get, ref, child } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js';
 
 // Retrieve the data from Firebase
-get(ref(db, '/')).then((snapshot) => {
+get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
   if (snapshot.exists()) {
     var data = snapshot.val();
 
-    // Create an empty object for each relation
+    // Create an empty array for each relation
     var aida = [];
     var kolbjorn = [];
 
@@ -15,7 +15,7 @@ get(ref(db, '/')).then((snapshot) => {
       if (data.hasOwnProperty(key)) {
         var entry = data[key];
 
-        // Add the primaryName to the appropriate relation object
+        // Add the primaryName to the appropriate relation array
         if (entry.familyRelation === 'Aida') {
           aida.push(entry.primaryName);
         } else if (entry.familyRelation === 'Kolbjørn') {
