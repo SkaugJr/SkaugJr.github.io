@@ -22,7 +22,7 @@ function submitForm(e) {
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
-      alert("An error occurred while submitting the form. Please try again later.");
+      alert("Feilmelding, vennligst prøv på nytt.");
     });
   }
   
