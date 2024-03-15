@@ -69,6 +69,17 @@ for (var i = 0; i < maxLength; i++) {
   }
 }
 
+// Calculate the number of guests for Aida and Kolbjørn
+var aidaGuestCount = aida.reduce((count, person) => count + 1 + (person.additionalGuests ? person.additionalGuests.length : 0), 0);
+var kolbjornGuestCount = kolbjorn.reduce((count, person) => count + 1 + (person.additionalGuests ? person.additionalGuests.length : 0), 0);
+
+// Calculate the total number of guests
+var totalGuestCount = aidaGuestCount + kolbjornGuestCount;
+
+// Add the counts to the HTML output
+html += '<tfoot><tr><td colspan="2" style="text-align: left;">Aida guest count: ' + aidaGuestCount + '</td><td colspan="2" style="text-align: left;">Kolbjørn guest count: ' + kolbjornGuestCount + '</td></tr>';
+html += '<tr><td colspan="4" style="text-align: center;">Total guest count: ' + totalGuestCount + '</td></tr></tfoot>';
+
 html += '</tbody></table>';
 
 // Update the HTML of a specific element to display the list
