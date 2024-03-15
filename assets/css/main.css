@@ -314,7 +314,7 @@ input, select, textarea {
 			display: -moz-flex;
 			display: -webkit-flex;
 			display: -ms-flex;
-			display: block;
+			display: flex;
 			-moz-flex-wrap: wrap;
 			-webkit-flex-wrap: wrap;
 			-ms-flex-wrap: wrap;
@@ -322,9 +322,6 @@ input, select, textarea {
 			width: calc(100% + 3rem);
 			margin: -1.5rem 0 2rem -1.5rem;
 		}
-		form > .fields > .field.additional-guest {
-			margin-left: 1.5em;
-		  }
 
 			form > .fields > .field {
 				-moz-flex-grow: 0;
