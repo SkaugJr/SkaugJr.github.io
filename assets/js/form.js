@@ -1,21 +1,17 @@
 // Import Firebase
-import { get, ref, set, child, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
-import { db, storage } from './firebaseInit.js'; // replace with the actual path to your firebaseInit.js file
-
-// Define invitedGuests at the top level of your script
-let invitedGuests = [];
+import { ref, set, child } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+import { getDownloadURL } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
+import { storage, db } from './firebaseInit.js'; // replace with the actual path to your firebaseInit.js file
 
 // Fetch the text file from Firebase Storage
-const storageRef = ref(storage, 'InviterteGjester.txt');
-getDownloadURL(storageRef)
-    .then(url => {
-        return fetch(url);
-    })
+let invitedGuests = [];
+const fileRef = ref(storage, 'InviterteGjester.txt');
+getDownloadURL(fileRef)
+    .then(url => fetch(url))
     .then(response => response.text())
     .then(data => {
         // Split the file into lines to get an array of names
         invitedGuests = data.split('\n');
-        console.log(invitedGuests);
     })
     .catch(error => {
         console.error("Error fetching text file: ", error);
