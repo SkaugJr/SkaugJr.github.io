@@ -37,27 +37,28 @@ function submitForm(e) {
     });
   }
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Event listener for form submission
-  document.getElementById('rsvpForm').addEventListener('submit', submitForm);
-
-  // Event listener for the change in the number of additional guests
-  document.getElementById('numAdditionalGuests').addEventListener('change', function() {
-    const numGuests = parseInt(this.value);
-    const additionalGuestsContainer = document.getElementById('additionalGuestsContainer');
-    additionalGuestsContainer.innerHTML = ''; // Clear existing textboxes
-
-    // Add textboxes for additional guests, starting from 1
-    if (numGuests > 0) {
-      let fieldsContainer = '<div class="fields">';
-      for (let i = 1; i <= numGuests; i++) {
-        fieldsContainer += `<div class="field"><label for="additionalGuest${i}">Ekstra gjest ${i}</label>` +
-          `<input type="text" id="additionalGuest${i}" name="additionalGuest${i}" required></div>`;
+  document.addEventListener('DOMContentLoaded', function() {
+    // Event listener for form submission
+    document.getElementById('rsvpForm').addEventListener('submit', submitForm);
+  
+    // Event listener for the change in the number of additional guests
+    document.getElementById('numAdditionalGuests').addEventListener('change', function() {
+      const numGuests = parseInt(this.value);
+      const additionalGuestsContainer = document.getElementById('additionalGuestsContainer');
+      additionalGuestsContainer.innerHTML = ''; // Clear existing textboxes
+  
+      // Add textboxes for additional guests, starting from 1
+      if (numGuests > 0) {
+        let fieldsContainer = '<div class="fields">';
+        for (let i = 1; i <= numGuests; i++) {
+          fieldsContainer += `<div class="field"><label for="additionalGuest${i}">Ekstra gjest ${i}</label>` +
+            `<input type="text" id="additionalGuest${i}" name="additionalGuest${i}" required></div>`;
+        }
+        fieldsContainer += '</div>';
+        additionalGuestsContainer.insertAdjacentHTML('beforeend', fieldsContainer);
       }
-      fieldsContainer += '</div>';
-      additionalGuestsContainer.insertAdjacentHTML('beforeend', fieldsContainer);
-    }
-
-  // Initialize additional guests textboxes based on default value
-  document.getElementById('numAdditionalGuests').dispatchEvent(new Event('change')); // Trigger the change event initially
-});
+    }); // This closing bracket was missing
+  
+    // Initialize additional guests textboxes based on default value
+    document.getElementById('numAdditionalGuests').dispatchEvent(new Event('change')); // Trigger the change event initially
+  });
