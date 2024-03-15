@@ -17,7 +17,7 @@ function submitForm(e) {
   .then((docRef) => {
     console.log("Document written with ID: ", docRef.id);
     alert("Form submitted successfully!");
-    window.location.href = 'index.html';
+    window.scrollTo(0,0);
   })
   .catch((error) => {
     console.error("Error adding document: ", error);
