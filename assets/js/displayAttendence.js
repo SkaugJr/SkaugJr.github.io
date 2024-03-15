@@ -35,15 +35,33 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
     }
 
     // Create a string for the HTML output
-    var html = '<h2>Aida</h2><ul>';
-    for (var i = 0; i < aida.length; i++) {
-      html += '<li>' + aida[i] + '</li>';
+    var html = '<table><thead><tr><th>Aida</th><th>Kolbjørn</th></tr></thead><tbody>';
+
+    // Find the maximum length between the two arrays
+    var maxLength = Math.max(aida.length, kolbjorn.length);
+
+    // Loop through the maxLength
+    for (var i = 0; i < maxLength; i++) {
+      html += '<tr>';
+
+      // If there is a name in the aida array at this index, add it to the table
+      if (i < aida.length) {
+        html += '<td>' + aida[i] + '</td>';
+      } else {
+        html += '<td></td>'; // Add an empty cell if there is no name
+      }
+
+      // If there is a name in the kolbjorn array at this index, add it to the table
+      if (i < kolbjorn.length) {
+        html += '<td>' + kolbjorn[i] + '</td>';
+      } else {
+        html += '<td></td>'; // Add an empty cell if there is no name
+      }
+
+      html += '</tr>';
     }
-    html += '</ul><h2>Kolbjørn</h2><ul>';
-    for (var i = 0; i < kolbjorn.length; i++) {
-      html += '<li>' + kolbjorn[i] + '</li>';
-    }
-    html += '</ul>';
+
+    html += '</tbody></table>';
 
     // Update the HTML of a specific element to display the list
     document.getElementById('nameList').innerHTML = html;
