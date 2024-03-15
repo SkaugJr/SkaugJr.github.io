@@ -57,3 +57,4 @@ document.getElementById('numAdditionalGuests').addEventListener('change', functi
 
 // Initialize additional guests textboxes based on default value
 document.getElementById('numAdditionalGuests').dispatchEvent(new Event('change')); // Trigger the change event initially
+document.getElementById('rsvpForm').addEventListener('submit', submitForm);
