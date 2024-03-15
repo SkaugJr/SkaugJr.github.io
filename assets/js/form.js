@@ -20,7 +20,7 @@ function submitForm(e) {
     console.log("Document written with ID: ", newResponseKey);
     alert("Takk for svar!");
     setTimeout(() => {
-      document.getElementById("header").scrollIntoView();
+    window.location.href = 'https://skaugjr.github.io/index.html';
     }, 3000);
   })
   .catch((error) => {
