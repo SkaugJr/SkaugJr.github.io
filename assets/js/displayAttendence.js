@@ -61,6 +61,7 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
             html += '<tr><td colspan="2"></td><td></td><td style="text-align: left;">' + guest + '</td></tr>';
             });
         }
+    }
 
     // Calculate the number of guests for Aida and Kolbjørn
     var aidaGuestCount = aida.reduce((count, person) => count + 1 + (person.additionalGuests ? person.additionalGuests.length : 0), 0);
