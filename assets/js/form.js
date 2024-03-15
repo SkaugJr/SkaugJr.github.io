@@ -18,10 +18,8 @@ function submitForm(e) {
   })
   .then(() => {
     console.log("Document written with ID: ", newResponseKey);
-    alert("Takk for svar!");
-    setTimeout(() => {
-    window.location.href = 'https://skaugjr.github.io/index.html';
-    }, 3000);
+    alert("Takk for at du fyllte ut svarskjema!");
+    window.location.href = 'index.html';
   })
   .catch((error) => {
     console.error("Error adding document: ", error);
