@@ -16,8 +16,10 @@ function submitForm(e) {
   })
   .then((docRef) => {
     console.log("Document written with ID: ", docRef.id);
-    alert("Form submitted successfully!");
-    window.scrollTo(0,0);
+    alert("Takk for svar!");
+    setTimeout(() => {
+    document.getElementById("header").scrollIntoView();
+    }, 3000);
   })
   .catch((error) => {
     console.error("Error adding document: ", error);
