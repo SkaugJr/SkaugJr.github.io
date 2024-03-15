@@ -323,7 +323,7 @@ input, select, textarea {
 			margin: -1.5rem 0 2rem -1.5rem;
 		}
 		form > .fields > .field.additional-guest {
-			padding-left: 1.5rem;
+			margin-left: 1.5em;
 		  }
 
 			form > .fields > .field {
