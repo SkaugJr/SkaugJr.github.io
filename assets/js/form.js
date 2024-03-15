@@ -1,9 +1,28 @@
 // Import Firebase
-import { get, ref, set, child } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
-import { db } from './firebaseInit.js'; // replace with the actual path to your firebaseInit.js file
+import { get, ref, set, child, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+import { db, storage } from './firebaseInit.js'; // replace with the actual path to your firebaseInit.js file
+
+// Define invitedGuests at the top level of your script
+let invitedGuests = [];
+
+// Fetch the text file from Firebase Storage
+const storageRef = ref(storage, 'InviterteGjester.txt');
+getDownloadURL(storageRef)
+    .then(url => {
+        return fetch(url);
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Split the file into lines to get an array of names
+        invitedGuests = data.split('\n');
+        console.log(invitedGuests);
+    })
+    .catch(error => {
+        console.error("Error fetching text file: ", error);
+    });
 
 // Function to submit the form data
-async function submitForm(e) {
+function submitForm(e) {
     e.preventDefault();
   
     const primaryName = document.getElementById('primaryName').value;
@@ -15,10 +34,6 @@ async function submitForm(e) {
     for (let i = 1; i <= numAdditionalGuests; i++) {
       additionalGuests.push(document.getElementById('additionalGuest' + i).value);
     }
-
-    // Get the list of invited guests from the database
-    const invitedGuestsSnapshot = await get(child(ref(db), 'invitedGuests'));
-    const invitedGuests = invitedGuestsSnapshot.val();
 
     // Check if primaryName and each name in additionalGuests are in the list of invited guests
     const uninvitedGuests = [primaryName, ...additionalGuests].filter(name => !invitedGuests.includes(name));
