@@ -1,5 +1,5 @@
 // Import Firebase
-import { get, ref, set } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+import { get, ref, set, child } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
 import { db } from './firebaseInit.js'; // replace with the actual path to your firebaseInit.js file
 
 // Function to submit the form data
