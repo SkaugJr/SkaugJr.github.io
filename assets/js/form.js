@@ -3,7 +3,7 @@ import { get, ref, set, child } from "https://www.gstatic.com/firebasejs/10.9.0/
 import { db } from './firebaseInit.js'; // replace with the actual path to your firebaseInit.js file
 
 // Function to submit the form data
-function submitForm(e) {
+async function submitForm(e) {
     e.preventDefault();
   
     const primaryName = document.getElementById('primaryName').value;
@@ -15,10 +15,23 @@ function submitForm(e) {
     for (let i = 1; i <= numAdditionalGuests; i++) {
       additionalGuests.push(document.getElementById('additionalGuest' + i).value);
     }
+
+    // Get the list of invited guests from the database
+    const invitedGuestsSnapshot = await get(child(ref(db), 'invitedGuests'));
+    const invitedGuests = invitedGuestsSnapshot.val();
+
+    // Check if primaryName and each name in additionalGuests are in the list of invited guests
+    const uninvitedGuests = [primaryName, ...additionalGuests].filter(name => !invitedGuests.includes(name));
+
+    if (uninvitedGuests.length > 0) {
+      // If there are uninvited guests, show an error message and stop the form submission
+      alert(`The following guests are not invited: ${uninvitedGuests.join(', ')}`);
+      return;
+    }
   
     const newResponseKey = Date.now().toString(); // Generate a unique key based on the current timestamp
   
-    set(child(ref(db), 'responses/' + newResponseKey), {
+    set(child(ref(db), 'Svarskjema/' + newResponseKey), {
       primaryName,
       primaryContact,
       familyRelation,
@@ -34,7 +47,7 @@ function submitForm(e) {
       console.error("Error adding document: ", error);
       alert("Feilmelding, vennligst prøv på nytt.");
     });
-  }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   // Event listener for form submission
