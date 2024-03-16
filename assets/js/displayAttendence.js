@@ -9,6 +9,9 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
     // Create an empty array for the guests
     var guests = [];
 
+    // Initialize the total guest count
+    var totalGuestCount = 0;
+
     // Loop through the data
     for (var key in data) {
       if (data.hasOwnProperty(key)) {
@@ -17,10 +20,16 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
         // Create a string for the names
         var names = entry.primaryName;
 
+        // Increment the total guest count for the primary guest
+        totalGuestCount++;
+
         // Add the additional guests to the names string
         if (entry.additionalGuests) {
           for (var i = 0; i < entry.additionalGuests.length; i++) {
             names += '<br>' + entry.additionalGuests[i];
+
+            // Increment the total guest count for each additional guest
+            totalGuestCount++;
           }
         }
 
@@ -33,7 +42,7 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
     }
 
     // Create a string for the HTML output
-    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;">Fullt navn</th><th style="text-align: center;">Kontaktinfo</th></tr></thead><tbody>';
+    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;">Fullt navn</th><th style="text-align: center;">Telefonnummer</th></tr></thead><tbody>';
 
     // Loop through the guests array
     for (var i = 0; i < guests.length; i++) {
@@ -42,9 +51,6 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
       html += '<td style="text-align: center;">' + guests[i].contactInfo + '</td>';
       html += '</tr>';
     }
-
-    // Calculate the total number of guests
-    var totalGuestCount = guests.length;
 
     // Add the count to the HTML output
     html += '<tfoot><tr><td colspan="2" style="text-align: center;">Totalt antall gjester: ' + totalGuestCount + '</td></tr></tfoot>';
