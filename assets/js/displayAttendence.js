@@ -14,23 +14,21 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
       if (data.hasOwnProperty(key)) {
         var entry = data[key];
     
-        // Add the primary guest to the guests array
-        guests.push({
-          name: entry.primaryName,
-          contactInfo: entry.primaryContact,
-          class: 'primary'
-        });
-    
-        // Add the additional guests to the guests array
+        // Create a string for the names
+        var names = entry.primaryName;
+
+        // Add the additional guests to the names string
         if (entry.additionalGuests) {
           for (var i = 0; i < entry.additionalGuests.length; i++) {
-            guests.push({
-              name: entry.additionalGuests[i],
-              contactInfo: '',
-              class: 'secondary'
-            });
+            names += '<br>' + entry.additionalGuests[i];
           }
         }
+
+        // Add the entry to the guests array
+        guests.push({
+          name: names,
+          contactInfo: entry.primaryContact
+        });
       }
     }
 
@@ -39,7 +37,7 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
 
     // Loop through the guests array
     for (var i = 0; i < guests.length; i++) {
-      html += '<tr class="' + guests[i].class + '">';
+      html += '<tr>';
       html += '<td style="text-align: center;">' + guests[i].name + '</td>';
       html += '<td style="text-align: center;">' + guests[i].contactInfo + '</td>';
       html += '</tr>';
