@@ -10,38 +10,37 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
     var guests = [];
 
     // Loop through the data
-    for (var key in data) {
-      if (data.hasOwnProperty(key)) {
-        var entry = data[key];
-
-        // Add the primary guest to the guests array
-        guests.push({
-          name: entry.primaryName,
-          contactInfo: entry.contactInfo
-        });
-
-        // Add the additional guests to the guests array
-        if (entry.additionalGuests) {
-          for (var i = 0; i < entry.additionalGuests.length; i++) {
-            guests.push({
-              name: entry.additionalGuests[i],
-              contactInfo: ''
-            });
-          }
+for (var key in data) {
+    if (data.hasOwnProperty(key)) {
+      var entry = data[key];
+  
+      // Add the primary guest to the guests array
+      guests.push({
+        name: entry.primaryName,
+        contactInfo: entry.primaryContact,
+        class: 'primary'
+      });
+  
+      // Add the additional guests to the guests array
+      if (entry.additionalGuests) {
+        for (var i = 0; i < entry.additionalGuests.length; i++) {
+          guests.push({
+            name: entry.additionalGuests[i],
+            contactInfo: '',
+            class: 'secondary'
+          });
         }
       }
     }
-
-    // Create a string for the HTML output
-    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;">Deltakerliste</th><th style="text-align: center;">Kontaktinfo</th></tr></thead><tbody>';
-
-    // Loop through the guests array
-    for (var i = 0; i < guests.length; i++) {
-      html += '<tr>';
-      html += '<td style="text-align: center;">' + guests[i].name + '</td>';
-      html += '<td style="text-align: center;">' + guests[i].contactInfo + '</td>';
-      html += '</tr>';
-    }
+  }
+  
+  // Loop through the guests array
+  for (var i = 0; i < guests.length; i++) {
+    html += '<tr class="' + guests[i].class + '">';
+    html += '<td style="text-align: center;">' + guests[i].name + '</td>';
+    html += '<td style="text-align: center;">' + guests[i].contactInfo + '</td>';
+    html += '</tr>';
+  }
 
     // Calculate the total number of guests
     var totalGuestCount = guests.length;
