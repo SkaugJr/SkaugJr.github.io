@@ -5,6 +5,7 @@ import { get, ref, child } from 'https://www.gstatic.com/firebasejs/10.9.0/fireb
 const usersRef = db.ref('Brukere/');
 
 // Login function
+document.addEventListener('DOMContentLoaded', function() {
 function loginUser() {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
@@ -21,3 +22,4 @@ function loginUser() {
     }
   });
 }
+});
