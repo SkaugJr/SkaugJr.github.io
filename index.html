@@ -58,6 +58,7 @@
 						</div>
 						<nav>
 							<ul>
+								<li><a href="#Login">Login</a></li>
 								<li><a href="#Info">Info</a></li>
 								<li><a href="#Bekledning">Bekledning</a></li>
 								<li><a href="#Galleri">Galleri</a></li>
@@ -71,6 +72,22 @@
 
 				<!-- Main -->
 					<div id="main">
+
+						<!-- Login -->
+						<div id="Login">
+							<h2>Login</h2>
+							<form id="loginForm" onsubmit="loginUser(); return false;">
+								<div>
+								  <label for="username">Brukernavn:</label>
+								  <input type="text" id="username" required>
+								</div>
+								<div>
+								  <label for="password">Passord:</label>
+								  <input type="password" id="password" required>
+								</div>
+								<button type="submit">Login</button>
+							  </form>
+						</div>
 
 						<!-- Info -->
 						<article id="Info">
@@ -472,5 +489,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 			<script src="assets/js/lightbox.js"></script>
 			<script type="module" src="assets/js/displayAttendence.js"></script>
+			<script type="module" src="assets/js/login.js"></script>
 	</body>
 </html>
