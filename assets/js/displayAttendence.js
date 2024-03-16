@@ -49,7 +49,7 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
     }
 
     // Add the count to the HTML output
-    html += '<tfoot><tr><td style="text-align: center;">Totalt antall gjester: ' + totalGuestCount + '</td></tr></tfoot>';
+    html += '<tfoot><tr><td style="text-align: center;"><strong>Totalt antall gjester: ' + totalGuestCount + '</strong></td></tr></tfoot>';
 
     html += '</tbody></table>';
 
