@@ -6,21 +6,21 @@ const usersRef = ref(db, 'Brukere/');
 
 // Login function
 function loginUser() {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  // Check if the username exists in the database
-  get(child(usersRef, username)).then((snapshot) => {
-    const userData = snapshot.val();
-    if (userData && userData.password === password) {
-      // Authentication successful, redirect to the dashboard or home page
-      window.location.href = 'index.html'; // Replace 'dashboard.html' with the desired destination
-    } else {
-      // Authentication failed, display an error message
-      alert('Ugyldig brukernavn eller passord. Prøv på nytt.');
-    }
-  });
-}
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+  
+    // Check if the username exists in the database
+    get(child(usersRef, username)).then((snapshot) => {
+      const userPassword = snapshot.val();
+      if (userPassword === password) {
+        // Authentication successful, redirect to the dashboard or home page
+        window.location.href = 'index.html'; // Replace 'dashboard.html' with the desired destination
+      } else {
+        // Authentication failed, display an error message
+        alert('Ugyldig brukernavn eller passord. Prøv på nytt.');
+      }
+    });
+  }
 
 // Attach loginUser to form submit event
 document.getElementById('login-form').addEventListener('submit', function(e) {
