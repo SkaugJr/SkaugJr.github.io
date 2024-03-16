@@ -16,7 +16,7 @@ function submitForm(e) {
       additionalGuests.push(document.getElementById('additionalGuest' + i).value);
     }
   
-    const newResponseKey = Date.now().toString(); // Generate a unique key based on the current timestamp
+    const newResponseKey = primaryName + '_' + Date.now().toString(); // Generate a unique key based on the current timestamp
   
     set(child(ref(db), 'Svarskjema/' + newResponseKey), {
       primaryName,

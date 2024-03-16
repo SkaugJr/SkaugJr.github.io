@@ -34,26 +34,22 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
         }
 
         // Add the entry to the guests array
-        guests.push({
-          name: names,
-          contactInfo: entry.primaryContact
-        });
+        guests.push(names);
       }
     }
 
     // Create a string for the HTML output
-    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;">Fullt navn</th><th style="text-align: center;">Telefonnummer</th></tr></thead><tbody>';
+    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;">Deltakerliste</th></tr></thead><tbody>';
 
     // Loop through the guests array
     for (var i = 0; i < guests.length; i++) {
       html += '<tr>';
-      html += '<td style="text-align: center;">' + guests[i].name + '</td>';
-      html += '<td style="text-align: center;">' + guests[i].contactInfo + '</td>';
+      html += '<td style="text-align: center;">' + guests[i] + '</td>';
       html += '</tr>';
     }
 
     // Add the count to the HTML output
-    html += '<tfoot><tr><td colspan="2" style="text-align: center;">Totalt antall gjester: ' + totalGuestCount + '</td></tr></tfoot>';
+    html += '<tfoot><tr><td style="text-align: center;">Totalt antall gjester: ' + totalGuestCount + '</td></tr></tfoot>';
 
     html += '</tbody></table>';
 
