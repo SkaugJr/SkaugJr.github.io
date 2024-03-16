@@ -1,5 +1,7 @@
+import { db } from './firebaseInit.js'; // Adjust the path based on the actual location of firebaseInit.js
+import { get, ref, child } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js';
+
 // Retrieve reference to the Firebase Realtime Database
-const db = firebase.database();
 const usersRef = db.ref('/Brukere');
 
 // Login function
