@@ -18,7 +18,7 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
         var entry = data[key];
     
         // Create a string for the names
-        var names = entry.primaryName;
+        var names = entry.primaryName.split(' ')[0];
 
         // Increment the total guest count for the primary guest
         totalGuestCount++;
@@ -26,7 +26,7 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
         // Add the additional guests to the names string
         if (entry.additionalGuests) {
           for (var i = 0; i < entry.additionalGuests.length; i++) {
-            names += '<br>' + entry.additionalGuests[i];
+            names += '<br>' + entry.additionalGuests[i].split(' ')[0];
 
             // Increment the total guest count for each additional guest
             totalGuestCount++;
