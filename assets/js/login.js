@@ -2,7 +2,7 @@ import { db } from './firebaseInit.js'; // Adjust the path based on the actual l
 import { get, ref, child } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js';
 
 // Retrieve reference to the Firebase Realtime Database
-const usersRef = db.ref('/Brukere');
+const usersRef = db.ref('Brukere/');
 
 // Login function
 function loginUser() {
@@ -17,7 +17,7 @@ function loginUser() {
       window.location.href = 'index.html'; // Replace 'dashboard.html' with the desired destination
     } else {
       // Authentication failed, display an error message
-      alert('Invalid username or password. Please try again.');
+      alert('Ugyldig brukernavn eller passord. Prøv på nytt.');
     }
   });
 }
