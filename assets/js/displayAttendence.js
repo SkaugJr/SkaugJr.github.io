@@ -6,61 +6,48 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
   if (snapshot.exists()) {
     var data = snapshot.val();
 
-    // Create an empty array for each relation
-    var aida = [];
-    var kolbjorn = [];
+    // Create an empty array for the guests
+    var guests = [];
 
     // Loop through the data
     for (var key in data) {
       if (data.hasOwnProperty(key)) {
         var entry = data[key];
 
-        // Add the entry to the appropriate relation array
-        if (entry.familyRelation === 'Aida') {
-          aida.push(entry);
-        } else if (entry.familyRelation === 'Kolbjørn') {
-          kolbjorn.push(entry);
+        // Add the primary guest to the guests array
+        guests.push({
+          name: entry.primaryName,
+          contactInfo: entry.contactInfo
+        });
+
+        // Add the additional guests to the guests array
+        if (entry.additionalGuests) {
+          for (var i = 0; i < entry.additionalGuests.length; i++) {
+            guests.push({
+              name: entry.additionalGuests[i],
+              contactInfo: ''
+            });
+          }
         }
       }
     }
 
     // Create a string for the HTML output
-    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;">Aida</th><th style="text-align: center;">Kolbjørn</th></tr></thead><tbody>';
+    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;">Deltakerliste</th><th style="text-align: center;">Kontaktinfo</th></tr></thead><tbody>';
 
-    // Find the maximum length between the two arrays
-    var maxLength = Math.max(aida.length, kolbjorn.length);
-
-    // Loop through the maxLength
-    for (var i = 0; i < maxLength; i++) {
+    // Loop through the guests array
+    for (var i = 0; i < guests.length; i++) {
       html += '<tr>';
-
-      // If there is an entry in the aida array at this index, add it to the table
-      if (i < aida.length) {
-        html += '<td style="text-align: center;">' + aida[i].primaryName + '</td>';
-      } else {
-        html += '<td></td>'; // Add an empty cell if there is no entry
-      }
-
-      // If there is an entry in the kolbjorn array at this index, add it to the table
-      if (i < kolbjorn.length) {
-        html += '<td style="text-align: center;">' + kolbjorn[i].primaryName + '</td>';
-      } else {
-        html += '<td></td>'; // Add an empty cell if there is no entry
-      }
-
+      html += '<td style="text-align: center;">' + guests[i].name + '</td>';
+      html += '<td style="text-align: center;">' + guests[i].contactInfo + '</td>';
       html += '</tr>';
     }
 
-    // Calculate the number of guests for Aida and Kolbjørn
-    var aidaGuestCount = aida.reduce((count, person) => count + 1 + (person.additionalGuests ? person.additionalGuests.length : 0), 0);
-    var kolbjornGuestCount = kolbjorn.reduce((count, person) => count + 1 + (person.additionalGuests ? person.additionalGuests.length : 0), 0);
-
     // Calculate the total number of guests
-    var totalGuestCount = aidaGuestCount + kolbjornGuestCount;
+    var totalGuestCount = guests.length;
 
-    // Add the counts to the HTML output
-    html += '<tfoot><tr><td style="text-align: center;">Antall gjester Aida: ' + aidaGuestCount + '</td><td style="text-align: center;">Antall gjester Kolbjørn: ' + kolbjornGuestCount + '</td></tr>';
-    html += '<tr><td colspan="2" style="text-align: center;">Totalt antall gjester: ' + totalGuestCount + '</td></tr></tfoot>';
+    // Add the count to the HTML output
+    html += '<tfoot><tr><td colspan="2" style="text-align: center;">Totalt antall gjester: ' + totalGuestCount + '</td></tr></tfoot>';
 
     html += '</tbody></table>';
 
