@@ -25,9 +25,16 @@ function displayImage(imageRef) {
     `;
 
     // Append the HTML to the gallery div
-    document.getElementById('gallery').innerHTML += html;
+    document.getElementById('main').innerHTML += html;
   }).catch(function(error) {
     // Handle any errors
     console.error("Error displaying image", error);
   });
 }
+
+$(document).ready(function() {
+    $('#main .thumb').each(function(i) {
+        var delay = i * 0.15 + 's';
+        $(this).css('transition-delay', delay);
+    });
+});
