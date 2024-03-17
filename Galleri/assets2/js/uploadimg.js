@@ -16,7 +16,7 @@ form.addEventListener('submit', function(e) {
         // Get the current file
         var file = fileInput.files[i];
 
-        var uniqueFileName = Date.now() + '.' + file.name.split('.').pop();
+        var uniqueFileName = Date.now() + '-' + i + '.' + file.name.split('.').pop();
 
         // Create a storage ref
         var storageRef = ref(storage, 'DelteBilder/' + uniqueFileName);
