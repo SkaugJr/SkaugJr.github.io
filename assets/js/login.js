@@ -1,26 +1,30 @@
-import { db } from './firebaseInit.js'; // Adjust the path based on the actual location of firebaseInit.js
-import { get, ref, child } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js';
+import { auth } from './firebaseInit.js'; // Adjust the path based on the actual location of firebaseInit.js
+import { onAuthStateChanged, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js';
 
-// Retrieve reference to the Firebase Realtime Database
-const usersRef = ref(db, 'Brukere/');
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, redirect to the dashboard or home page
+    window.location.href = 'index.html'; // Replace 'index.html' with the actual URL of your protected page
+  }
+});
 
 // Login function
 function loginUser() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-  
-    // Check if the username exists in the database
-    get(child(usersRef, username)).then((snapshot) => {
-      const userPassword = snapshot.val();
-      if (userPassword === password) {
-        // Authentication successful, redirect to the dashboard or home page
-        window.location.href = 'index.html'; // Replace 'dashboard.html' with the desired destination
-      } else {
-        // Authentication failed, display an error message
-        alert('Ugyldig brukernavn eller passord. Prøv på nytt.');
-      }
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  signInWithEmailAndPassword(auth, username, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      // Redirect to the dashboard or home page
+      window.location.href = 'index.html'; // Replace 'index.html' with the desired destination
+    })
+    .catch((error) => {
+      // Authentication failed, display an error message
+      alert('Ugyldig brukernavn eller passord. Prøv på nytt.');
     });
-  }
+}
 
 // Attach loginUser to form submit event
 document.getElementById('login-form').addEventListener('submit', function(e) {
