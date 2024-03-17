@@ -8,6 +8,9 @@ var fileInput = document.getElementById('image');
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
+    // Counter for uploaded files
+    let uploadedFiles = 0;
+
     // Loop over all files from the file input
     for (let i = 0; i < fileInput.files.length; i++) {
         // Get the current file
@@ -34,7 +37,12 @@ form.addEventListener('submit', function(e) {
                 // Handle successful uploads on complete
                 getDownloadURL(storageRef).then((downloadURL) => {
                     console.log('File available at', downloadURL);
-                    alert('Opplastning vellykket! Tusen takk!');
+                    uploadedFiles++;
+
+                    // If all files have been uploaded, display the alert
+                    if (uploadedFiles === fileInput.files.length) {
+                        alert('Opplastning vellykket! Tusen takk!');
+                    }
                 });
             }
         );
