@@ -1,6 +1,5 @@
 import { storage } from '/assets/js/firebaseInit.js';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
-
+import { ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
 // Get a reference to the form and the file input
 var form = document.getElementById('upload-form');
@@ -33,6 +32,7 @@ form.addEventListener('submit', function(e) {
             // Handle successful uploads on complete
             getDownloadURL(storageRef).then((downloadURL) => {
                 console.log('File available at', downloadURL);
+                alert('Opplastning vellykket! Tusen takk!');
             });
         }
     );
