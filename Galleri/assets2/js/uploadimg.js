@@ -1,8 +1,6 @@
 import { storage } from '/assets/js/firebaseInit.js';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
-// Get a reference to the storage service
-var storage = getStorage();
 
 // Get a reference to the form and the file input
 var form = document.getElementById('upload-form');
