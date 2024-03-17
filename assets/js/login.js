@@ -6,7 +6,9 @@ function loginUser() {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  signInWithEmailAndPassword(auth, username, password)
+  const email = `${username}@akbryllup.no`;
+
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
