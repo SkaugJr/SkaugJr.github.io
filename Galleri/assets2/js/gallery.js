@@ -34,7 +34,7 @@ function displayImage(imageRef) {
 
 $(document).ready(function() {
     $('#main .thumb').each(function(i) {
-        var delay = i * 0.15 + 's';
+        var delay = i * 0.15+0.5 + 's';
         $(this).css('transition-delay', delay);
     });
 });
