@@ -1511,7 +1511,7 @@ input, select, textarea {
 			display: inline-block;
 			font-size: 1em;
 			line-height: 1;
-			margin: 1em;
+			margin: 0.75em;
 			vertical-align: middle;	
 			
 		}
