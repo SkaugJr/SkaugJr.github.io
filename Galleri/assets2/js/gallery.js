@@ -3,9 +3,10 @@ import { ref, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs
 
 // Fetch all the images and display them
 var listRef = ref(storage, 'Galleri'); // Adjust this path to your images
+let imageCounter = 1; // Initialize image counter
 listAll(listRef).then(function(res) {
   res.items.forEach(function(itemRef) {
-    displayImage(itemRef);
+    displayImage(itemRef, imageCounter++);
   });
 }).catch(function(error) {
   // Handle any errors
@@ -13,14 +14,13 @@ listAll(listRef).then(function(res) {
 });
 
 // Function to fetch an image and display it in the gallery
-function displayImage(imageRef) {
+function displayImage(imageRef, imageNumber) {
   getDownloadURL(imageRef).then(function(url) {
     // Create the HTML structure for the image
     var html = `
       <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" alt="" /></a>
-        <h2>Image Title</h2>
-        <p>Image Description</p>
+        <h2>${imageNumber}</h2>
       </article>
     `;
 
@@ -31,10 +31,3 @@ function displayImage(imageRef) {
     console.error("Error displaying image", error);
   });
 }
-
-$(document).ready(function() {
-    $('#main .thumb').each(function(i) {
-        var delay = i * 0.15+0.5 + 's';
-        $(this).css('transition-delay', delay);
-    });
-});
