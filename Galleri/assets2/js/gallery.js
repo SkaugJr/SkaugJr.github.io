@@ -39,9 +39,20 @@ function createThumbnail(imageUrl, maxWidth, maxHeight) {
   });
 }
 
+// Fetch all the images and display them
+var listRef = ref(storage, 'Galleri'); // Adjust this path to your images
+listAll(listRef).then(function(res) {
+  res.items.forEach(function(itemRef) {
+    displayImage(itemRef);
+  });
+}).catch(function(error) {
+  // Handle any errors
+  console.error("Error fetching images", error);
+});
+
 // Function to fetch an image and display it in the gallery
 function displayImage(imageRef) {
-  imageRef.getDownloadURL().then(function(url) {
+  getDownloadURL(imageRef).then(function(url) {
     // Create a thumbnail for the image
     createThumbnail(url, 200, 200).then(function(thumbnailUrl) {
       // Create the HTML structure for the image
@@ -61,14 +72,3 @@ function displayImage(imageRef) {
     console.error("Error displaying image", error);
   });
 }
-
-// Fetch all the images and display them
-var listRef = storage.ref().child('Galleri'); // Adjust this path to your images
-listRef.listAll().then(function(res) {
-  res.items.forEach(function(itemRef) {
-    displayImage(itemRef);
-  });
-}).catch(function(error) {
-  // Handle any errors
-  console.error("Error fetching images", error);
-});
