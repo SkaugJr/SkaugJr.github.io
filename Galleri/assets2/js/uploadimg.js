@@ -42,6 +42,7 @@ form.addEventListener('submit', function(e) {
                     // If all files have been uploaded, display the alert
                     if (uploadedFiles === fileInput.files.length) {
                         alert('Opplastning vellykket! Tusen takk!');
+                        fileInput.value = '';
                     }
                 });
             }
