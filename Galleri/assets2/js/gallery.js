@@ -36,5 +36,12 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
+$(document).ready(function() {
+    $('#main .thumb').each(function(i) {
+        var delay = i * 0.15 + 's';
+        $(this).css('transition-delay', delay);
+    });
+});
+
 // Call the function to display images sequentially
 displayImagesSequentially();
