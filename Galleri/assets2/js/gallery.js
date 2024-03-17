@@ -1,4 +1,4 @@
-import { storage } from '../assets/js/firebaseInit.js';
+import { storage } from '/assets/js/firebaseInit.js';
 
 // Function to create a thumbnail from a full-sized image
 function createThumbnail(imageUrl, maxWidth, maxHeight) {
