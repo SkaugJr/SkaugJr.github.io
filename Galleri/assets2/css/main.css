@@ -1511,9 +1511,9 @@ input, select, textarea {
 			display: inline-block;
 			font-size: 1em;
 			line-height: 1;
-			margin: 0;
-			vertical-align: middle;
-			margin-left: 45%;
+			margin: 1em;
+			vertical-align: middle;	
+			
 		}
 		
 		#header nav {
