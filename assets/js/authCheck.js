@@ -4,7 +4,7 @@ import { onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     // No user is signed in, redirect to login page
-    window.location.href = 'login.html'; // Replace 'login.html' with the actual URL of your login page
+    window.location.href = '/login.html'; 
   }
 });
 
@@ -12,7 +12,7 @@ document.getElementById('logout').addEventListener('click', function(e) {
   e.preventDefault();
   signOut(auth).then(() => {
     // Sign-out successful, redirect to login page
-    window.location.href = 'login.html'; // Replace 'login.html' with the actual URL of your login page
+    window.location.href = 'login.html'; 
   }).catch((error) => {
     // An error happened during sign out
     console.error('Error signing out', error);
