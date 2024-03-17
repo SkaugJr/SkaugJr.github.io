@@ -1505,7 +1505,16 @@ input, select, textarea {
 				#header h1 a:hover {
 					color: inherit !important;
 				}
-
+		
+		#header h2 {
+			color: #a0a0a1;
+			display: inline-block;
+			font-size: 1em;
+			line-height: 1;
+			margin: 0;
+			vertical-align: middle;
+		}
+		
 		#header nav {
 			position: absolute;
 			right: 0;
