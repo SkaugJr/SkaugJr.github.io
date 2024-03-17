@@ -1,12 +1,5 @@
 import { auth } from './firebaseInit.js'; // Adjust the path based on the actual location of firebaseInit.js
-import { onAuthStateChanged, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js';
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, redirect to the dashboard or home page
-    window.location.href = 'index.html'; // Replace 'index.html' with the actual URL of your protected page
-  }
-});
+import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js';
 
 // Login function
 function loginUser() {
