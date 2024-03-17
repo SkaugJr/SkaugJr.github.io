@@ -9,6 +9,8 @@ async function displayImagesSequentially() {
   try {
     const res = await listAll(listRef);
 
+    document.getElementById('imageCount').textContent = `Number of images: ${res.items.length}`;
+
     // Fetch all URLs
     const urls = await Promise.all(res.items.map(itemRef => getDownloadURL(itemRef)));
 
