@@ -15,7 +15,7 @@ form.addEventListener('submit', function(e) {
     var file = fileInput.files[0];
 
     // Create a storage ref
-    var storageRef = ref(storage, 'images/' + file.name);
+    var storageRef = ref(storage, 'DelteBilder/' + file.name);
 
     // Upload file
     var uploadTask = uploadBytesResumable(storageRef, file);
