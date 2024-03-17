@@ -16,8 +16,11 @@ form.addEventListener('submit', function(e) {
         // Get the current file
         var file = fileInput.files[i];
 
+        var uniqueFileName = Date.now() + '.' + file.name.split('.').pop();
+
         // Create a storage ref
-        var storageRef = ref(storage, 'DelteBilder/' + file.name);
+        var storageRef = ref(storage, 'DelteBilder/' + uniqueFileName);
+        
 
         // Upload file
         var uploadTask = uploadBytesResumable(storageRef, file);
