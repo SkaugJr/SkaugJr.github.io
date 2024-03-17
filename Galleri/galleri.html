@@ -52,22 +52,16 @@
 							</div>
 							<div>
 								<section>
-									<h2>Get in touch</h2>
-									<form method="post" action="#">
+									<h2>Del bilder!</h2>
+									<p>Hvis du har noen fine bilder av brudeparet, hadde vi vært evig takknemlig om du kunne lastet de opp her!</p>
+									<form id="upload-form">
 										<div class="fields">
-											<div class="field half">
-												<input type="text" name="name" id="name" placeholder="Name" />
-											</div>
-											<div class="field half">
-												<input type="text" name="email" id="email" placeholder="Email" />
-											</div>
 											<div class="field">
-												<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+												<input type="file" id="image" accept="image/*" />
 											</div>
 										</div>
 										<ul class="actions">
-											<li><input type="submit" value="Send" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
+											<li><input type="submit" value="Upload" class="primary" /></li>
 										</ul>
 									</form>
 								</section>
@@ -87,6 +81,7 @@
 			<script type="module" src="/assets/js/firebaseInit.js"></script>
 			<script type="module" src="/assets/js/authCheck.js"></script>
 			<script type="module" src="assets2/js/gallery.js"></script>
+			<script type="module" src="assets2/js/uploadimg.js"></script>
 
 	</body>
 </html>
