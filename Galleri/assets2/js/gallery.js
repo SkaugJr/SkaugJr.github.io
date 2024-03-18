@@ -29,7 +29,7 @@ function displayImage(url, imageNumber) {
   // Create the HTML structure for the image
   var html = `
     <article class="thumb">
-      <a href="${url}" class="image"><img src="${url}" alt="" /></a>
+      <a href="${url}" class="image" onclick="event.preventDefault(); this.querySelector('img').src = this.href;"><img src="${url}" alt="" /></a>
       <h2>${imageNumber}</h2>
     </article>
   `;
