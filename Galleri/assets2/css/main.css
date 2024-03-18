@@ -1243,7 +1243,7 @@ input, select, textarea {
 			background-size: 1.5em;
 			cursor: pointer;
 			height: 8em;
-			margin-top: -4em;
+			margin-top: 0em;
 			opacity: 0;
 			position: absolute;
 			top: 50%;
