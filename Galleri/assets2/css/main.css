@@ -1623,7 +1623,6 @@ input, select, textarea {
 			opacity: 1;
 			overflow: hidden;
 			position: relative;
-			pointer-events: none;
 		}
 		#main .thumb img {
 			width: 100%;

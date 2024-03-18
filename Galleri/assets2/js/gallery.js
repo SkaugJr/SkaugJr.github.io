@@ -1,6 +1,9 @@
 import { storage } from '/assets/js/firebaseInit.js';
 import { ref, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
+// Initialize Firebase storage
+const storage = getStorage();
+
 // Function to fetch all images and display them sequentially
 async function displayImagesSequentially() {
   var listRef = ref(storage, 'Galleri'); // Adjust this path to your images
@@ -24,6 +27,10 @@ async function displayImagesSequentially() {
       var delay = i * 0.15 + 's';
       $(this).css('transition-delay', delay);
     });
+
+    // Initialize Poptrox on the container of the images
+    openSlider('#main');
+
   } catch (error) {
     // Handle any errors
     console.error("Error fetching images", error);
@@ -42,6 +49,13 @@ function displayImage(url, imageNumber) {
 
   // Append the HTML to the gallery div
   document.getElementById('main').innerHTML += html;
+}
+
+function openSlider(selector) {
+  $(selector).poptrox({
+      usePopupCaption: true,
+      usePopupNav: true
+  });
 }
 
 // Call the function to display images sequentially
