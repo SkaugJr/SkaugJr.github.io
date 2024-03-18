@@ -18,6 +18,12 @@ async function displayImagesSequentially() {
     urls.forEach((url, index) => {
       displayImage(url, index + 1);
     });
+
+    // Apply transition delay to each thumbnail
+    $('#main .thumb').each(function(i) {
+      var delay = i * 0.15 + 's';
+      $(this).css('transition-delay', delay);
+    });
   } catch (error) {
     // Handle any errors
     console.error("Error fetching images", error);
@@ -37,13 +43,6 @@ function displayImage(url, imageNumber) {
   // Append the HTML to the gallery div
   document.getElementById('main').innerHTML += html;
 }
-
-$(document).ready(function() {
-    $('#main .thumb').each(function(i) {
-        var delay = i * 0.15 + 's';
-        $(this).css('transition-delay', delay);
-    });
-});
 
 // Call the function to display images sequentially
 displayImagesSequentially();
