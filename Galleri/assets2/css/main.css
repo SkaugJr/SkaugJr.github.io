@@ -1240,7 +1240,7 @@ input, select, textarea {
 			background-image: url("images/arrow.svg");
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: 5em;
+			background-size: 1.5em;
 			cursor: pointer;
 			height: 8em;
 			margin-top: -4em;

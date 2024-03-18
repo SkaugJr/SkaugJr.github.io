@@ -50,8 +50,7 @@ function displayImage(url, imageNumber) {
 
 function openSlider(selector) {
   $(selector).poptrox({
-      usePopupCaption: true,
-      usePopupNav: true
+      usePopupCaption: true
   });
 }
 
