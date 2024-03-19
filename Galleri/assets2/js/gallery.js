@@ -54,6 +54,7 @@ function openSlider(selector) {
   $(selector).poptrox({
     usePopupCaption: true,
     usePopupNav: true,
+    popupCaptionSelector: 'p'
   });
 }
 
