@@ -43,7 +43,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><a href="#" onclick="downloadImage('${url}')"><i class="fa-solid fa-download"></i></a></p>
+        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage('${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download"></i></a></p>
     </article>
   `;
 
@@ -51,26 +51,33 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-window.downloadImage = function(url) {
-  // Create a hidden <a> element
-  var element = document.createElement('a');
-  element.setAttribute('href', url);
+window.downloadImage = function(url, linkId) {
+  // Create a reference to the image in Firebase Storage
+  var httpsReference = firebase.storage().refFromURL(url);
 
-  // Use the image URL as the filename
-  var filename = url.split('/').pop();
-  element.setAttribute('download', filename);
-
-  // Style the element to be hidden from the view
-  element.style.display = 'none';
-
-  // Append the element to the body
-  document.body.appendChild(element);
-
-  // Programmatically click the element to trigger the download
-  element.click();
-
-  // Remove the element from the body
-  document.body.removeChild(element);
+  // Get the download URL
+  httpsReference.getDownloadURL()
+    .then((url) => {
+      // Download image directly via URL
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = (event) => {
+        var blob = xhr.response;
+        // Create a file from the returned blob
+        var file = new File([blob], "image.jpg", { type: blob.type });
+        // Grab the <a> tag
+        var a1 = document.getElementById(linkId);
+        // Set the download attribute of the <a> tag to the name stored in the file
+        a1.download = file.name;
+        // Generate a temp URL to host the image for download
+        a1.href = URL.createObjectURL(file);
+      };
+      xhr.open('GET', url);
+      xhr.send();
+    })
+    .catch((error) => {
+      console.error('Error downloading image:', error);
+    });
 }
 
 function initializePoptrox() {
