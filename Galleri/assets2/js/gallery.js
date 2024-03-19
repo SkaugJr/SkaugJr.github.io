@@ -39,7 +39,7 @@ function displayImage(url, imageNumber) {
   // Create the HTML structure for the image
   var html = `
     <article class="thumb">
-        <a href="${url}" class="image" caption='<a href="${url}" download><i class="fa-solid fa-download"></i></a>'><img src="${url}" alt="" /></a>
+        <a href="${url}" class="image"><img src="${url}" alt="" /></a>
         <h2>${imageNumber}</h2>
     </article>
 `;
@@ -51,7 +51,11 @@ function displayImage(url, imageNumber) {
 function openSlider(selector) {
   $(selector).poptrox({
       usePopupCaption: true,
-      usePopupNav: true
+      usePopupNav: true,
+      popupCaptionSelector: function() {
+        var imageSrc = $(this).attr('href');
+        return '<a href="' + imageSrc + '" download><i class="fa-solid fa-download"></i></a>';
+      }
   });
 }
 
