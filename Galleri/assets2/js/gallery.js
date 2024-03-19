@@ -60,6 +60,16 @@ window.downloadImage = function(url, linkId) {
       var a1 = document.getElementById(linkId);
       a1.download = file.name;
       a1.href = URL.createObjectURL(file);
+
+      // Create a 'click' event
+      var event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      });
+
+      // Dispatch the event
+      a1.dispatchEvent(event);
     })
     .catch(error => console.error('Error:', error));
 } // gsutil cors set cors.json gs://ak-bryllup.appspot.com
