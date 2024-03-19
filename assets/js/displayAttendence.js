@@ -18,7 +18,7 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
         var entry = data[key];
 
         // Check if the guest is participating
-        if (entry.participation === 1) {
+        if (entry.participation === '1') {
           // Create a string for the names
           var names = entry.primaryName.split(' ')[0];
 
