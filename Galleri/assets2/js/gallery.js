@@ -43,12 +43,37 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><i class="fa-solid fa-download"></i></p>
+        <p><button onclick="downloadImage('${url}')"> <i class="fa-solid fa-download"></i> </button></p>
     </article>
   `;
 
   // Append the HTML to the gallery div
   document.getElementById('main').innerHTML += html;
+}
+
+window.downloadImage = function(url) {
+  fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+      // Create an object URL for the blob
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = blobUrl;
+
+      // Use the file name from the url for the download, if available
+      const fileName = url.split('/').pop();
+      a.download = fileName ? fileName : 'image.jpg';
+
+      // Append the link to the document body and click it
+      document.body.appendChild(a);
+      a.click();
+
+      // Clean up
+      document.body.removeChild(a);
+      URL.revokeObjectURL(blobUrl);
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 // gsutil cors set cors.json gs://ak-bryllup.appspot.com
