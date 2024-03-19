@@ -201,16 +201,16 @@
 								<form method="post" action="#" id="contactForm">
 								<div class="fields">
 									<div class="field half">
-									<label for="name">Navn</label>
-									<input type="text" name="name" id="name" />
+									<label for="name">Fullt Navn</label>
+									<input type="text" name="name" id="name" pattern="^[a-zA-ZæøåÆØÅ]+(\s[a-zA-ZæøåÆØÅ]+)+$" required/>
 									</div>
 									<div class="field half">
 									<label for="email">Email</label>
-									<input type="text" name="email" id="email" />
+									<input type="text" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
 									</div>
 									<div class="field">
 									<label for="message">Beskjed</label>
-									<textarea name="message" id="message" rows="4"></textarea>
+									<textarea name="message" id="message" rows="4" required></textarea>
 									</div>
 								</div>
 								<ul class="actions">
