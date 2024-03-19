@@ -42,7 +42,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" /></a>
         <h2>${imageNumber}</h2>
-        <p><a href="${url}" download><i class="fa-solid fa-download"></i></a></p>
+        <p class="caption"><a href="${url}" download><i class="fa-solid fa-download"></i></a></p>
     </article>
   `;
 
