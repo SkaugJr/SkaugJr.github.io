@@ -43,7 +43,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><a href="#" onclick="downloadImage('${url}', 'image${imageNumber}.jpg')"><i class="fa-solid fa-download"></i></a></p>
+        <p><a href="#" onclick="downloadImage('${url}')"><i class="fa-solid fa-download"></i></a></p>
     </article>
   `;
 
@@ -51,10 +51,13 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-window.downloadImage = function(url, filename) {
+window.downloadImage = function(url) {
   // Create a hidden <a> element
   var element = document.createElement('a');
   element.setAttribute('href', url);
+
+  // Use the image URL as the filename
+  var filename = url.split('/').pop();
   element.setAttribute('download', filename);
 
   // Style the element to be hidden from the view
