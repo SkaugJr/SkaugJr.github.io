@@ -51,9 +51,14 @@ function displayImage(url, imageNumber) {
 function openSlider(selector) {
   $(selector).poptrox({
       usePopupCaption: true,
-      usePopupNav: true
+      usePopupNav: true,
+      popupCaptionSelector: function() {
+        var imageSrc = $(this).attr('href');
+        return '<a href="' + imageSrc + '" download><i class="fa-solid fa-download"></i></a>';
+      }
   });
 }
+
 
 // Call the function to display images sequentially
 displayImagesSequentially();
