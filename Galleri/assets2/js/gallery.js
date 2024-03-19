@@ -17,9 +17,9 @@ async function displayImagesSequentially() {
     // Display each image
     urls.forEach((url, index) => {
       displayImage(url, index + 1);
-      openSlider('#main');
     });
 
+    openSlider('#main');
     // Apply transition delay to each thumbnail
     $('#main .thumb').each(function(i) {
       var delay = i * 0.15 + 0.5 + 's';
