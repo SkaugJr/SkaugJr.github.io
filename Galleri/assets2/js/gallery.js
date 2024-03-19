@@ -1,6 +1,8 @@
 import { storage } from '/assets/js/firebaseInit.js';
 import { ref, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
+var $body = $('body');
+
 // Function to fetch all images and display them sequentially
 async function displayImagesSequentially() {
   var listRef = ref(storage, 'Galleri'); // Adjust this path to your images
