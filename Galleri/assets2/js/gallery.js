@@ -40,10 +40,11 @@ function displayImage(url, imageNumber) {
   // Create the HTML structure for the image
   var html = `
     <article class="thumb">
-    <a href="${url}" class="image"><img src="${url}" data-caption='<a href="${url}" download><i class="fa-solid fa-download"></i></a>' /></a>
+        <a href="${url}" class="image"><img src="${url}" /></a>
         <h2>${imageNumber}</h2>
+        <div class="download-link" style="display: none;"><a href="${url}" download><i class="fa-solid fa-download"></i></a></div>
     </article>
-`;
+  `;
 
   // Append the HTML to the gallery div
   document.getElementById('main').innerHTML += html;
@@ -53,10 +54,7 @@ function openSlider(selector) {
   $(selector).poptrox({
     usePopupCaption: true,
     usePopupNav: true,
-    popupCaptionSelector: function($popup) {
-      // Retrieve the caption from the alt attribute of the image
-      return $popup.find('img').data('caption');
-    }
+    popupCaptionSelector: '.download-link'
   });
 }
 
