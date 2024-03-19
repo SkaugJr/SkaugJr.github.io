@@ -150,11 +150,11 @@
 								<div class="fields">
 									<div class="field">
 										<label for="primaryName" aria-label="Navn">Fullt Navn</label>
-										<input type="text" id="primaryName" name="primaryName" required>
+										<input type="text" id="primaryName" name="primaryName" pattern="^[a-zA-ZæøåÆØÅ]+(\s[a-zA-ZæøåÆØÅ]+)+$" required>
 									</div>
 									<div class="field">
 										<label for="primaryContact" aria-label="Telefonnummer">Telefonnummer</label>
-										<input type="text" id="primaryContact" name="primaryContact" required>
+										<input type="text" id="primaryContact" name="primaryContact" pattern="\d{8}" required>
 									</div>
 									<div class="field">
 										<label for="familyRelation" aria-label="Relasjon til">Relasjon Til</label>
