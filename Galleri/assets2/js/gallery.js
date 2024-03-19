@@ -51,31 +51,35 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-window.downloadImage = function(originalUrl, linkId) {
-  fetch(originalUrl)
+window.downloadImage = function(url, linkId) {
+  fetch(url)
     .then(response => response.blob())
     .then(blob => {
-      // Create a new Blob URL every time the link is clicked
-      const url = URL.createObjectURL(blob);
+      // Create an object URL for the blob
+      const objectUrl = URL.createObjectURL(blob);
       const a = document.getElementById(linkId);
+      a.href = objectUrl;
 
-      // Set the href attribute to the new Blob URL just before triggering the download
-      a.addEventListener('click', function(event) {
-        a.href = url;
-
-        // Use the file name from the url for the download, if available
-        const fileName = originalUrl.split('/').pop();
-        a.download = fileName ? fileName : 'image.jpg';
-      }, { once: true });
+      // Use the file name from the url for the download, if available
+      const fileName = url.split('/').pop();
+      a.download = fileName ? fileName : 'image.jpg';
 
       // Trigger the download
-      a.click();
+      const clickEvent = new MouseEvent('click', {
+        view: window,
+        bubbles: false,
+        cancelable: true
+      });
+      a.dispatchEvent(clickEvent);
 
-      // Revoke the Blob URL after the download is complete
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      // Revoke the object URL after the download is complete
+      setTimeout(() => {
+        URL.revokeObjectURL(objectUrl);
+      }, 1000); // Increase the delay to 1000 milliseconds (1 second)
     })
     .catch(error => console.error('Error:', error));
-}// gsutil cors set cors.json gs://ak-bryllup.appspot.com
+}
+// gsutil cors set cors.json gs://ak-bryllup.appspot.com
 
 function initializePoptrox() {
   var $main = $('#main');
