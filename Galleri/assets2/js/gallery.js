@@ -57,7 +57,7 @@ function downloadImage(url, linkId) {
     .then(blob => {
       // Create an object URL for the blob
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.getElementById(linkId);
       a.style.display = 'none';
       a.href = url;
 
@@ -74,9 +74,7 @@ function downloadImage(url, linkId) {
       URL.revokeObjectURL(url);
     })
     .catch(error => console.error('Error:', error));
-}
-
- // gsutil cors set cors.json gs://ak-bryllup.appspot.com
+} // gsutil cors set cors.json gs://ak-bryllup.appspot.com
 
 function initializePoptrox() {
   var $main = $('#main');
