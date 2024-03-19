@@ -79,15 +79,24 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('contactForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
-  var name = document.getElementById('name').value;
-  var email = document.getElementById('email').value;
-  var message = document.getElementById('message').value;
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
 
-  firebase.database().ref('Kontakt').push({
-    name: name,
-    email: email,
-    message: message
+  const newResponseKey = name + '_' + Date.now().toString(); // Generate a unique key based on the current timestamp
+
+  set(child(ref(db), 'Kontakt/' + newResponseKey), {
+    name,
+    email,
+    message
+  })
+  .then(() => {
+    console.log("Document written with ID: ", newResponseKey);
+    alert("Message sent!");
+    window.location.href = 'index.html'; // Redirect to the main page after successful submission
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+    alert("Feilmelding, vennligst prøv på nytt.");
   });
-
-  alert('Message sent!');
 });
