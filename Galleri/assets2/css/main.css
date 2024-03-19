@@ -1240,10 +1240,10 @@ input, select, textarea {
 			background-image: url("images/arrow.svg");
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: 1.5em;
+			background-size: 8em;
 			cursor: pointer;
 			height: 8em;
-			margin-top: 0em;
+			margin-top: -4em;
 			opacity: 0;
 			position: absolute;
 			top: 50%;
@@ -1264,7 +1264,7 @@ input, select, textarea {
 		}
 
 		.poptrox-popup .caption {
-			padding: 0em 0em 0em 0em ;
+			padding: 2em 2em 0.1em 2em ;
 			background-image: -moz-linear-gradient(to top, rgba(16,16,16,0.45) 25%, rgba(16,16,16,0) 100%);
 			background-image: -webkit-linear-gradient(to top, rgba(16,16,16,0.45) 25%, rgba(16,16,16,0) 100%);
 			background-image: -ms-linear-gradient(to top, rgba(16,16,16,0.45) 25%, rgba(16,16,16,0) 100%);
