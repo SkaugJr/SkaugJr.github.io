@@ -43,7 +43,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage('${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download"></i></a></p>
+        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage(event, '${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download"></i></a></p>
     </article>
   `;
 
@@ -51,7 +51,10 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-window.downloadImage = function(url, linkId) {
+window.downloadImage = function(event, url, linkId) {
+  // Prevent the default action of the click event
+  event.preventDefault();
+
   fetch(url)
     .then(response => response.blob())
     .then(blob => {
@@ -62,17 +65,18 @@ window.downloadImage = function(url, linkId) {
       a1.href = URL.createObjectURL(file);
 
       // Create a 'click' event
-      var event = new MouseEvent('click', {
+      var clickEvent = new MouseEvent('click', {
         view: window,
         bubbles: true,
         cancelable: true
       });
 
-      // Dispatch the event
-      a1.dispatchEvent(event);
+      // Dispatch the click event on the link element
+      a1.dispatchEvent(clickEvent);
     })
     .catch(error => console.error('Error:', error));
-} // gsutil cors set cors.json gs://ak-bryllup.appspot.com
+}
+ // gsutil cors set cors.json gs://ak-bryllup.appspot.com
 
 function initializePoptrox() {
   var $main = $('#main');
