@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const newLabel = document.createElement('label');
         newLabel.htmlFor = 'additionalGuest' + i;
-        newLabel.textContent = '<i class="fa-solid fa-user"></i> Medhørende #' + i;
+        newLabel.innerHTML = '<i class="fa-solid fa-user"></i> Medhørende #' + i;
 
         const newInput = document.createElement('input');
         newInput.type = 'text';
