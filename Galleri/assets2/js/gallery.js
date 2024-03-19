@@ -41,8 +41,10 @@ function displayImage(url, imageNumber) {
   var html = `
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" /></a>
-        <h2>${imageNumber}</h2>
-        <p class="caption"><a href="${url}" download><i class="fa-solid fa-download"></i></a></p>
+        <div class="caption" style="display: none;">
+            <h2>${imageNumber}</h2>
+            <p><a href="${url}" download><i class="fa-solid fa-download"></i></a></p>
+        </div>
     </article>
   `;
 
@@ -54,7 +56,7 @@ function openSlider(selector) {
   $(selector).poptrox({
     usePopupCaption: true,
     usePopupNav: true,
-    popupCaptionSelector: 'p'
+    popupCaptionSelector: '.caption'
   });
 }
 
