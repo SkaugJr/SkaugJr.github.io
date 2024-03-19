@@ -43,7 +43,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage('${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download"></i></a></p>
+        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage('${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download" style="font-size: 30px;"></i></a></p>
     </article>
   `;
 
@@ -68,7 +68,10 @@ window.downloadImage = function(url, linkId) {
       a.click();
 
       // Revoke the object URL after the download is complete
-      setTimeout(() => URL.revokeObjectURL(url), 100);
+      setTimeout(() => {
+        a.href = '#';
+        URL.revokeObjectURL(url);
+      }, 1000); // Increase the delay to 1000 milliseconds (1 second)
     })
     .catch(error => console.error('Error:', error));
 }// gsutil cors set cors.json gs://ak-bryllup.appspot.com
