@@ -52,18 +52,14 @@ function displayImage(url, imageNumber) {
 }
 
 window.downloadImage = function(url, linkId) {
-  // Download image directly via URL
   var xhr = new XMLHttpRequest();
   xhr.responseType = 'blob';
-  xhr.onload = (event) => {
+  xhr.onload = function() {
     var blob = xhr.response;
-    // Create a file from the returned blob
-    var file = new File([blob], "image.jpg", { type: blob.type });
-    // Grab the <a> tag
+    var type = blob.type ? blob.type : 'image/jpeg'; // Set a default type if none is provided
+    var file = new File([blob], "image.jpg", { type: type });
     var a1 = document.getElementById(linkId);
-    // Set the download attribute of the <a> tag to the name stored in the file
     a1.download = file.name;
-    // Generate a temp URL to host the image for download
     a1.href = URL.createObjectURL(file);
   };
   xhr.open('GET', url);
