@@ -43,7 +43,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage('${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download"></i></a></p>
+        <p><i class="fa-solid fa-download"></i></p>
     </article>
   `;
 
@@ -51,34 +51,6 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-window.downloadImage = function(url, linkId) {
-  fetch(url)
-    .then(response => response.blob())
-    .then(blob => {
-      // Create an object URL for the blob
-      const objectUrl = URL.createObjectURL(blob);
-      const a = document.getElementById(linkId);
-      a.href = objectUrl;
-
-      // Use the file name from the url for the download, if available
-      const fileName = url.split('/').pop();
-      a.download = fileName ? fileName : 'image.jpg';
-
-      // Trigger the download
-      const clickEvent = new MouseEvent('click', {
-        view: window,
-        bubbles: false,
-        cancelable: true
-      });
-      a.dispatchEvent(clickEvent);
-
-      // Revoke the object URL after the download is complete
-      setTimeout(() => {
-        URL.revokeObjectURL(objectUrl);
-      }, 1000); // Increase the delay to 1000 milliseconds (1 second)
-    })
-    .catch(error => console.error('Error:', error));
-}
 // gsutil cors set cors.json gs://ak-bryllup.appspot.com
 
 function initializePoptrox() {
