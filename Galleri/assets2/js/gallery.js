@@ -73,7 +73,10 @@ window.downloadImage = function(url, linkId) {
       });
 
       // Dispatch the event
-      a1.dispatchEvent(event);
+      a1.addEventListener('click', function onClick() {
+        a1.removeEventListener('click', onClick);
+        a1.dispatchEvent(event);
+      });
     })
     .catch(error => console.error('Error:', error));
 } // gsutil cors set cors.json gs://ak-bryllup.appspot.com
