@@ -52,19 +52,14 @@ function displayImage(url, imageNumber) {
 }
 
 window.downloadImage = function(url, linkId) {
-  var a1 = document.getElementById(linkId);
-
-  // If the href attribute has already been set, return early
-  if (a1.href !== '#') return;
-
   fetch(url)
     .then(response => response.blob())
     .then(blob => {
       var type = blob.type ? blob.type : 'image/jpeg'; // Set a default type if none is provided
       var file = new File([blob], "image.jpg", { type: type });
-      var objectURL = URL.createObjectURL(file);
+      var a1 = document.getElementById(linkId);
       a1.download = file.name;
-      a1.href = objectURL;
+      a1.href = URL.createObjectURL(file);
 
       // Create a 'click' event
       var event = new MouseEvent('click', {
@@ -75,11 +70,6 @@ window.downloadImage = function(url, linkId) {
 
       // Dispatch the event
       a1.dispatchEvent(event);
-
-      // Revoke the URL after the image has been downloaded
-      a1.onload = function() {
-        URL.revokeObjectURL(objectURL);
-      };
     })
     .catch(error => console.error('Error:', error));
 } // gsutil cors set cors.json gs://ak-bryllup.appspot.com
