@@ -68,7 +68,7 @@ window.downloadImage = function(url, linkId) {
   };
   xhr.open('GET', url);
   xhr.send();
-}
+}  // gsutil cors set cors.json gs://ak-bryllup.appspot.com
 
 function initializePoptrox() {
   var $main = $('#main');
