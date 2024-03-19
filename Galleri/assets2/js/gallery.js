@@ -43,7 +43,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage(event, '${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download"></i></a></p>
+        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage('${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download"></i></a></p>
     </article>
   `;
 
@@ -51,31 +51,31 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-window.downloadImage = function(event, url, linkId) {
-  // Prevent the default action of the click event
-  event.preventDefault();
-
+function downloadImage(url, linkId) {
   fetch(url)
     .then(response => response.blob())
     .then(blob => {
-      var type = blob.type ? blob.type : 'image/jpeg'; // Set a default type if none is provided
-      var file = new File([blob], "image.jpg", { type: type });
-      var a1 = document.getElementById(linkId);
-      a1.download = file.name;
-      a1.href = URL.createObjectURL(file);
+      // Create an object URL for the blob
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
 
-      // Create a 'click' event
-      var clickEvent = new MouseEvent('click', {
-        view: window,
-        bubbles: true,
-        cancelable: true
-      });
+      // Use the file name from the url for the download, if available
+      const fileName = url.split('/').pop();
+      a.download = fileName ? fileName : 'image.jpg';
 
-      // Dispatch the click event on the link element
-      a1.dispatchEvent(clickEvent);
+      // Append the link to the document body and click it
+      document.body.appendChild(a);
+      a.click();
+
+      // Clean up
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     })
     .catch(error => console.error('Error:', error));
 }
+
  // gsutil cors set cors.json gs://ak-bryllup.appspot.com
 
 function initializePoptrox() {
