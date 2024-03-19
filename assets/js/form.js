@@ -8,6 +8,7 @@ function submitForm(e) {
   
     const primaryName = document.getElementById('primaryName').value;
     const primaryContact = document.getElementById('primaryContact').value;
+    const participation = document.getElementById('participation').value;
     const familyRelation = document.getElementById('familyRelation').value;
     const numAdditionalGuests = document.getElementById('numAdditionalGuests').value;
   
@@ -21,6 +22,7 @@ function submitForm(e) {
     set(child(ref(db), 'Svarskjema/' + newResponseKey), {
       primaryName,
       primaryContact,
+      participation,
       familyRelation,
       numAdditionalGuests,
       additionalGuests
