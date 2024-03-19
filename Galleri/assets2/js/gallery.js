@@ -52,32 +52,22 @@ function displayImage(url, imageNumber) {
 }
 
 window.downloadImage = function(url, linkId) {
-  // Create a reference to the image in Firebase Storage
-  var httpsReference = storage.refFromURL(url);
-
-  // Get the download URL
-  httpsReference.getDownloadURL()
-    .then((url) => {
-      // Download image directly via URL
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = (event) => {
-        var blob = xhr.response;
-        // Create a file from the returned blob
-        var file = new File([blob], "image.jpg", { type: blob.type });
-        // Grab the <a> tag
-        var a1 = document.getElementById(linkId);
-        // Set the download attribute of the <a> tag to the name stored in the file
-        a1.download = file.name;
-        // Generate a temp URL to host the image for download
-        a1.href = URL.createObjectURL(file);
-      };
-      xhr.open('GET', url);
-      xhr.send();
-    })
-    .catch((error) => {
-      console.error('Error downloading image:', error);
-    });
+  // Download image directly via URL
+  var xhr = new XMLHttpRequest();
+  xhr.responseType = 'blob';
+  xhr.onload = (event) => {
+    var blob = xhr.response;
+    // Create a file from the returned blob
+    var file = new File([blob], "image.jpg", { type: blob.type });
+    // Grab the <a> tag
+    var a1 = document.getElementById(linkId);
+    // Set the download attribute of the <a> tag to the name stored in the file
+    a1.download = file.name;
+    // Generate a temp URL to host the image for download
+    a1.href = URL.createObjectURL(file);
+  };
+  xhr.open('GET', url);
+  xhr.send();
 }
 
 function initializePoptrox() {
