@@ -17,6 +17,7 @@ async function displayImagesSequentially() {
     // Display each image
     urls.forEach((url, index) => {
       displayImage(url, index + 1);
+      openSlider('#main');
     });
 
     // Apply transition delay to each thumbnail
@@ -26,7 +27,7 @@ async function displayImagesSequentially() {
     });
 
     // Initialize Poptrox on the container of the images
-    openSlider('#main');
+    // openSlider('#main');
 
   } catch (error) {
     // Handle any errors
