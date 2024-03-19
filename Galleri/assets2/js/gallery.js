@@ -39,7 +39,7 @@ function displayImage(url, imageNumber) {
   // Create the HTML structure for the image
   var html = `
     <article class="thumb">
-        <a href="${url}" class="image" data-caption='<a href="${url}" download> test</a>'><img src="${url}" alt="" /></a>
+        <a href="${url}" class="image" caption='<a href="${url}" download><i class="fa-solid fa-download"></i></a>'><img src="${url}" alt="" /></a>
         <h2>${imageNumber}</h2>
     </article>
 `;
