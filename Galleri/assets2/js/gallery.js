@@ -43,7 +43,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage('${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download" style="font-size: 30px;"></i></a></p>
+        <p><a id="downloadLink${imageNumber}" href="#" onclick="downloadImage('${url}', 'downloadLink${imageNumber}')"><i class="fa-solid fa-download"></i></a></p>
     </article>
   `;
 
@@ -51,27 +51,28 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-window.downloadImage = function(url, linkId) {
-  fetch(url)
+window.downloadImage = function(originalUrl, linkId) {
+  fetch(originalUrl)
     .then(response => response.blob())
     .then(blob => {
-      // Create an object URL for the blob
+      // Create a new Blob URL every time the link is clicked
       const url = URL.createObjectURL(blob);
       const a = document.getElementById(linkId);
-      a.href = url;
 
-      // Use the file name from the url for the download, if available
-      const fileName = url.split('/').pop();
-      a.download = fileName ? fileName : 'image.jpg';
+      // Set the href attribute to the new Blob URL just before triggering the download
+      a.addEventListener('click', function(event) {
+        a.href = url;
+
+        // Use the file name from the url for the download, if available
+        const fileName = originalUrl.split('/').pop();
+        a.download = fileName ? fileName : 'image.jpg';
+      }, { once: true });
 
       // Trigger the download
       a.click();
 
-      // Revoke the object URL after the download is complete
-      setTimeout(() => {
-        a.href = '#';
-        URL.revokeObjectURL(url);
-      }, 1000); // Increase the delay to 1000 milliseconds (1 second)
+      // Revoke the Blob URL after the download is complete
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
     })
     .catch(error => console.error('Error:', error));
 }// gsutil cors set cors.json gs://ak-bryllup.appspot.com
