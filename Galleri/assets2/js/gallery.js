@@ -52,19 +52,17 @@ function displayImage(url, imageNumber) {
 }
 
 window.downloadImage = function(url, linkId) {
-  var xhr = new XMLHttpRequest();
-  xhr.responseType = 'blob';
-  xhr.onload = function() {
-    var blob = xhr.response;
-    var type = blob.type ? blob.type : 'image/jpeg'; // Set a default type if none is provided
-    var file = new File([blob], "image.jpg", { type: type });
-    var a1 = document.getElementById(linkId);
-    a1.download = file.name;
-    a1.href = URL.createObjectURL(file);
-  };
-  xhr.open('GET', url);
-  xhr.send();
-}  // gsutil cors set cors.json gs://ak-bryllup.appspot.com
+  fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+      var type = blob.type ? blob.type : 'image/jpeg'; // Set a default type if none is provided
+      var file = new File([blob], "image.jpg", { type: type });
+      var a1 = document.getElementById(linkId);
+      a1.download = file.name;
+      a1.href = URL.createObjectURL(file);
+    })
+    .catch(error => console.error('Error:', error));
+} // gsutil cors set cors.json gs://ak-bryllup.appspot.com
 
 function initializePoptrox() {
   var $main = $('#main');
