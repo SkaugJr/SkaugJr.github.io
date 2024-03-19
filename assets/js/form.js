@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const newLabel = document.createElement('label');
         newLabel.htmlFor = 'additionalGuest' + i;
-        newLabel.textContent = ' Navn medhørende gjest ' + i;
+        newLabel.textContent = 'Medhørende gjest ' + i;
 
         const newInput = document.createElement('input');
         newInput.type = 'text';

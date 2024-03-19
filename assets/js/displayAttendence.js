@@ -39,7 +39,7 @@ get(child(ref(db), 'Svarskjema/')).then((snapshot) => {
     }
 
     // Create a string for the HTML output
-    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;">Deltakerliste</th></tr></thead><tbody>';
+    var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;"><i class="fa-solid fa-users" style="color: #4CAF50;"></i> Deltakerliste</th></tr></thead><tbody>';
 
     // Loop through the guests array
     for (var i = 0; i < guests.length; i++) {
