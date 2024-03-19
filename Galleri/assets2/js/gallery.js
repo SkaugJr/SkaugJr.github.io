@@ -51,7 +51,7 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-function downloadImage(url, filename) {
+window.downloadImage = function(url, filename) {
   // Create a hidden <a> element
   var element = document.createElement('a');
   element.setAttribute('href', url);
