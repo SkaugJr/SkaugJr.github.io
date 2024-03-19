@@ -43,7 +43,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><button onclick="downloadImage('${url}')"> <i class="fa-solid fa-download"></i> </button></p>
+        <p> <button style="font-size: 14px; padding: 5px;" onclick="downloadImage('${url}')"> <i class="fa-solid fa-download"></i> </button> </p>
     </article>
   `;
 
@@ -61,9 +61,12 @@ window.downloadImage = function(url) {
       a.style.display = 'none';
       a.href = blobUrl;
 
+      // Extract the file extension from the url
+      const fileExtension = url.split('.').pop();
+
       // Use the file name from the url for the download, if available
       const fileName = url.split('/').pop();
-      a.download = fileName ? fileName : 'image.jpg';
+      a.download = fileName ? fileName : `image.${fileExtension}`;
 
       // Append the link to the document body and click it
       document.body.appendChild(a);
