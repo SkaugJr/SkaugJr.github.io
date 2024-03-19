@@ -19,7 +19,7 @@ async function displayImagesSequentially() {
       displayImage(url, index + 1);
     });
 
-    openSlider('#main');
+    
     // Apply transition delay to each thumbnail
     $('#main .thumb').each(function(i) {
       var delay = i * 0.15 + 0.5 + 's';
@@ -27,7 +27,7 @@ async function displayImagesSequentially() {
     });
 
     // Initialize Poptrox on the container of the images
-    // openSlider('#main');
+    openSlider('#main');
 
   } catch (error) {
     // Handle any errors
@@ -51,15 +51,14 @@ function displayImage(url, imageNumber) {
 
 function openSlider(selector) {
   $(selector).poptrox({
-      usePopupCaption: true,
-      usePopupNav: true,
-      popupCaptionSelector: function() {
-        var imageSrc = $(this).attr('href');
-        return 'Enkel test';
-      }
+    usePopupCaption: true,
+    usePopupNav: true,
+    popupCaptionSelector: function($popup) {
+      // Retrieve the caption from the alt attribute of the image
+      return $popup.find('img').attr('alt');
+    }
   });
 }
-
 
 // Call the function to display images sequentially
 displayImagesSequentially();
