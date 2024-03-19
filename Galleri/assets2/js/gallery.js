@@ -54,7 +54,7 @@ function openSlider(selector) {
       usePopupNav: true,
       popupCaptionSelector: function() {
         var imageSrc = $(this).attr('href');
-        return '<i class="fa-solid fa-download"></i>';
+        return 'Enkel test';
       }
   });
 }
