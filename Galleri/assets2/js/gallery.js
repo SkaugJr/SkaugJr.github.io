@@ -19,7 +19,6 @@ async function displayImagesSequentially() {
       displayImage(url, index + 1);
     });
 
-    
     // Apply transition delay to each thumbnail
     $('#main .thumb').each(function(i) {
       var delay = i * 0.15 + 0.5 + 's';
@@ -27,7 +26,7 @@ async function displayImagesSequentially() {
     });
 
     // Initialize Poptrox on the container of the images
-    openSlider('#main');
+    initializePoptrox();
 
   } catch (error) {
     // Handle any errors
@@ -50,37 +49,47 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-function openSlider(selector) {
-  $(selector).poptrox({
+function initializePoptrox() {
+  var $main = $('#main');
+
+  // Poptrox.
+  $main.poptrox({
     baseZIndex: 20000,
-				caption: function($a) {
+    caption: function($a) {
+      var s = '';
 
-					var s = '';
+      $a.nextAll().each(function() {
+        s += this.outerHTML;
+      });
 
-					$a.nextAll().each(function() {
-						s += this.outerHTML;
-					});
+      return s;
+    },
+    fadeSpeed: 300,
+    onPopupClose: function() { $body.removeClass('modal-active'); },
+    onPopupOpen: function() { $body.addClass('modal-active'); },
+    overlayOpacity: 0,
+    popupCloserText: '',
+    popupHeight: 150,
+    popupLoaderText: '',
+    popupSpeed: 300,
+    popupWidth: 150,
+    selector: '.thumb > a.image',
+    usePopupCaption: true,
+    usePopupCloser: true,
+    usePopupDefaultStyling: false,
+    usePopupForceClose: true,
+    usePopupLoader: true,
+    usePopupNav: true,
+    windowMargin: 50
+  });
 
-					return s;
+  // Hack: Set margins to 0 when 'xsmall' activates.
+  breakpoints.on('<=xsmall', function() {
+    $main[0]._poptrox.windowMargin = 0;
+  });
 
-				},
-				fadeSpeed: 300,
-				onPopupClose: function() { $body.removeClass('modal-active'); },
-				onPopupOpen: function() { $body.addClass('modal-active'); },
-				overlayOpacity: 0,
-				popupCloserText: '',
-				popupHeight: 150,
-				popupLoaderText: '',
-				popupSpeed: 300,
-				popupWidth: 150,
-				selector: '.thumb > a.image',
-				usePopupCaption: true,
-				usePopupCloser: true,
-				usePopupDefaultStyling: false,
-				usePopupForceClose: true,
-				usePopupLoader: true,
-				usePopupNav: true,
-				windowMargin: 50
+  breakpoints.on('>xsmall', function() {
+    $main[0]._poptrox.windowMargin = 50;
   });
 }
 
