@@ -43,7 +43,7 @@ function displayImage(url, imageNumber) {
     <article class="thumb">
         <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>#${imageNumber}</h2>
-        <p><button style="font-size: 25px; padding: 10px; border: none; background: none; color: #000;" onclick="downloadImage('${url}', '${imageNumber}')"> <i class="fa-solid fa-download fa-shake fa-2xl"></i> </button></p>
+        <p><button class="download-button" onclick="downloadImage('${url}', '${imageNumber}')"> <i class="fa-solid fa-download fa-2xl"></i> </button></p>
     </article>
   `;
 

@@ -1286,6 +1286,13 @@ input, select, textarea {
 			.poptrox-popup .caption p {
 				color: #ffffff;
 			}
+			.download-button {
+				font-size: 25px; /* Adjust the font size */
+				padding: 10px; /* Adjust the padding */
+				border: none;
+				background: none;
+				color: #000;
+			  }
 
 		.poptrox-popup .loader {
 			-moz-animation: spinner 1s infinite linear !important;
@@ -1351,8 +1358,31 @@ input, select, textarea {
 			}
 
 			.poptrox-popup .caption {
-				display: none !important;
+				 display: block !important;
+				max-width: 100%;
+				margin: 0 auto;
+				padding: 10px;
+				text-align: center;
+				font-size: 14px;
+				line-height: 1.5;
 			}
+			  
+				/* Ensure the paragraph inside the caption is displayed */
+				.poptrox-popup .caption p {
+				  display: block !important;
+				  margin-bottom: 10px;
+				}
+			  
+				/* Style the download button */
+				.download-button {
+				  font-size: 10px; /* Adjust the font size */
+				  padding: 5px; /* Adjust the padding */
+				  border: none;
+				  background: none;
+				  color: #000;
+				}
+			  
+			  
 
 			.poptrox-popup .closer,
 			.poptrox-popup .nav-previous,
