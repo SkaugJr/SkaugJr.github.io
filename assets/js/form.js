@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (numGuests > 0) {
       for (let i = 1; i <= numGuests; i++) {
         const newField = document.createElement('div');
-        newField.className = 'field';
+        newField.className = 'field half';
 
         const newLabel = document.createElement('label');
         newLabel.htmlFor = 'additionalGuest' + i;
-        newLabel.textContent = 'Medhørende gjest ' + i;
+        newLabel.textContent = ' Navn medhørende gjest ' + i;
 
         const newInput = document.createElement('input');
         newInput.type = 'text';
