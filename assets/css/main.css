@@ -349,7 +349,7 @@ input, select, textarea {
 				}
 
 				form > .fields > .field.sixth {
-					width: calc(100/6% - 0.25rem);
+					width: calc(100%/6 - 0.25rem);
 				}
 
 		@media screen and (max-width: 480px) {
