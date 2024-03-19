@@ -53,7 +53,7 @@ function displayImage(url, imageNumber) {
 
 window.downloadImage = function(url, linkId) {
   // Create a reference to the image in Firebase Storage
-  var httpsReference = firebase.storage().refFromURL(url);
+  var httpsReference = storage().refFromURL(url);
 
   // Get the download URL
   httpsReference.getDownloadURL()
