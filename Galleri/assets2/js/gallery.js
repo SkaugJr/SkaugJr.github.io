@@ -51,7 +51,7 @@ function displayImage(url, imageNumber) {
   document.getElementById('main').innerHTML += html;
 }
 
-function downloadImage(url, linkId) {
+window.downloadImage = function(url, linkId) {
   fetch(url)
     .then(response => response.blob())
     .then(blob => {
@@ -74,7 +74,7 @@ function downloadImage(url, linkId) {
       URL.revokeObjectURL(url);
     })
     .catch(error => console.error('Error:', error));
-} // gsutil cors set cors.json gs://ak-bryllup.appspot.com
+}// gsutil cors set cors.json gs://ak-bryllup.appspot.com
 
 function initializePoptrox() {
   var $main = $('#main');
