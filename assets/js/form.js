@@ -75,3 +75,19 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize additional guests textboxes based on default value
   document.getElementById('numAdditionalGuests').dispatchEvent(new Event('change')); // Trigger the change event initially
 });
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var message = document.getElementById('message').value;
+
+  firebase.database().ref('Kontakt').push({
+    name: name,
+    email: email,
+    message: message
+  });
+
+  alert('Message sent!');
+});
