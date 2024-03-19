@@ -52,35 +52,23 @@ function displayImage(url, imageNumber) {
 }
 
 window.downloadImage = function(url, filename) {
-  // Fetch the image data
-  fetch(url)
-    .then(response => response.blob())
-    .then(blob => {
-      // Create a temporary URL for the Blob
-      var blobUrl = URL.createObjectURL(blob);
+  // Create a hidden <a> element
+  var element = document.createElement('a');
+  element.setAttribute('href', url);
+  element.setAttribute('download', filename);
 
-      // Create a hidden <a> element
-      var element = document.createElement('a');
-      element.setAttribute('href', blobUrl);
-      element.setAttribute('download', filename);
+  // Style the element to be hidden from the view
+  element.style.display = 'none';
 
-      // Style the element to be hidden from the view
-      element.style.display = 'none';
+  // Append the element to the body
+  document.body.appendChild(element);
 
-      // Append the element to the body
-      document.body.appendChild(element);
+  // Programmatically click the element to trigger the download
+  element.click();
 
-      // Programmatically click the element to trigger the download
-      element.click();
-
-      // Remove the element from the body
-      document.body.removeChild(element);
-    })
-    .catch(error => {
-      console.error('Error downloading image:', error);
-    });
+  // Remove the element from the body
+  document.body.removeChild(element);
 }
-
 
 function initializePoptrox() {
   var $main = $('#main');
