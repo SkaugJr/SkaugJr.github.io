@@ -58,20 +58,17 @@ window.downloadImage = function(url, linkId) {
       // Create an object URL for the blob
       const url = URL.createObjectURL(blob);
       const a = document.getElementById(linkId);
-      a.style.display = 'none';
       a.href = url;
 
       // Use the file name from the url for the download, if available
       const fileName = url.split('/').pop();
       a.download = fileName ? fileName : 'image.jpg';
 
-      // Append the link to the document body and click it
-      document.body.appendChild(a);
+      // Trigger the download
       a.click();
 
-      // Clean up
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      // Revoke the object URL after the download is complete
+      setTimeout(() => URL.revokeObjectURL(url), 100);
     })
     .catch(error => console.error('Error:', error));
 }// gsutil cors set cors.json gs://ak-bryllup.appspot.com
