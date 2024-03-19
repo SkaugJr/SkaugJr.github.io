@@ -40,7 +40,7 @@ function displayImage(url, imageNumber) {
   // Create the HTML structure for the image
   var html = `
     <article class="thumb">
-        <a href="${url}" class="image"><img src="${url}" alt="<a href="${url}" download><i class="fa-solid fa-download"></i></a>" /></a>
+    <a href="${url}" class="image"><img src="${url}" data-caption='<a href="${url}" download><i class="fa-solid fa-download"></i></a>' /></a>
         <h2>${imageNumber}</h2>
     </article>
 `;
@@ -55,7 +55,7 @@ function openSlider(selector) {
     usePopupNav: true,
     popupCaptionSelector: function($popup) {
       // Retrieve the caption from the alt attribute of the image
-      return $popup.find('img').attr('alt');
+      return $popup.find('img').data('caption');
     }
   });
 }
