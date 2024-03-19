@@ -41,14 +41,33 @@ function displayImage(url, imageNumber) {
   // Create the HTML structure for the image
   var html = `
     <article class="thumb">
-        <a href="${url}" class="image"><img src="${url}"/></a>
+        <a href="${url}" class="image"><img src="${url}" data-position="center center"/></a>
         <h2>${imageNumber}</h2>
-        <p><a href="${url}" download><i class="fa-solid fa-download"></i></a></p>
+        <p><a href="#" onclick="downloadImage('${url}', 'image${imageNumber}.jpg')"><i class="fa-solid fa-download"></i></a></p>
     </article>
   `;
 
   // Append the HTML to the gallery div
   document.getElementById('main').innerHTML += html;
+}
+
+function downloadImage(url, filename) {
+  // Create a hidden <a> element
+  var element = document.createElement('a');
+  element.setAttribute('href', url);
+  element.setAttribute('download', filename);
+
+  // Style the element to be hidden from the view
+  element.style.display = 'none';
+
+  // Append the element to the body
+  document.body.appendChild(element);
+
+  // Programmatically click the element to trigger the download
+  element.click();
+
+  // Remove the element from the body
+  document.body.removeChild(element);
 }
 
 function initializePoptrox() {
