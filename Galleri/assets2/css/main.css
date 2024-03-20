@@ -1287,11 +1287,16 @@ input, select, textarea {
 				color: #ffffff;
 			}
 			.download-button {
-				font-size: 25px; /* Adjust the font size */
-				padding: 10px; /* Adjust the padding */
+				font-size: 20px; /* Adjust the font size */
+				padding: 0px; /* Adjust the padding */
 				border: none;
 				background: none;
 				color: #000;
+				display: inline-block; /* Allows the use of width and height properties */
+				width: 75px; /* Adjust the width as needed */
+				height: 75px; /* Adjust the height as needed */
+				line-height: 50px; /* Should be the same as height for vertical centering */
+				text-align: center; /* For horizontal centering */
 			  }
 
 		.poptrox-popup .loader {
@@ -1375,12 +1380,17 @@ input, select, textarea {
 			  
 				/* Style the download button */
 				.download-button {
-				  font-size: 15px; /* Adjust the font size */
-				  padding: 5px; /* Adjust the padding */
-				  border: none;
-				  background: none;
-				  color: #000;
-				}
+					font-size: 10px; /* Adjust the font size */
+					padding: 0px; /* Adjust the padding */
+					border: none;
+					background: none;
+					color: #000;
+					display: inline-block; /* Allows the use of width and height properties */
+					width: 40px; /* Adjust the width as needed */
+					height: 40px; /* Adjust the height as needed */
+					line-height: 40px; /* Should be the same as height for vertical centering */
+					text-align: center; /* For horizontal centering */
+				  }
 			  
 			  
 
