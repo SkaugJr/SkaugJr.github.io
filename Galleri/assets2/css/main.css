@@ -1221,7 +1221,7 @@ input, select, textarea {
 			background-image: url("images/close.svg");
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: 3em;
+			background-size: 4em;
 			height: 5em;
 			opacity: 0;
 			position: absolute;
