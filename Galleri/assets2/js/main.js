@@ -277,9 +277,5 @@
 				breakpoints.on('>xsmall', function() {
 					$main[0]._poptrox.windowMargin = 50;
 				});
-
-				window.onload = function() {
-					$('#footer').trigger('---toggle');
-				};
-
+			
 })(jQuery);

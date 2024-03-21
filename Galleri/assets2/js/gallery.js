@@ -29,6 +29,7 @@ async function displayImagesSequentially() {
 
     // Initialize Poptrox on the container of the images
     initializePoptrox();
+    $('#footer').trigger('---toggle');
 
   } catch (error) {
     // Handle any errors
