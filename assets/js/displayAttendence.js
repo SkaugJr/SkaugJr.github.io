@@ -25,7 +25,7 @@ auth.onAuthStateChanged((user) => {
             var entry = data[key];
 
             // Create a string for the names
-            var names = entry.primaryName.split(' ')[0];
+            var names = entry.primaryName;
 
             // Increment the total guest count for the primary guest
             totalGuestCount++;
@@ -33,7 +33,7 @@ auth.onAuthStateChanged((user) => {
             // Add the additional guests to the names string
             if (entry.additionalGuests) {
               for (var i = 0; i < entry.additionalGuests.length; i++) {
-                names += '<br>' + entry.additionalGuests[i].split(' ')[0];
+                names += '<br>' + entry.additionalGuests[i];
 
                 // Increment the total guest count for each additional guest
                 totalGuestCount++;
@@ -56,7 +56,7 @@ auth.onAuthStateChanged((user) => {
           }
 
           // Add the count to the HTML output
-          html += '<tfoot><tr><td style="text-align: center;"><strong>Totalt antall gjester: ' + totalGuestCount + '</strong></td></tr></tfoot>';
+          html += '<tfoot><tr><td style="text-align: center;"><strong>Antall: ' + totalGuestCount + '</strong></td></tr></tfoot>';
 
           html += '</tbody></table>';
 
