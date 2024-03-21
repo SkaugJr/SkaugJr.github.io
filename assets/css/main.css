@@ -1755,3 +1755,10 @@ repeat;
 		margin: 0 auto; /* Optional: Center the image horizontally */
 	}
 
+	p a {
+		color: #4AB7FF;
+		}
+	
+		p a:hover {
+			color: #58fa58;
+		}
