@@ -279,7 +279,7 @@
 				});
 
 				$(document).ready(function() {
-					$('#footer').trigger('---show');
+					$('#footer').trigger('---toggle');
 				});
 
 })(jQuery);
