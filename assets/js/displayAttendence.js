@@ -45,7 +45,7 @@ auth.onAuthStateChanged((user) => {
           }
 
           // Create a string for the HTML output
-          var color = subfolder === 'Deltar' ? '#4CAF50' : '#8B0000';
+          var color = subfolder === 'Deltar' ? '#4CAF50' : '#B22222';
           var html = '<table style="width: 100%;"><thead><tr><th style="text-align: center;"><i class="fa-solid fa-users" style="color: ' + color + ';"></i> ' + subfolder + '</th></tr></thead><tbody>';
 
           // Loop through the guests array
