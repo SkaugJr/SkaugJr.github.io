@@ -56,7 +56,7 @@ auth.onAuthStateChanged((user) => {
           }
 
           // Add the count to the HTML output
-          html += '<tfoot><tr><td style="text-align: center;"><strong>Antall: ' + totalGuestCount + '</strong></td></tr></tfoot>';
+          html += '<tfoot><tr><td style="text-align: center;"><strong style="color: ' + color + ';>Antall: ' + totalGuestCount + '</strong></td></tr></tfoot>';
 
           html += '</tbody></table>';
 
