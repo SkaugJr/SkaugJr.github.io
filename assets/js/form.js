@@ -4,38 +4,40 @@ import { db } from './firebaseInit.js'; // replace with the actual path to your 
 
 // Function to submit the form data
 function submitForm(e) {
-    e.preventDefault();
-  
-    const primaryName = document.getElementById('primaryName').value;
-    const primaryContact = document.getElementById('primaryContact').value;
-    const participation = document.getElementById('participation').value;
-    const familyRelation = document.getElementById('familyRelation').value;
-    const numAdditionalGuests = document.getElementById('numAdditionalGuests').value;
-  
-    const additionalGuests = [];
-    for (let i = 1; i <= numAdditionalGuests; i++) {
-      additionalGuests.push(document.getElementById('additionalGuest' + i).value);
-    }
-  
-    const newResponseKey = primaryName + '_' + Date.now().toString(); // Generate a unique key based on the current timestamp
-  
-    set(child(ref(db), 'Svarskjema/' + newResponseKey), {
-      primaryName,
-      primaryContact,
-      participation,
-      familyRelation,
-      numAdditionalGuests,
-      additionalGuests
-    })
-    .then(() => {
-      console.log("Document written with ID: ", newResponseKey);
-      alert("Takk for at du fylte ut svarskjema!");
-      window.location.href = 'index.html'; // Redirect to the main page after successful submission
-    })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-      alert("Feilmelding, vennligst prøv på nytt.");
-    });
+  e.preventDefault();
+
+  const primaryName = document.getElementById('primaryName').value;
+  const primaryContact = document.getElementById('primaryContact').value;
+  const participation = document.getElementById('participation').value;
+  const familyRelation = document.getElementById('familyRelation').value;
+  const numAdditionalGuests = document.getElementById('numAdditionalGuests').value;
+
+  const additionalGuests = [];
+  for (let i = 1; i <= numAdditionalGuests; i++) {
+    additionalGuests.push(document.getElementById('additionalGuest' + i).value);
+  }
+
+  const newResponseKey = primaryName + '_' + Date.now().toString(); // Generate a unique key based on the current timestamp
+
+  const participationFolder = participation === '1' ? 'Deltar' : 'DeltarIkke';
+
+  set(child(ref(db), 'Svarskjema/' + participationFolder + '/' + newResponseKey), {
+    primaryName,
+    primaryContact,
+    participation,
+    familyRelation,
+    numAdditionalGuests,
+    additionalGuests
+  })
+  .then(() => {
+    console.log("Document written with ID: ", newResponseKey);
+    alert("Takk for at du fylte ut svarskjema!");
+    window.location.href = 'index.html'; // Redirect to the main page after successful submission
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+    alert("Feilmelding, vennligst prøv på nytt.");
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
