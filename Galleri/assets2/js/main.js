@@ -283,6 +283,9 @@
 					if (hash) {
 						// Trigger the click event on the link to open the popup
 						$('[href="' + hash + '"]').click();
+				
+						// Add the classes to the body
+						$('body').addClass('touch content-active');
 					}
 				});
 
