@@ -281,7 +281,7 @@
 				$(document).ready(function() {
 					setTimeout(function() {
 						$('#footer').trigger('---toggle');
-					}, 1500);
+					}, 1250);
 				});
 
 })(jQuery);
