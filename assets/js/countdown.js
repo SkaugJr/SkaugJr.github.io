@@ -13,7 +13,11 @@ $(document).ready(function() {
                     '<div class="countdown-label">Måneder</div>' +
                 '</div>' +
                 '<div class="countdown-item">' +
-                    '<div class="countdown-number">%n</div>' +
+                    '<div class="countdown-number">%w</div>' +
+                    '<div class="countdown-label">Uker</div>' +
+                '</div>' +
+                '<div class="countdown-item">' +
+                    '<div class="countdown-number">%d</div>' +
                     '<div class="countdown-label">Dager</div>' +
                 '</div>' +
                 '<div class="countdown-item">' +
