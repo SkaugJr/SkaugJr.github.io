@@ -8,7 +8,6 @@ function submitForm(e) {
 
   const primaryName = document.getElementById('primaryName').value;
   const primaryContact = document.getElementById('primaryContact').value;
-  const participation = document.getElementById('participation').value;
   const familyRelation = document.getElementById('familyRelation').value;
   const numAdditionalGuests = document.getElementById('numAdditionalGuests').value;
 
