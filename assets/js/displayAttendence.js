@@ -5,7 +5,7 @@ import { get, ref, child } from 'https://www.gstatic.com/firebasejs/10.9.0/fireb
 auth.onAuthStateChanged((user) => {
   if (user && user.email === 'admin@akbryllup.no') {
     // List of subfolders to fetch data from
-    const subfolders = ['Deltar', 'Deltar%20Ikke'];
+    const subfolders = ['Deltar', 'DeltarIkke'];
 
     // Loop through each subfolder
     subfolders.forEach((subfolder) => {
