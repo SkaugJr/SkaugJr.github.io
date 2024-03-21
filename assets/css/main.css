@@ -352,7 +352,7 @@ input, select, textarea {
 					width: calc(75% - 1.125rem);
 				}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 599px) {
 
 			form > .fields {
 				width: calc(100% + 3rem);
@@ -373,6 +373,10 @@ input, select, textarea {
 					}
 
 					form > .fields > .field.quarter {
+						width: calc(100% - 1.5rem);
+					}
+
+					form > .fields > .field.three.quarter {
 						width: calc(100% - 1.5rem);
 					}
 
