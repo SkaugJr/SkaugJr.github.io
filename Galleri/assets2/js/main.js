@@ -278,4 +278,12 @@
 					$main[0]._poptrox.windowMargin = 50;
 				});
 
+				$(document).ready(function() {
+					var hash = window.location.hash;
+					if (hash) {
+						// Trigger the click event on the link to open the popup
+						$('[href="' + hash + '"]').click();
+					}
+				});
+
 })(jQuery);
