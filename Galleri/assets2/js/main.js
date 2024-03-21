@@ -278,10 +278,8 @@
 					$main[0]._poptrox.windowMargin = 50;
 				});
 
-				$(document).ready(function() {
-					setTimeout(function() {
-						$('#footer').trigger('---toggle');
-					}, 1250);
-				});
+				window.onload = function() {
+					$('#footer').trigger('---toggle');
+				};
 
 })(jQuery);
