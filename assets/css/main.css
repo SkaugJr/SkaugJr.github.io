@@ -1755,10 +1755,10 @@ repeat;
 		margin: 0 auto; /* Optional: Center the image horizontally */
 	}
 
-	p a {
+	.hyperlenke {
 		color: #4AB7FF;
 		}
 	
-		p a:hover {
+		.hyperlenke:hover {
 			color: #58fa58;
 		}
