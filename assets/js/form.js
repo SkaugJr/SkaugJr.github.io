@@ -19,7 +19,7 @@ function submitForm(e) {
 
   const newResponseKey = primaryName + '_' + Date.now().toString(); // Generate a unique key based on the current timestamp
 
-  const participationFolder = participation === '1' ? 'Deltar' : 'DeltarIkke';
+  const participationFolder = participation === '1' ? 'Deltar' : 'Deltar%20Ikke';
 
   set(child(ref(db), 'Svarskjema/' + participationFolder + '/' + newResponseKey), {
     primaryName,
