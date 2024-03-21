@@ -108,10 +108,6 @@
 						// Deactivate body.
 							$body.removeClass('content-active');
 						
-							if ($this.attr('id') === 'defaultPanel') {
-								$this.trigger('---show');
-							}
-
 					});
 
 			// Toggles.
