@@ -92,7 +92,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
   })
   .then(() => {
     console.log("Document written with ID: ", newResponseKey);
-    alert("Message sent!");
+    alert("Beskjeden er sent!");
     window.location.href = 'index.html'; // Redirect to the main page after successful submission
   })
   .catch((error) => {
