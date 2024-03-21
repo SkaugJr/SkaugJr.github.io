@@ -8,7 +8,7 @@ function submitForm(e) {
 
   const primaryName = document.getElementById('primaryName').value;
   const primaryContact = document.getElementById('primaryContact').value;
-  const familyRelation = document.getElementById('familyRelation').value;
+  const participation = document.getElementById('participation').value;
   const numAdditionalGuests = document.getElementById('numAdditionalGuests').value;
 
   const additionalGuests = [];
@@ -18,13 +18,12 @@ function submitForm(e) {
 
   const newResponseKey = primaryName + '_' + Date.now().toString(); // Generate a unique key based on the current timestamp
 
-  const participationFolder = participation === '1' ? 'Deltar' : 'DeltarIkke';
+  const participationFolder = participation === '1' ? 'Deltar' : 'Deltar Ikke';
 
   set(child(ref(db), 'Svarskjema/' + participationFolder + '/' + newResponseKey), {
     primaryName,
     primaryContact,
     participation,
-    familyRelation,
     numAdditionalGuests,
     additionalGuests
   })
