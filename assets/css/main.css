@@ -1762,3 +1762,20 @@ repeat;
 		.hyperlenke:hover {
 			color: #58fa58;
 		}
+
+		.table-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		  }
+		  
+		  .table-container table {
+			flex: 1 0 100%;
+			margin: 10px;
+		  }
+
+		  @media (min-width: 768px) {
+			.table-container table {
+			  flex-basis: 0;
+			}
+		  }
