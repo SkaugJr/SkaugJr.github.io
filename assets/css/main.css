@@ -1308,9 +1308,9 @@ repeat;
 			}
 
 			#header .logo {
-				width: 10rem;
-				height: 10rem;
-				line-height: 10rem;
+				width: 12rem;
+				height: 12rem;
+				line-height: 12rem;
 				border: solid 1px #ffffff;
 				border-radius: 100%;
 			}
@@ -1323,7 +1323,7 @@ repeat;
 			}
 	
 			#header .logo .icon:before {
-				font-size: 4rem;
+				font-size: 5rem;
 			}
 
 		#header .content {
@@ -1465,9 +1465,9 @@ repeat;
 				}
 
 			#header .logo {
-				width: 5rem;
-				height: 5rem;
-				line-height: 5rem;
+				width: 9rem;
+				height: 9rem;
+				line-height: 9rem;
 			}
 
 			#header .logo img {
@@ -1479,7 +1479,7 @@ repeat;
 			}
 
 				#header .logo .icon:before {
-					font-size: 2rem;
+					font-size: 4rem;
 				}
 
 			#header .content .inner {
