@@ -12,7 +12,7 @@ get(gjestebokRef)
       const messagesContainer = document.getElementById('messages');
 
       // Create a heading for the list
-      const heading = document.createElement('h2');
+      const heading = document.createElement('h4');
       heading.innerHTML = '<i class="fa-solid fa-comments"></i> Meldinger:';
       messagesContainer.appendChild(heading);
 
