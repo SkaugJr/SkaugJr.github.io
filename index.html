@@ -239,7 +239,7 @@
 								<div class="fields">
 									<div class="field half">
 									<label for="name"><i class="fa-solid fa-user"></i> Fullt Navn</label>
-									<input type="text" name="name" id="name" placeholder="Eks: Ola Nordmann" pattern="^[a-zA-ZæøåÆØÅ]+(\s[a-zA-ZæøåÆØÅ]+)+$" required/>
+									<input type="text" name="name" id="name" placeholder="Eks: Ola Nordmann" pattern="^[a-zA-ZæøåÆØÅ\-]+(\s[a-zA-ZæøåÆØÅ\-]+)+$" required/>
 									</div>
 									<div class="field half">
 									<label for="email"><i class="fa-solid fa-at"></i> Email</label>
@@ -272,6 +272,10 @@
 			<video autoplay muted loop id="bg-video">
 				<source src="videos/waves.mp4" type="video/mp4">
 			</video>
+
+			<audio autoplay loop>
+				<source src="audio/healing-waves-179881.mp3" type="audio/mpeg">
+			</audio>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
