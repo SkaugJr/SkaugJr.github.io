@@ -100,3 +100,25 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     alert("Feilmelding, vennligst prøv på nytt.");
   });
 });
+
+// Event listener for guestbook form submission
+document.getElementById('guestbookForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const message = document.getElementById('message').value;
+
+  const newResponseKey = Date.now().toString() + message.charAt(0); // Generate a unique key based on the current timestamp
+
+  set(child(ref(db), 'Gjestebok/' + newResponseKey), {
+    message
+  })
+  .then(() => {
+    console.log("Document written with ID: ", newResponseKey);
+    alert("Beskjeden er sendt!");
+    window.location.href = 'index.html'; // Redirect to the main page after successful submission
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+    alert("Feilmelding, vennligst prøv på nytt.");
+  });
+});
