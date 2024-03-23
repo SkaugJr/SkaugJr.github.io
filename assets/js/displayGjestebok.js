@@ -13,7 +13,7 @@ get(gjestebokRef)
 
       // Create a heading for the list
       const heading = document.createElement('h2');
-      heading.textContent = '<i class="fa-solid fa-comments"></i> Meldinger:';
+      heading.innerHTML = '<i class="fa-solid fa-comments"></i> Meldinger:';
       messagesContainer.appendChild(heading);
 
       // Loop through the data and create HTML elements for each message
