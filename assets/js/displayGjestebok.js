@@ -10,6 +10,7 @@ get(gjestebokRef)
     if (snapshot.exists()) {
       const data = snapshot.val();
       const messagesContainer = document.getElementById('messages');
+      message = message.replace(/\n/g, '<br>');
 
       // Create a heading for the list
       const heading = document.createElement('h3');
