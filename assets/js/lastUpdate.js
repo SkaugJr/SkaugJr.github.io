@@ -1,4 +1,4 @@
-fetch('https://api.github.com/repos/SkaugJr/SkaugJr.github.io/commits?path=index.html&page=1&per_page=1')
+fetch('https://api.github.com/repos/SkaugJr/SkaugJr.github.io/commits?page=1&per_page=1')
     .then(response => response.json())
     .then(data => {
         const lastUpdated = new Date(data[0].commit.author.date);
