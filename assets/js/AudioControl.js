@@ -3,9 +3,9 @@ document.getElementById('audio-control').addEventListener('click', function () {
 
     if (audio.paused) {
         audio.play();
-        this.textContent = 'Pause';
+        this.innerHTML = '<i class="fa-solid fa-pause"></i>';
     } else {
         audio.pause();
-        this.textContent = 'Play';
+        this.innerHTML = '<i class="fa-solid fa-play"></i>';
     }
 });
