@@ -1789,12 +1789,11 @@ repeat;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-			margin: -1.5rem 0 2rem -1.5rem;
 		  }
 		  
 		  .table-container table {
 			flex: 1 0 100%;
-			margin: 10px;
+			margin: 5px;
 		  }
 
 		  @media (min-width: 768px) {
