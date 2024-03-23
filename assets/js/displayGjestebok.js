@@ -14,7 +14,7 @@ get(gjestebokRef)
       // Loop through the data and create HTML elements for each message
       for (let key in data) {
         const message = data[key].message;
-        const messageElement = document.createElement('p');
+        const messageElement = document.createElement('li');
         messageElement.textContent = message;
         messagesContainer.appendChild(messageElement);
       }
