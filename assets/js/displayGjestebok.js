@@ -9,7 +9,7 @@ get(gjestebokRef)
   .then((snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
-      const messagesContainer = document.getElementById('messages');
+      var message = document.getElementById('message').value;
       message = message.replace(/\n/g, '<br>');
 
       // Create a heading for the list
