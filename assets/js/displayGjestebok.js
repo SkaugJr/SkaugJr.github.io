@@ -11,6 +11,11 @@ get(gjestebokRef)
       const data = snapshot.val();
       const messagesContainer = document.getElementById('messages');
 
+      // Create a heading for the list
+      const heading = document.createElement('h2');
+      heading.textContent = '<i class="fa-solid fa-comments"></i> Meldinger:';
+      messagesContainer.appendChild(heading);
+
       // Loop through the data and create HTML elements for each message
       for (let key in data) {
         const message = data[key].message;
