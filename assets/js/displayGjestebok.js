@@ -9,8 +9,7 @@ get(gjestebokRef)
   .then((snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
-      var message = document.getElementById('message').value;
-      message = message.replace(/\n/g, '<br>');
+      const messagesContainer = document.getElementById('messages');
 
       // Create a heading for the list
       const heading = document.createElement('h3');
@@ -19,11 +18,11 @@ get(gjestebokRef)
 
       // Loop through the data and create HTML elements for each message
       for (let key in data) {
-        const message = data[key].message;
+        const message = data[key].message.replace(/\n/g, '<br>');
         const messageElement = document.createElement('li');
-        messageElement.textContent = message;
+        messageElement.innerHTML = message;
         messagesContainer.appendChild(messageElement);
-      }
+    }
     } else {
       console.log("No data available");
     }
