@@ -1789,6 +1789,7 @@ repeat;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			margin: -1.5rem 0 2rem -1.5rem;
 		  }
 		  
 		  .table-container table {
