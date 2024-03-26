@@ -9,7 +9,7 @@ auth.onAuthStateChanged((user) => {
     get(kontaktRef).then((snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.val();
-        const ul = document.createElement('ul');
+        const ol = document.createElement('ol');
 
         // Create a header
         const header = document.createElement('h3');
@@ -23,13 +23,13 @@ auth.onAuthStateChanged((user) => {
           p.innerHTML = data[key].message.replace(/\n/g, '<br>');
 
           li.appendChild(p);
-          ul.appendChild(li);
+          ol.appendChild(li);
         }
 
         // Append the header and the list to 'kontaktMeldinger'
         const kontaktMeldinger = document.getElementById('kontaktMeldinger');
         kontaktMeldinger.appendChild(header);
-        kontaktMeldinger.appendChild(ul);
+        kontaktMeldinger.appendChild(ol);
       } else {
         console.log("No data available");
       }
