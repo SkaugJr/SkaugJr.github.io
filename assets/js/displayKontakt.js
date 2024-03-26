@@ -10,6 +10,9 @@ auth.onAuthStateChanged((user) => {
         if (snapshot.exists()) {
           const data = snapshot.val();
           const ul = document.createElement('ul');
+
+          const header = document.createElement('h3');
+          header.innerHTML = '<i class="fa-solid fa-inbox"></i> Beskjeder:';
   
           for (let key in data) {
             const li = document.createElement('li');
