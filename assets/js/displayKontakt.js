@@ -20,7 +20,7 @@ auth.onAuthStateChanged((user) => {
           li.textContent = data[key].name;
 
           const p = document.createElement('p');
-          p.textContent = data[key].message;
+          p.innerHTML = data[key].message.replace(/\n/g, '<br>');
 
           li.appendChild(p);
           ul.appendChild(li);
