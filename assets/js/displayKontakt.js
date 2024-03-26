@@ -13,7 +13,7 @@ auth.onAuthStateChanged((user) => {
   
           for (let key in data) {
             const li = document.createElement('li');
-            li.textContent = key;
+            li.textContent = data[key].name;
   
             const p = document.createElement('p');
             p.textContent = data[key].message;

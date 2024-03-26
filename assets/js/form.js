@@ -16,7 +16,7 @@ function submitForm(e) {
     additionalGuests.push(document.getElementById('additionalGuest' + i).value);
   }
 
-  const newResponseKey = primaryName + '_' + Date.now().toString(); // Generate a unique key based on the current timestamp
+  const newResponseKey = Date.now().toString(); + '_' + primaryName  // Generate a unique key based on the current timestamp
 
   const participationFolder = participation === '1' ? 'Deltar' : 'Deltar Ikke';
 
@@ -83,7 +83,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
   const email = document.getElementById('email').value;
   const message = document.getElementById('message').value;
 
-  const newResponseKey = name + '_' + Date.now().toString(); // Generate a unique key based on the current timestamp
+  const newResponseKey =  Date.now().toString() + '_' + name; // Generate a unique key based on the current timestamp
 
   set(child(ref(db), 'Kontakt/' + newResponseKey), {
     name,
@@ -107,7 +107,8 @@ document.getElementById('guestbookForm').addEventListener('submit', function(eve
 
   const message = document.getElementById('message').value;
 
-  const newResponseKey = Date.now().toString() + message.charAt(0); // Generate a unique key based on the current timestamp
+  const randomIndex = Math.floor(Math.random() * message.length);
+  const newResponseKey = Date.now().toString()+ '_' + message.charAt(randomIndex); // Generate a unique key based on the current timestamp and a random character from the message
 
   set(child(ref(db), 'Gjestebok/' + newResponseKey), {
     message
