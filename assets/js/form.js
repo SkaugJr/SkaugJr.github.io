@@ -16,7 +16,7 @@ function submitForm(e) {
     additionalGuests.push(document.getElementById('additionalGuest' + i).value);
   }
 
-  const newResponseKey = Date.now().toString(); + '_' + primaryName  // Generate a unique key based on the current timestamp
+  const newResponseKey = Date.now().toString() + '_' + primaryName;  // Generate a unique key based on the current timestamp
 
   const participationFolder = participation === '1' ? 'Deltar' : 'Deltar Ikke';
 
