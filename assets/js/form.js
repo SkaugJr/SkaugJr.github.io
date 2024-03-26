@@ -81,7 +81,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
 
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
+  const message = document.getElementById('kontaktMessage').value;
 
   const newResponseKey =  Date.now().toString() + '_' + name; // Generate a unique key based on the current timestamp
 
