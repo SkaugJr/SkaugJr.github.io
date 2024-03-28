@@ -1321,15 +1321,7 @@ repeat;
 				object-fit: cover; 
 				object-position: center;
 				border-radius: 100%;
-			}
-			#header .logo .flower-frame {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: url('/images/flower-frame.svg') no-repeat center center / cover;
-				z-index: 2; /* Added */
+				position: relative; 
 			  }
 			
 			#header .logo .icon:before {
