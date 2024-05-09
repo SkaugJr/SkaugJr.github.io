@@ -399,3 +399,9 @@
 					});
 
 })(jQuery);
+
+
+import { requestMessagingPermission, handleIncomingMessages } from './firebaseInit.js';
+
+requestMessagingPermission();
+handleIncomingMessages();
