@@ -397,11 +397,6 @@
 					$window.on('load', function() {
 						$main._show(location.hash.substr(1), true);
 					});
+					
 
 })(jQuery);
-
-
-import { requestMessagingPermission, handleIncomingMessages } from './firebaseInit.js';
-
-requestMessagingPermission();
-handleIncomingMessages();
