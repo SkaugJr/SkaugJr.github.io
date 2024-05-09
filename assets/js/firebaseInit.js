@@ -41,9 +41,10 @@ export function requestMessagingPermission() {
         if (token) {
           console.log('Token: ', token);
           // You can save this token to your database
-          setDoc(doc(db, "users", "user-id"), {
-            fcmToken: token
-        });
+          const userRef = doc(db, "users", "user-id");
+            updateDoc(userRef, {
+            tokens: arrayUnion(token),
+            });
         }
       })
       .catch((err) => {
