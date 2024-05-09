@@ -3,7 +3,7 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-
+import { requestMessagingPermission, handleIncomingMessages } from './firebaseInit.js';
 (function($) {
 
 	var	$window = $(window),
@@ -29,6 +29,9 @@
 			window.setTimeout(function() {
 				$body.removeClass('is-preload');
 			}, 100);
+
+			requestMessagingPermission();
+			handleIncomingMessages();
 		});
 
 	// Fix: Flexbox min-height bug on IE.
