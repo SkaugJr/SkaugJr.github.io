@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 import { getMessaging, getToken, onMessage} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-messaging.js"; 
 
@@ -40,11 +40,9 @@ export function requestMessagingPermission() {
       .then((token) => {
         if (token) {
           console.log('Token: ', token);
-          // You can save this token to your database
-          const userRef = doc(db, "users", "user-id");
-            updateDoc(userRef, {
-            tokens: arrayUnion(token),
-            });
+          // Save this token to your database
+          const db = getDatabase();
+          set(ref(db, 'users/user-id/tokens/' + token), true);
         }
       })
       .catch((err) => {
