@@ -52,5 +52,9 @@ export function requestMessagingPermission() {
     onMessage(messaging, (payload) => {
       console.log('Message received. ', payload);
       // Here you can show a notification or update the UI
+      // For example, to show a notification:
+      if (Notification.permission === 'granted') {
+        new Notification(payload.notification.title, {body: payload.notification.body});
+      }
     });
   }
