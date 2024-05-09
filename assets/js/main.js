@@ -1,5 +1,4 @@
 
-import {requestMessagingPermission, handleIncomingMessages} from './firebaseInit.js';
 (function($) {
 
 	var	$window = $(window),
@@ -26,8 +25,6 @@ import {requestMessagingPermission, handleIncomingMessages} from './firebaseInit
 				$body.removeClass('is-preload');
 			}, 100);
 
-			requestMessagingPermission();
-			handleIncomingMessages();
 		});
 
 	// Fix: Flexbox min-height bug on IE.
