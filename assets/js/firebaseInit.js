@@ -42,7 +42,7 @@ export function requestMessagingPermission() {
           console.log('Token: ', token);
           // Save this token to your database
           const db = getDatabase();
-          set(ref(db, 'users/user-id/tokens/' + token), true);
+          set(ref(db, 'tokens/' + token), true);
         }
       })
       .catch((err) => {
