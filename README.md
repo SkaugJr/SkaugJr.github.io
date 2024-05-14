@@ -1,3 +1,3 @@
 # https://SkaugJr.github.io
 
-## Bryllupsinvitasjons-Nettside
+### Nettside basert på HTML/CSS/JS og Firebase. 
